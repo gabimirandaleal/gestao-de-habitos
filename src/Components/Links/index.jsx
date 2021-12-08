@@ -4,9 +4,6 @@ export default function Links ({ label, to, }) {
 
   return (
 
-    <Link 
-      to={to}
-      label={label}
-    />
+    <Link to={to}>{label}</Link>
   )
 }
