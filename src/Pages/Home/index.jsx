@@ -1,9 +1,11 @@
-
-
+import Button from "../../Components/Button"
 
 function Home() {
     return(
-        <div>oi</div>
+        <div>oi
+
+            <Button>Teste</Button>
+        </div>
     )
 }
 
