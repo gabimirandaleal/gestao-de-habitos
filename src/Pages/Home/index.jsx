@@ -1,10 +1,9 @@
-import Button from "../../Components/Button"
+import Header from "../../Components/Header";
 
 function Home() {
     return(
         <div>
-
-            <Button text='text'></Button>
+            <Header/>
         </div>
     )
 }
