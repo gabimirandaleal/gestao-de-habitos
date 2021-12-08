@@ -1,5 +1,5 @@
 import {TextField} from "@mui/material"
-import {Div, Form,Error} from "./style"
+import {Div, Form} from "./style"
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -34,28 +34,8 @@ function Login(){
         <Div>
             <Header></Header>
             <Form onSubmit={handleSubmit(onSubmitFunction)}>
-                <TextField margin="normal" fullWidth id="login-basic" label="Usuário" variant="outlined" {...register("username")}/>
-                <Error>
-                    {
-                    errors.username?.message.split(";").map((item, index)=>(
-                        <li key={ImageBitmapRenderingContext}>
-                          {item}
-                        </li>
-                    ))
-                    
-                    }
-                  </Error>
-                <TextField margin="normal" fullWidth type="password" id="password-basic" label="Password" variant="outlined" {...register("password")}/>
-                <Error>
-                    {
-                    errors.password?.message.split(";").map((item, index)=>(
-                        <li key={index}>
-                          {item}
-                        </li>
-                    ))
-                    
-                    }
-                </Error>
+                <TextField margin="normal" fullWidth id="login-basic" label="Usuário" variant="outlined" error={errors.username?.message} {...register("username")}/>
+                <TextField margin="normal" fullWidth type="password" id="password-basic" label="Password" error={errors.password?.message} variant="outlined" {...register("password")}/>
                 <Button type="submit" text={"Entrar"}></Button>
             </Form>
         </Div>

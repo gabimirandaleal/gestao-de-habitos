@@ -7,6 +7,7 @@ export const Div = styled.div`
     justify-content: center;
     height: 100vh;
     background-color: var(--light-grey);
+    
 `;
 
 
@@ -18,6 +19,10 @@ export const Form = styled.form`
     width: 100%;
     box-sizing: border-box;
     max-width: 400px;
+
+    button{
+        margin-top: 15px;
+    }
 `;
 
 export const Span = styled.span`
@@ -28,20 +33,6 @@ export const Span = styled.span`
 export const SpanH = styled(Span)`
     margin: 0px;
     color: black;
-`;
-
-export const Error = styled.ul`
-    margin: 0px;
-    text-align: start;
-    margin-bottom: 15px;
-    margin-top: ${props => props.margin ? `${props.margin}px`: "-5px"};
-    font-size: 10px;
-    color: rgb(240, 42, 42);
-    padding: 0px 0px 0px 5px;
-    
-    li{
-        list-style: inside;
-    }
 `;
 
 export const DivSpan = styled.div`
