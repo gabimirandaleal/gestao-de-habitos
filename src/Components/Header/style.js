@@ -6,15 +6,15 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   font-family: 'Sansita One';
+  font-size: 30px;
   `;
 
 export const H1 = styled.h1`
   margin: 10px 0 10px 10px;
-  font-size: 20px;
-  color: var(--medium-green);
+  color: var(--dark-green);
 `
 export const Leaf = styled.img`
-  width: 20px;
+  width: 30px;
   padding: 0px 5px 0px 0px;
   margin-left: 5px;
 `
