@@ -2,9 +2,9 @@ import Button from "../../Components/Button"
 
 function Home() {
     return(
-        <div>oi
+        <div>
 
-            <Button>Teste</Button>
+            <Button text='text'></Button>
         </div>
     )
 }
