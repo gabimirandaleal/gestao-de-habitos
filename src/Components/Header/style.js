@@ -19,6 +19,6 @@ export const Leaf = styled.img`
 export const SpanLogo = styled.span`
   background-color: var(--medium-green);
   color: var(--white);
-  padding: 5px 10px 5px;
+  padding: 10px 12px 10px 10px;
   border-radius: 5px;
 `;
