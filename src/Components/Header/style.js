@@ -11,7 +11,7 @@ export const Div = styled.div`
 export const H1 = styled.h1`
   margin: 10px 0 10px 10px;
   font-size: 20px;
-  color: #3E6A3F;
+  color: var(--medium-green);
 `
 export const Leaf = styled.img`
   width: 20px;
@@ -19,8 +19,8 @@ export const Leaf = styled.img`
   margin-left: 5px;
 `
 export const SpanLogo = styled.span`
-  background-color: #A2EEA3;
-  color:  #FFFFFF;
+  background-color: var(--light-green);
+  color:  var(--white);
   padding: 5px 10px 5px;
   border-radius: 5px;
 `;
