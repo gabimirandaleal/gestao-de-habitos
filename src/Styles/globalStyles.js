@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 		--dark-grey: #5b5b5b;
 	}
 
+
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
