@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import {signInThunk} from "../../Store/modules/user/thunk"
 import Button from "../../Components/Button"
 import Header from "../../Components/Header"
-import LeafAnimation from "../../Components/leafsAnimation";    
+import LeafAnimation from "../../Components/leafsAnimation";  
+import Links from "../../Components/Links";  
 
 function Login(){
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function Login(){
                     <TextField margin="normal" fullWidth type="password" id="password-basic" label="Password" error={!!errors.password?.message} variant="outlined" {...register("password")}/>
                     <Button type="submit" text={"Entrar"}></Button>
                 </Form>
+                <Links to={"/signup"} label={"Cadastrar"}></Links>
             </Div>
         </Container>
     )
