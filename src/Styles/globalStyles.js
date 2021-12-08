@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
 		--light-purple: rgba(108, 99, 255, 0.8);
 		--medium-green: #6FC070;
 		--light-green: #A2EEA3;
+		--dark-green:  #3E6A3F;
 		--dark-red: #FF1010;
 		--white: #ffffff;
 		--light-yellow: #FBFFCB;
