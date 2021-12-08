@@ -1,6 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyle = createGlobalStyle`
+	:root{
+		--dark-purple: #6C63FF;
+		--light-purple: rgba(108, 99, 255, 0.8);
+		--medium-green: #6FC070;
+		--light-green: #A2EEA3;
+		--dark-red: #FF1010;
+		--white: #ffffff;
+		--light-yellow: #FBFFCB;
+		--light-grey: #F8F8F8;
+		--medium-grey: #EBEBEB;
+		--dark-grey: #5b5b5b;
+	}
+
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
