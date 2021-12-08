@@ -58,10 +58,5 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "eslint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run lint-staged"
-    }
   }
 }
