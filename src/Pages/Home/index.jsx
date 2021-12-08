@@ -3,7 +3,7 @@
 
 function Home() {
     return(
-        <div>oi</div>
+        <div></div>
     )
 }
 
