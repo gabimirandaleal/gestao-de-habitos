@@ -19,7 +19,7 @@ export const Leaf = styled.img`
   margin-left: 5px;
 `
 export const SpanLogo = styled.span`
-  background-color: var(--light-green);
+  background-color: var(--medium-green);
   color:  var(--white);
   padding: 5px 10px 5px;
   border-radius: 5px;
