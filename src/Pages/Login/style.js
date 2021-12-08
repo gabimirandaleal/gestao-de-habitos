@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  overflow-x: hidden;
+  overflow-y: hidden;
+`;
+
 export const Div = styled.div`
     display: flex;
     align-items: center;

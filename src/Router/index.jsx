@@ -1,6 +1,6 @@
-import {Switch} from "react-router-dom" 
-import Route from "./route"
-import { ToastContainer } from 'react-toastify';
+import { Switch } from "react-router-dom";
+import Route from "./route";
+import { ToastContainer } from "react-toastify";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login"
 
