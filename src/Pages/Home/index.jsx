@@ -3,7 +3,7 @@
 
 function Home() {
     return(
-        <div></div>
+        <div>i</div>
     )
 }
 
