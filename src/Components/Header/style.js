@@ -5,6 +5,7 @@ export const Div = styled.div`
   align-items: center;
   font-family: "Sansita One";
   font-size: 30px;
+  cursor: pointer;
 `;
 
 export const H1 = styled.h1`
