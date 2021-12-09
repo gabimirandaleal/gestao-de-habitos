@@ -1,7 +1,7 @@
 import { SIGN_IN, LOG_OUT } from "./actionType"
 
 
-const token = localStorage.getItem("Kenzie-shop:token") || ""
+const token = localStorage.getItem("@GestaoHabitos:token") || ""
 
 
 const defaultState = {
