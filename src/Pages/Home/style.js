@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 100vh;
+    height: 100%;
     background-color: var(--dark-purple);
-    padding: 20px;
-    overflow-y: hidden;
+    padding: 20px 20px 0px 20px;
+    box-sizing: border-box;
     @media (min-width:1190px){
         background-image: linear-gradient(to right, var(--light-green) 70%, var(--dark-purple) 30%);
+        overflow-y: hidden;
+        height: 100vh;
     }
-    box-sizing: border-box;
+    
 `;
 export const DivInfos = styled.div`
     max-width: 300px;
@@ -39,35 +41,30 @@ export const ContainerAcess = styled.div`
     display: flex;
     justify-content: flex-end;
     text-align: end;
+    overflow-y: hidden;
 `;
 
 export const DivImage = styled.div`
     display: flex;
-    justify-content: flex-end;
     align-items: flex-end;
     height:100vh;
-    overflow: hidden;
     img{
         display: none;
     }
 
     @media (min-width:1190px){
         
-        img{
-            display: flex;
+        img{    
+            display: block;
             width: 850px;
-            height: 100%;
-            object-fit: contain;
-            margin-right:0px;
+            margin: 0px;
         }
     }
     @media (min-width:1295px){
         img{
-            display: flex;
+            display: block;
             width: 850px;
-            height: 100%;
-            object-fit: contain;
-            margin-right:100px;
+            margin-right:10px;
         }
     }
 `;
