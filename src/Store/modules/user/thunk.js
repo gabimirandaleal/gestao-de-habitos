@@ -1,27 +1,25 @@
 import api from "../../../Services/api";
 import { signIn, logOut } from "./actions";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const signInThunk = (data) => (dispatch) => {
-    api.post(`/sessions/`, data)
-    .then((response)=> {
-        console.log(response.data)
-        const { access } = response.data
-        localStorage.clear()
-        localStorage.setItem("@GestaoHabitos:token", JSON.stringify(access));
-        dispatch(signIn(access))
-        toast.success("Login feito com sucesso!")
+  api
+    .post(`/sessions/`, data)
+    .then((response) => {
+      console.log(response.data);
+      const { access } = response.data;
+      localStorage.clear();
+      localStorage.setItem("@GestaoHabitos:token", JSON.stringify(access));
+      dispatch(signIn(access));
+      toast.success("Login feito com sucesso!");
     })
     .catch((_) => {
-        toast.error("Usuário ou senha inválidos")
-    })
-
-}
+      toast.error("Usuário ou senha inválidos");
+    });
+};
 
 export const logOutThunk = () => (dispatch) => {
-    localStorage.clear()
-    dispatch(logOut())
-}
+  localStorage.clear();
+  dispatch(logOut());
+};
