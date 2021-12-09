@@ -43,7 +43,7 @@ function Login(){
                     <TextField margin="normal" fullWidth type="password" id="password-basic" label="Password" error={!!errors.password?.message} variant="outlined" {...register("password")}/>
                     <Button type="submit" text={"Entrar"}></Button>
                 </Form>
-                <Links to={"/signup"} label={"Cadastrar"}></Links>
+                <Links to={"/signup"} label={"Cadastrar - se"}></Links>
             </Div>
         </Container>
     )

@@ -12,7 +12,7 @@ function Routes(){
             <ToastContainer/>
             <Switch>
                 <Route exact path={"/"} component={Home}/>
-                <Route path={"/cadastrar"} component={Signup}/>
+                <Route path={"/signup"} component={Signup}/>
                 <Route path={"/login"} component={Login}/>
             </Switch>
         </div>

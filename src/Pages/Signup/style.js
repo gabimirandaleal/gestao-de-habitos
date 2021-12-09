@@ -26,13 +26,7 @@ export const Div = styled.div`
   }
   button {
     margin-top: 10px;
-  }
-  a {
-    margin-top: 20px;
-    color: var(--dark-gray);
-    text-decoration: none;
-    font-family: Roboto;
-    font-weight: bold;
+    margin-bottom: 20px;
   }
 `;
 

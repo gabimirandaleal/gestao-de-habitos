@@ -10,6 +10,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 import { Container, Error, Div } from "./style";
+import Links from "../../Components/Links";
 
 function Signup() {
   const history = useHistory();
@@ -87,7 +88,7 @@ function Signup() {
             error={errors.confirmPassword?.message}
           />
           <Button color="#fff" text="Registrar" type="submit"></Button>
-          <Link to="/">ir para o login</Link>
+          <Links to="/login" label="Ir para o login"></Links>
         </form>
       </Div>
     </Container>
