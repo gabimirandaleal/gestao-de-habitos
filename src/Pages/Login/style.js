@@ -19,7 +19,6 @@ export const Div = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    border: 2px solid #F5F5F5;
     padding: 0px 19px 26px 19px;
     width: 100%;
     box-sizing: border-box;
@@ -27,6 +26,9 @@ export const Form = styled.form`
 
     button{
         margin-top: 15px;
+    }
+    input{
+        background-color: var(--white);
     }
 `;
 
