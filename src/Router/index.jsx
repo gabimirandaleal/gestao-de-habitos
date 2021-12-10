@@ -5,6 +5,7 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login"
 import Signup from "../Pages/Signup"
 import Groups from "../Pages/Groups";
+import Dashboard from "../Pages/Dashboard";
 
 function Routes(){
     return(
@@ -15,6 +16,7 @@ function Routes(){
                 <Route path={"/signup"} component={Signup}/>
                 <Route path={"/login"} component={Login}/>
                 <Route path={"/groups"} component={Groups}/>
+                <Route  path={"/dashboard"} component={Dashboard}/> {/* isPrivate */}
             </Switch>
         </div>
     )
