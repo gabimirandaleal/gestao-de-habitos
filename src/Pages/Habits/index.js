@@ -5,36 +5,44 @@ import {
   Extra,
   Card,
   Cards,
-  State,
   Specs,
   Title,
-  About,
+  Empty,
+  DelHab,
+  RedBut,
+  GreenBut,
+  Buttons
 } from "./style";
 
 const Habits = () => {
   return (
     <Container>
-      <Header />
+      {/* <Header />
       <Extra />
       <Cards>
-        <Card>
-          <State>
-            <h3>Concluído</h3>
-            <p>x</p>
-          </State>
-          <About>
-            <Title>Comer frutas</Title>
-            <Specs>
-              <div>Categoria: Alimentação</div>
-              <div>Frequência: Diária</div>
-              <div>Dificuldade: Fácil</div>
-              <div>Progresso: 30%</div>
-            </Specs>
-          </About>
-        </Card>
-        <Card />
-        <Card />
-      </Cards>
+        {habits ? (
+          habits.map((habit) => (
+            <Card key={habit.id}>
+              <Title>{habit.title}</Title>
+              <Specs>
+                <div>Categoria: {habit.category}</div>
+                <div>Dificuldade: {habit.difficulty}</div>
+                <div>Frequência: {habit.frequency}</div>
+                <div>Progresso: {habit.how_much_achieved}%</div>
+              </Specs>
+            </Card>
+          ))
+        ) : (
+          <Empty>Sem Hábitos</Empty>
+        )}
+      </Cards> */}
+      <DelHab>
+        <p>Remover Hábito?</p>
+        <Buttons>
+          <GreenBut>Sim</GreenBut>
+          <RedBut>Não</RedBut>
+        </Buttons>
+      </DelHab>
     </Container>
   );
 };

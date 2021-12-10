@@ -7,7 +7,6 @@ export const signInThunk = (data) => (dispatch) => {
   api
     .post(`/sessions/`, data)
     .then((response) => {
-      console.log(response.data);
       const { access } = response.data;
       localStorage.clear();
       localStorage.setItem("@GestaoHabitos:token", JSON.stringify(access));

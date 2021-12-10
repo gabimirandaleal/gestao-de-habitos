@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   font-family: Sansita;
   background-color: var(--light-grey);
+  width: 100vw;
+  min-height: 100vh;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Extra = styled.div`
@@ -28,47 +35,76 @@ export const Cards = styled.div`
 
 export const Card = styled.div`
   width: 83%;
-  height: 220px;
   margin-bottom: 2rem;
-  background-color: var(--light-green);
-  border-radius: 20px;
-  color: white;
-  border: solid 2px white;
-`;
-
-export const State = styled.div`
-  border-bottom: 1px white solid;
-  padding-bottom: 1rem;
-  font-size: 28px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-
-  h3 {
-    margin-left: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  p {
-    align-self: flex-end;
-    margin-right: 1.5rem;
-  }
-`;
-
-export const About = styled.div`
-  margin-left: 1.5rem;
 `;
 
 export const Title = styled.p`
-  font-size: 22px;
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  height: 90px;
+  background: var(--dark-medium-green);
+  color: white;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
 `;
 
 export const Specs = styled.div`
-  width: 100%;
-  font-size: 18px;
+  height: 180px;
+  background: var(--light-green);
+  color: var(--dark-grey);
+  font-size: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   div {
-    margin-bottom: 0.5rem;
+    margin-left: 1rem;
   }
+`;
+
+export const Empty = styled.div`
+  font-size: 40px;
+  color: var(--dark-grey);
+`;
+
+export const DelHab = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 84%;
+  height: 250px;
+  background: white;
+  border-radius: 30px;
+  p {
+    font-size: 30px;
+    margin-bottom: 3rem;
+    color: var(--dark-grey);
+  }
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+
+  button {
+    border: none;
+    color: white;
+    width: 90px;
+    height: 40px;
+    font-size: 19px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+`;
+
+export const GreenBut = styled.button`
+  background: var(--light-green);
+`;
+
+export const RedBut = styled.button`
+  background: var(--dark-red);
 `;
