@@ -5,7 +5,6 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import Dashboard from "../Pages/Dashboard";
-import GroupViewer from "../Components/CardGroupViewer";
 function Routes() {
   return (
     <div>
@@ -14,11 +13,9 @@ function Routes() {
         <Route exact path={"/"} component={Home} />
         <Route path={"/signup"} component={Signup} />
         <Route path={"/login"} component={Login} />
-        <Route path={"/dashboard"} component={Dashboard} /> {/* isPrivate */}
-        <Route path={"/teste"} component={GroupViewer} /> {/* isPrivate */}
+        <Route isPrivate path={"/dashboard"} component={Dashboard} />
       </Switch>
     </div>
   );
 }
-
 export default Routes;
