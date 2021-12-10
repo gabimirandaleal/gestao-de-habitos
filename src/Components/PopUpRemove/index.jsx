@@ -1,7 +1,7 @@
 import ButtonYesOrNo from "../ButtonYesOrNo"
 import {DivA, DivContainer, Div} from "./style"
 
-function PopUpRemove ({text}) {
+function PopUpRemove ({text, card}) {
 
   function removerCard(){
     if(text === "hábito"){
