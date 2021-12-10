@@ -5,7 +5,6 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import Dashboard from "../Pages/Dashboard";
-
 function Routes() {
   return (
     <div>
