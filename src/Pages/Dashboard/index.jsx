@@ -6,7 +6,6 @@ import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
 import UserImg from '../../assets/img/userAvatar.png'
 import Pencil from '../../assets/img/pencil.png'
-import NoGroupHabits from '../../assets/img/noGroupHabits.png'
 
 
 const Dashboard = () => {
