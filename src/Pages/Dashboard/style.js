@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
 export const HeaderDashboard = styled.div`
-    padding-top: 2vh;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    background-color: var(--light-grey);
+  padding-right: 20px;
+  padding-top: 2vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--light-grey);
+    svg {
+      height: 30px;
+      width: 30px;
+      color: red;
+    }
     @media (min-width:790px){
-    padding-top: 0;
+      padding-top: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -65,32 +71,36 @@ export const UserBox = styled.div`
     display: flex;
     align-items: center;
     font-family: 'Sansita';
-    
-    img {
-      margin-left: 20px;
-      width: 50px
-    }
-    
-    ul {
-      margin: 0px 5px 0 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: var(--dark-grey);
-      font-size: 12px;
-      font-style: normal;
-        img {
-          margin-left: 20px;
-          width: 15px
-        }
-      li {
-        font-size: 12px;
-        span {
-          font-size: 17px;
-        }
+      svg {
+        height: 15px;
+        width: 15px;
+          color: black;
       }
+      img {
+        margin-left: 20px;
+        width: 50px
+      }
+    
+      ul {
+        margin: 0px 5px 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: var(--dark-grey);
+        font-size: 12px;
+        font-style: normal;
+          img {
+            margin-left: 20px;
+            width: 15px
+          }
+          li {
+            font-size: 12px;
+            span {
+              font-size: 17px;
+            }
+          }
       
-    }
+        }
     
   @media (min-width:790px){
       padding-left: 2vw;
