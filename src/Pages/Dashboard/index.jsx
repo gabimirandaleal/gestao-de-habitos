@@ -6,6 +6,8 @@ import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
 import UserImg from '../../assets/img/userAvatar.png'
 import Pencil from '../../assets/img/pencil.png'
+import NoGroupHabits from '../../assets/img/noGroupHabits.png'
+
 
 const Dashboard = () => {
   
@@ -40,16 +42,15 @@ const Dashboard = () => {
         <UserBox>
           <img src={UserImg} alt=''/>
           <ul>
-            <li>Username <img src={Pencil} alt=''/></li>
-            <li>teste@teste.com</li>
+            <li><span>Username</span> <img src={Pencil} alt=''/></li>
+            <li>username@teste.com</li>
           </ul>
           
         </UserBox>
       </HeaderDashboard>
       <Container>
-            {isHabits && <>Hábitos</>}
-      
-            {isGroup && <>Grupos</>}
+            {isHabits && <>Hábitos</> }
+            {isGroup && <>Grupos</> }
       </Container>
     </>
 

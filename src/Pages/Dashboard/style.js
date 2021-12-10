@@ -25,6 +25,9 @@ export const ButtonsDashboard = styled.div`
     height: 10vh;
     width: 100vw;
     font-family: 'Sansita';
+    font-weight: 400;
+    font-style: normal;
+    color: var(--dark-grey);
 
     font-weight: lighter;
       ul {
@@ -39,7 +42,7 @@ export const ButtonsDashboard = styled.div`
       }
       img {
         margin: 0px 5px 0 20px;
-        width: 20px
+        width: 2.5vh
 
       }
     @media (min-width:790px){
@@ -47,12 +50,10 @@ export const ButtonsDashboard = styled.div`
       flex-direction: row;
       justify-content: space-around;
       padding-left: 2vw;
-      ul {
-        
-        display: flex;
-        flex-direction: row;
-
-}
+        ul {
+          display: flex;
+          flex-direction: row;
+        }
     }
     
 `;
@@ -64,27 +65,36 @@ export const UserBox = styled.div`
     display: flex;
     align-items: center;
     font-family: 'Sansita';
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 0px 5px 0 20px;
-        font-size: 15px;
-          img {
-            margin-left: 20px;
-            width: 15px
-          }
-        
-      }
-
-      img {
-        margin-left: 20px;
-        width: 40px
-      }
-    @media (min-width:790px){
-      padding-left: 2vw;
+    
+    img {
+      margin-left: 20px;
+      width: 50px
     }
+    
+    ul {
+      margin: 0px 5px 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: var(--dark-grey);
+      font-size: 12px;
+      font-style: normal;
+        img {
+          margin-left: 20px;
+          width: 15px
+        }
+      li {
+        font-size: 12px;
+        span {
+          font-size: 17px;
+        }
+      }
+      
+    }
+    
+  @media (min-width:790px){
+      padding-left: 2vw;
+  }
 `;
 
 
