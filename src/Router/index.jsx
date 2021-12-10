@@ -16,7 +16,7 @@ function Routes(){
                 <Route path={"/signup"} component={Signup}/>
                 <Route path={"/login"} component={Login}/>
                 <Route path={"/groups"} component={Groups}/>
-                <Route  path={"/dashboard"} component={Dashboard}/> {/* isPrivate */}
+                <Route isPrivate path={"/dashboard"} component={Dashboard}/>
             </Switch>
         </div>
     )
