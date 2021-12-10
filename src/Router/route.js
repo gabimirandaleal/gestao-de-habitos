@@ -11,7 +11,7 @@ const Route = ({ isPrivate = false, component: Component, ...rest }) => {
         return isPrivate === !!token ? (
           <Component />
         ) : (
-          <Redirect to={isPrivate ? "/" : "/habits"} />
+          <Redirect to={isPrivate ? "/" : "/dashboard"} />
         );
       }}
     />

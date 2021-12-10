@@ -1,14 +1,26 @@
-import { ADD_HABITS, ATT_HABITS, DEL_HABITS } from "./actionType";
+import {
+  ADD_HABITS,
+  ATT_HABITS,
+  DEL_HABITS,
+  UPDATE_HABITS,
+} from "./actionType";
 
-export const addHabit= (token) => ({
+export const addHabit = (data) => ({
   type: ADD_HABITS,
-  token,
+  data,
 });
 
-export const attHabit = () => ({
+export const attHabit = (data) => ({
   type: ATT_HABITS,
+  data,
 });
 
-export const delHabit = () => ({
+export const delHabit = (data) => ({
   type: DEL_HABITS,
+  data,
+});
+
+export const updateHabits = (newData) => ({
+  type: UPDATE_HABITS,
+  newData,
 });

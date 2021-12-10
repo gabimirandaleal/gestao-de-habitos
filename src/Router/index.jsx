@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
-import Habits from "../Pages/Habits";
+import Dashboard from "../Pages/Dashboard";
 
 function Routes() {
   return (
@@ -14,7 +14,7 @@ function Routes() {
         <Route exact path={"/"} component={Home} />
         <Route path={"/signup"} component={Signup} />
         <Route path={"/login"} component={Login} />
-        <Route path={"/habits"} component={Habits} isPrivate />
+        <Route path={"/dashboard"} component={Dashboard} /> 
       </Switch>
     </div>
   );
