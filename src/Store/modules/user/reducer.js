@@ -10,7 +10,6 @@ const defaultState = {
 
 
 const userReducer = (state = defaultState, action) =>{
-
     switch (action.type){
         case SIGN_IN:
             const {token} = action
