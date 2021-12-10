@@ -14,10 +14,9 @@ function Routes() {
         <Route exact path={"/"} component={Home} />
         <Route path={"/signup"} component={Signup} />
         <Route path={"/login"} component={Login} />
-        <Route isPrivate path={"/dashboard"} component={Dashboard} /> 
+        <Route isPrivate path={"/dashboard"} component={Dashboard} />
       </Switch>
     </div>
   );
-
-
+}
 export default Routes;
