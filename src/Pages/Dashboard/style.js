@@ -9,6 +9,8 @@ export const HeaderDashboard = styled.div`
   flex-direction: column;
   background-color: var(--light-grey);
     svg {
+      position: absolute;
+      right: 20px;
       height: 30px;
       width: 30px;
       color: red;
@@ -65,13 +67,15 @@ export const ButtonsDashboard = styled.div`
 `;
 
 export const UserBox = styled.div`
-    margin-right: 2vw;
+    margin-right: 3vw;
     height: 10vh;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     font-family: 'Sansita';
       svg {
+        position: relative;
+        right: 0px;
         height: 15px;
         width: 15px;
           color: black;
