@@ -5,11 +5,10 @@ import Header from "../../Components/Header"
 import { useDispatch } from "react-redux";
 import {logOutThunk} from "../../Store/modules/user/thunk"
 import { FiLogOut } from "react-icons/fi";
-import { BsPencil } from "react-icons/bs";
 
 import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
-import UserImg from '../../assets/img/userAvatar.png'
+import CardUsuario from "../../Components/CardUsuario";
 
 
 const Dashboard = () => {
@@ -46,11 +45,8 @@ const Dashboard = () => {
           </ul>
         </ButtonsDashboard>
         <UserBox>
-          <img src={UserImg} alt=''/>
-          <ul>
-            <li><span>Username</span> <BsPencil/></li>
-            <li>username@teste.com</li>
-          </ul>
+          
+          <CardUsuario/>
           
         </UserBox>
 
