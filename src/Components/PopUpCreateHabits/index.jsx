@@ -7,6 +7,7 @@ import {Div, Form, DivA, DivContainer} from "./style";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
+import {addHabitThunk} from "../../Store/modules/habits/thunk"
 
 function PopUpCreateHabits({setPopup}) {
     const formSchema = yup.object().shape({
@@ -25,8 +26,8 @@ function PopUpCreateHabits({setPopup}) {
     })
 
     const onSubmitFunction = data => {
-        console.log(data)
         setPopup(false)
+        addHabitThunk(data)
     }
     return(
         <DivA>
