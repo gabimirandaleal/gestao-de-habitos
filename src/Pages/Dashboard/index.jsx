@@ -2,29 +2,34 @@ import { HeaderDashboard, ButtonsDashboard, UserBox, Container } from "./style"
 import { useState } from "react"
 import Header from "../../Components/Header"
 
+import { useDispatch } from "react-redux";
+import {logOutThunk} from "../../Store/modules/user/thunk"
+import { FiLogOut } from "react-icons/fi";
+
 import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
-import UserImg from '../../assets/img/userAvatar.png'
-import Pencil from '../../assets/img/pencil.png'
-import NoGroupHabits from '../../assets/img/noGroupHabits.png'
+import CardUsuario from "../../Components/CardUsuario";
 
 
 const Dashboard = () => {
   
   const [isHabits,setIsHabits] = useState(false)
   const [isGroup,setIsGroup] = useState(false)
+  const dispatch = useDispatch()
 
   const groups = () => {
-  setIsGroup(true)
-  setIsHabits(false)
-
+    setIsGroup(true)
+    setIsHabits(false)
   } 
 
   const habits = () => {
     setIsGroup(false)
     setIsHabits(true)
-  
     } 
+  
+  const logout = () => {
+    dispatch(logOutThunk())
+  }
 
   return (
 
@@ -40,13 +45,13 @@ const Dashboard = () => {
           </ul>
         </ButtonsDashboard>
         <UserBox>
-          <img src={UserImg} alt=''/>
-          <ul>
-            <li><span>Username</span> <img src={Pencil} alt=''/></li>
-            <li>username@teste.com</li>
-          </ul>
+          
+          <CardUsuario/>
           
         </UserBox>
+
+        <FiLogOut onClick={logout}/>
+        
       </HeaderDashboard>
       <Container>
             {isHabits && <>Hábitos</> }
