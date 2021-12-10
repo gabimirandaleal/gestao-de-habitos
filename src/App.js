@@ -1,9 +1,11 @@
+import PopUpCreateActivity from "./Components/PopUpCreateActivity";
+
 import Routes from "./Router";
 
 function App() {
   return (
     <div className="App">
-      <Routes></Routes>
+      <PopUpCreateActivity></PopUpCreateActivity>
     </div>
   );
 }
