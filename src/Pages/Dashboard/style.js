@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderDashboard = styled.div`
   padding-right: 20px;
-  padding-top: 2vh;
+  padding-top: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
@@ -23,6 +23,7 @@ export const HeaderDashboard = styled.div`
       justify-content: space-between;
       height: 10vh;
       padding-left: 2vw;
+      box-sizing: border-box;
     }
 `;
 
@@ -30,8 +31,7 @@ export const ButtonsDashboard = styled.div`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    height: 10vh;
-    width: 100vw;
+    width: 100%;
     font-family: 'Sansita';
     font-weight: 400;
     font-style: normal;
@@ -51,16 +51,17 @@ export const ButtonsDashboard = styled.div`
       img {
         margin: 0px 5px 0 20px;
         width: 2.5vh
-
       }
     @media (min-width:790px){
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       padding-left: 2vw;
+      box-sizing: border-box;
         ul {
           display: flex;
           flex-direction: row;
+          box-sizing: border-box;
         }
     }
     
@@ -108,18 +109,15 @@ export const UserBox = styled.div`
     
   @media (min-width:790px){
       padding-left: 2vw;
+      box-sizing: border-box;
   }
 `;
 
 
 export const Container = styled.div`
-    padding: 20px 20px 0px 20px;
     box-sizing: border-box;
-    height: 90vh;
+    height: 100vh;
     background-color: var(--light-grey);
     display: flex;
     justify-content:center;
-    @media (min-width:1190px){
-      height: 90vh;
-      }
 `;
