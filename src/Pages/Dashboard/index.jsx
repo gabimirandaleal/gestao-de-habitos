@@ -1,7 +1,6 @@
 import { HeaderDashboard, ButtonsDashboard, UserBox, Container } from "./style"
 import { useState } from "react"
 import Header from "../../Components/Header"
-
 import { useDispatch } from "react-redux";
 import {logOutThunk} from "../../Store/modules/user/thunk"
 import { FiLogOut } from "react-icons/fi";
@@ -11,11 +10,12 @@ import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
 import UserImg from '../../assets/img/userAvatar.png'
 
+import Groups from "../Groups";
 
 const Dashboard = () => {
   
   const [isHabits,setIsHabits] = useState(false)
-  const [isGroup,setIsGroup] = useState(false)
+  const [isGroup,setIsGroup] = useState(true)
   const dispatch = useDispatch()
 
   const groups = () => {
@@ -59,7 +59,7 @@ const Dashboard = () => {
       </HeaderDashboard>
       <Container>
             {isHabits && <>Hábitos</> }
-            {isGroup && <>Grupos</> }
+            {isGroup && <Groups/> }
       </Container>
     </>
 

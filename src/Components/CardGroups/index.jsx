@@ -3,13 +3,12 @@ import {HighlightOff} from "@mui/icons-material"
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
 import { useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import GroupsThunk from "../../Store/modules/groups/thunk"
 
-const CardGroups = () => {
-  //  const dispatch = useDispatch()
+const CardGroups = ({name, category, creator, inscribed, goals, activities}) => {
   const [change, setChange] = useState(true);
   const [text, setText] = useState("Junte-se");
+  const [popUp, setPopUp] = useState(false);
+
 
   const onChange = () => {
     if (change === false) {
@@ -32,24 +31,24 @@ const CardGroups = () => {
             <img src={LogoCardGroup} alt="LogoCardGroup" />
           </figure>
           <DescriptionGroup>
-            <h2>Família</h2>
-            <span> Saúde </span>
+            <h2>{name}</h2>
+            <span> {category} </span>
           </DescriptionGroup>
         </CardHeader>
-        <p> Criado por NomeDoCriador </p>
+        <p> {creator} </p>
       </Content>
       <Details>
         <span>
-          <p>Incritos</p> <p>5</p>
+          <p>Incritos</p> <p>{inscribed}</p>
         </span>
         <span>
-          <p>Metas</p> <p>6</p>
+          <p>Metas</p> <p>{goals}</p>
         </span>
         <span>
-          <p>Atividades</p> <p>10</p>
+          <p>Atividades</p> <p>{activities}</p>
         </span>
       </Details>
-      <Button onclick={onChange} color={change} text={text} />
+      <Button color={change} text={text} />
     </Conteiner>
   );
 };

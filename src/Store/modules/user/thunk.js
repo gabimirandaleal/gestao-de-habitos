@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 export const signInThunk = (data) => (dispatch) => {
     api.post(`/sessions/`, data)
     .then((response)=> {

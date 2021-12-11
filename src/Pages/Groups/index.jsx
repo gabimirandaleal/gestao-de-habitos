@@ -1,33 +1,52 @@
 import SearchBar from "../../Components/SearchBar";
-import { Conteiner, Content, NotCards, CardsBox, ContentBox } from "./style";
+import { Conteiner, NotCards, CardsBox, ContentBox } from "./style";
 import CardGroups from "../../Components/CardGroups";
-import Header from "../../Components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png"
+import { useSelector, useDispatch } from "react-redux";
+// import GroupsThunk from "../../Store/modules/groups/thunk"
+import searchGroupThunk from "../../Store/modules/groups/thunk"
 
 function Groups() {
 
-  const [ispage, setIspage] = useState(false)
+  const dispatch = useDispatch()
+  const groups = useSelector((state) => state);
+  const [ispage] = useState(false)
+
+  // const groupList = groups.map((item) => {
+  //   return(
+  //     <CardGroups 
+  //     name={item.name} 
+  //     category={item.category} 
+  //     creator={item.creator.username}
+  //     inscribed={item.users_on_group.length}
+  //     goals={item.goals.length}
+  //     activities={item.activities.length}
+  //     />
+  //   )
+  // })
+
+  console.log(groups)
+
+  useEffect(() => {
+    dispatch(searchGroupThunk());
+  }, []);
 
   return ispage ? (
-    <Conteiner id="conteiner">
-      <Header />
+    <Conteiner>
       <section>
-      <ContentBox  id="box">
+      <ContentBox>
         <SearchBar />
         <CardsBox>
-          <CardGroups />
-          <CardGroups />
-          <CardGroups />
+        {/* {groupList} */}
         </CardsBox>
       </ContentBox>
       </section>
     </Conteiner>
   ) : (
-    <Conteiner id="conteiner">
-    <Header />
+    <Conteiner>
     <section>
-    <ContentBox  id="box">
+    <ContentBox>
       <SearchBar />
       <NotCards>
         <figure>
