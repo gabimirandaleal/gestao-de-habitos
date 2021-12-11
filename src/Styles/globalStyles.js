@@ -1,9 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
- 
+import { createGlobalStyle } from "styled-components";
+
 const GlobalStyle = createGlobalStyle`
 	:root{
 		--dark-purple: #6C63FF;
 		--light-purple: rgba(108, 99, 255, 0.8);
+		--light-medium-blue: #50A8DA;
 		--medium-green: #6FC070;
 		--light-green: #A2EEA3;
 		--dark-green:  #3E6A3F;
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 		--light-medium-green: #A2EEA3;
 		--dark-medium-red:  #FF4747;
 		--light-light-red: #FFE1E1;
-		--dark-orange: #FF7E21;
+		--dark-orange: #FF9365;
 		--light-light-orange: #FFE6D4;
 		--light-blue: #A1CCFA;
 		--dark-blue: #017AFE;
@@ -70,5 +71,5 @@ const GlobalStyle = createGlobalStyle`
 		border-spacing: 0;
 	}
 `;
- 
+
 export default GlobalStyle;

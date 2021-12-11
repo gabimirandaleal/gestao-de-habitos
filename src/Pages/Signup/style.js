@@ -12,13 +12,13 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  padding: 0px 20px;
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     max-width: 400px;
+    
   }
   input {
     background: var(--white);
@@ -28,17 +28,18 @@ export const Div = styled.div`
     margin-top: 10px;
     margin-bottom: 20px;
   }
+  a{
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Error = styled.ul`
-  margin: 0px;
   text-align: start;
-  margin-bottom: 15px;
-  margin-top: ${(props) => (props.margin ? `${props.margin}px` : "-5px")};
   font-size: 10px;
   color: rgb(240, 42, 42);
-  padding: 0px 0px 0px 5px;
   li {
-    list-style: inside;
+    list-style: none;
+    padding-left: 10px;
   }
 `;

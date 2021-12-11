@@ -7,6 +7,10 @@ import {Div, Form, DivA, DivContainer} from "./style";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
+import { useState } from 'react';
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import {addHabitThunk} from "../../Store/modules/habits/thunk"
 
 function PopUpCreateHabits({setPopup}) {
     const formSchema = yup.object().shape({
@@ -15,6 +19,14 @@ function PopUpCreateHabits({setPopup}) {
         difficulty: yup.string().required("Dificuldade Obrigatória"),
         frequency: yup.string().required("Frequência obrigatória")
     })
+
+    const [user, setUser] = useState([]);
+    const dispatch = useDispatch();
+    const [token] = useState(
+        JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
+    );
+
+    const userID = jwt_decode(token).user_id
 
 
     const { register, 
@@ -25,9 +37,8 @@ function PopUpCreateHabits({setPopup}) {
     })
 
     const onSubmitFunction = data => {
-
-        data = {...data, "achieved": "false", "how_much_achieved": "0"}
-        console.log(data)
+        data = {...data, "achieved": "false", "how_much_achieved": "0", "user": userID}
+        dispatch(addHabitThunk(data))
     }
     return(
         <DivA>

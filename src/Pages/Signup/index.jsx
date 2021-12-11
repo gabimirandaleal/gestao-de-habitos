@@ -15,13 +15,24 @@ import Links from "../../Components/Links";
 function Signup() {
   const history = useHistory();
   const schema = yup.object().shape({
-    username: yup.string().required("Nome: Campo obrigatório"),
-
+    username: yup
+      .string()
+      .required("Usuário: Campo obrigatório")
+      .matches(
+        /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/,
+        "Minimo 5 caracteres;Sem espaço;Deve começar com uma letra;Pode ter . - _;Não pode começar nem terminar com . - _"
+      ),
     email: yup
       .string()
       .email("E-mail invalido")
       .required("E-mail: Campo obrigatório"),
-    password: yup.string().required("senha: campo obrigatorio"),
+    password: yup
+      .string()
+      .required("senha: campo obrigatorio")
+      .matches(
+        /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
+        "Mínimo 8 dígitos;Pelo menos um número;Pelo menos uma letra maiúscula;Pelo menos uma letra minúscula;Um caractere especial"
+      ),
 
     confirmPassword: yup
       .string()
@@ -43,7 +54,7 @@ function Signup() {
         console.log(response.data);
       })
       .catch((err) => {
-        ("Algo de errado não está certo");
+        console.log(err);
       });
   };
   return (
@@ -56,7 +67,7 @@ function Signup() {
             {...register("username")}
             margin="normal"
             fullWidth
-            label="Name"
+            label="Usuário"
             variant="outlined"
             error={errors.username?.message}
           />
@@ -78,6 +89,12 @@ function Signup() {
             variant="outlined"
             error={errors.password?.message}
           />
+          <Error>
+            {errors.password?.message.split(";").length > 1 &&
+              errors.password?.message
+                .split(";")
+                .map((item, index) => <li key={index}>{item}</li>)}
+          </Error>
           <TextField
             {...register("confirmPassword")}
             margin="normal"
