@@ -117,6 +117,8 @@ export const Container = styled.div`
     box-sizing: border-box;
     height: 90vh;
     background-color: var(--light-grey);
+    display: flex;
+    justify-content:center;
     @media (min-width:1190px){
       height: 90vh;
       }

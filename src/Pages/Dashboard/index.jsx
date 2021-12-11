@@ -9,7 +9,7 @@ import { FiLogOut } from "react-icons/fi";
 import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
 import CardUsuario from "../../Components/CardUsuario";
-import PopUpCreateActivity from "../../Components/PopUpCreateActivity";
+import Habits from "../../Components/Habits";
 
 
 const Dashboard = () => {
@@ -56,10 +56,10 @@ const Dashboard = () => {
         
       </HeaderDashboard>
       <Container>
-            {isHabits && <>Hábitos</> }
+            {isHabits && <Habits></Habits> }
             {isGroup && <>Grupos</> }
       </Container>
-      <PopUpCreateActivity></PopUpCreateActivity>
+      
     </>
 
   )
