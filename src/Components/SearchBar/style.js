@@ -13,10 +13,12 @@ export const Conteiner = styled.div`
         height: 100%;
         max-width: 160px;
     }
+
 `;
 
 export const Input = styled.input`
     border: none;
     outline: none;
-    padding: 0px 10px 0px 15px;
+    padding: 0px 10px 0px 15px;   
+    background-color: red;
 `;

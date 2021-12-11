@@ -10,8 +10,10 @@ import {
   Downside,
   Close,
   Background,
+  DivName,
+  Div
 } from "./style";
-
+import SearchBar from "../SearchBar"
 import PopUpCreateHabits from "../../Components/PopUpCreateHabits";
 import { IoCloseCircle } from "react-icons/io5";
 import { GrSubtractCircle } from "react-icons/gr";
@@ -22,7 +24,8 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; 
+import { BsPlusCircleFill } from "react-icons/bs";
 import {
   addHabitThunk,
   attHabitThunk,
@@ -44,7 +47,7 @@ const Habits = () => {
   const subProgress = (id, progress) =>{
     dispatch(subtractProgressHabitsThunk(id, progress))
   }
-
+  
   const deleteHabit = (id) => {
     dispatch(delHabitThunk(id))
     setAtualizar(!atualizar)
@@ -58,6 +61,16 @@ const Habits = () => {
   return (
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
+        <Div>
+        <DivName>
+          <div>
+            <img src={habitsImg} alt="habits" />
+            <h3>Seus Hábitos</h3>
+          </div>
+          <BsPlusCircleFill onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
+        </DivName>
+        <SearchBar></SearchBar>
+        </Div>
       <Cards>
         {habits &&
           habits.map((habit, index) => (

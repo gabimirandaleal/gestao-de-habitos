@@ -2,20 +2,45 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--light-grey);
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
   font-family: "Sansita";
+  box-sizing:border-box;
+`;
+export const Div = styled.div`
+  padding: 0px 30px;
+  margin-bottom: 30px;
 `;
 
-export const Cards = styled.div`
-  width: 100vw;
+export const DivName = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  box-sizing:border-box;
+  margin-bottom: 10px;
+  div{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+  }
+  h3{
+    color: var(--dark-grey);
+    font-family: 'Sansita', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    margin-left:15px;
+    padding-bottom: 8px;
+  }
+
+`;
+export const Cards = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  @media (min-width: 767px) {
-    flex-flow: row wrap;
-  }
+  box-sizing:border-box;
+  flex-wrap: wrap;
 `;
 
 export const Card = styled.div`
@@ -24,10 +49,9 @@ export const Card = styled.div`
   margin-bottom: 2rem;
   border-radius: 10px 10px 0 0;
   background: ${props => props.color? "var(--light-green)" : "var(--light-yellow)"};
-  @media (min-width: 767px) {
-    margin-right: 1.4rem;
-    margin-left: 1.4rem;
-  }
+  margin-right: 1.4rem;
+  margin-left: 1.4rem;
+
 `;
 
 export const Specs = styled.div`
