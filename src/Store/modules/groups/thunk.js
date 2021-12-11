@@ -11,11 +11,12 @@ export const GroupsThunk = () => async (dispatch) => {
       .catch((err) => console.log(err))
 };
 
-
-export const searchGroupThunk = () => async (dispatch) => { 
+export const searchGroupThunk = (string) => async (dispatch) => { 
   // passar a string que é o numero da pagina
+  console.log("oi")
   await axios
-  .get(`https://kenzie-habits.herokuapp.com/groups/?search=1`).then((response) => {
+  .get(`https://kenzie-habits.herokuapp.com/groups/`).then((response) => {
+    console.log(response.data)
     dispatch(GroupsList(response.data))
   })
   .catch((err) => console.log(err))
@@ -122,4 +123,32 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
       })
       .then((response) => dispatch(editActivityList(response.data)))
       .catch((err) => console.log(err))
+};
+
+export const subscribeGroup = (groupId) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  api
+    .post(`/groups/${groupId}/subscribe/`, "", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((_) => {
+      toast.success("requisição aceita");
+    })
+    .catch((error) => toast.error("error"));
+};
+
+export const unsubscribeGroup = (groupId) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  api
+    .delete(`/groups/${groupId}/unsubscribe/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((_) => {
+      toast.success("Requisição aceita");
+    })
+    .catch((_) => toast.error("error"));
 };

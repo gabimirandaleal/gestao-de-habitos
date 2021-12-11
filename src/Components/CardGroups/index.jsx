@@ -2,23 +2,33 @@ import { CardHeader, Conteiner, Content, DescriptionGroup, Details } from "./sty
 import {HighlightOff} from "@mui/icons-material"
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {subscribeGroup, unsubscribeGroup} from "../../Store/modules/groups/thunk"
+import { useDispatch } from "react-redux";
 
-const CardGroups = ({name, category, creator, inscribed, goals, activities}) => {
+
+const CardGroups = ({name, category, creator, inscribed, goals, activities, id}) => {
+  const dispatch = useDispatch()
   const [change, setChange] = useState(true);
   const [text, setText] = useState("Junte-se");
-  const [popUp, setPopUp] = useState(false);
+  // const [popUp, setPopUp] = useState(false);
 
 
   const onChange = () => {
     if (change === false) {
       setChange(true);
+      dispatch(subscribeGroup(id))
       setText("Junte-se");
     } else {
       setChange(false);
+      dispatch(unsubscribeGroup(id))
       setText("Inscrito");
     }
   };
+
+  useEffect(() => {
+    onChange();
+  }, []);
 
   return (
     <Conteiner text={text} color={change}>
@@ -48,7 +58,7 @@ const CardGroups = ({name, category, creator, inscribed, goals, activities}) => 
           <p>Atividades</p> <p>{activities}</p>
         </span>
       </Details>
-      <Button color={change} text={text} />
+      <Button onclick={onChange} color={change} text={text} />
     </Conteiner>
   );
 };

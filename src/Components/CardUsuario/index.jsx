@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
-
-import api from '../../Services/api.js'
-
+import api from '../../Services/api'
 import UserImg from '../../assets/img/userAvatar.png'
 import { BsPencil } from "react-icons/bs";
 
@@ -14,7 +12,6 @@ const CardUsuario = () => {
   const [token] = useState(
     JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
   );
-
   const userID = jwt_decode(token).user_id
 
   useEffect(() => {

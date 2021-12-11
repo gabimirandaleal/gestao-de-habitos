@@ -1,4 +1,14 @@
-import { LIST_GROUPS, ADD_GROUPS, ADD_GOALS, ADD_ACTIVITY, EDIT_GROUPS, EDIT_ACTIVITY, EDIT_GOAL } from "./actionType";
+import { 
+  LIST_GROUPS, 
+  ADD_GROUPS, 
+  ADD_GOALS, 
+  ADD_ACTIVITY, 
+  EDIT_GROUPS, 
+  EDIT_ACTIVITY, 
+  EDIT_GOAL,
+  SUBSCRIBE_GROUP,
+  UNSUBSCRIBE_GROUP
+} from "./actionType";
 
 export const GroupsList = (group) => ({
   type: LIST_GROUPS,
@@ -33,4 +43,14 @@ export const editActivityList = (data) => ({
 export const editGoalList = (data) => ({
   type: EDIT_GOAL,
   data,
+});
+
+export const subscribeGroup = (group) => ({
+  type: SUBSCRIBE_GROUP,
+  group,
+});
+
+export const unsubscribeGroup = (group) => ({
+  type: UNSUBSCRIBE_GROUP,
+  group,
 });
