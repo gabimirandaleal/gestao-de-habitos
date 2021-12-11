@@ -39,6 +39,7 @@ function PopUpCreateHabits({setPopup}) {
     const onSubmitFunction = data => {
         data = {...data, "achieved": "false", "how_much_achieved": "0", "user": userID}
         dispatch(addHabitThunk(data))
+        setPopup(false)
     }
     return(
         <DivA>
