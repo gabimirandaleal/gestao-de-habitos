@@ -3,25 +3,34 @@ import {
   ATT_HABITS,
   DEL_HABITS,
   UPDATE_HABITS,
+  PLUS_PROGRESS_HABITS,
+  SUB_PROGRESS_HABITS
 } from "./actionType";
 
 const defaultState = [];
 
 const habitsReducer = (state = defaultState, action) => {
+  const {progress} = action
+  const { data } = action;
   switch (action.type) {
     case ADD_HABITS:
       const { data } = action;
       return [...state, data];
     case ATT_HABITS:
-      return state;
+      return [...state];
     case DEL_HABITS:
-      return state;
+      return state.filter((item) => item.id != action.data);
     case UPDATE_HABITS:
       const { newData } = action;
-      console.log(newData);
       return newData;
+    case PLUS_PROGRESS_HABITS:
+      state[state.indexOf(state.find((item) => item.id === progress.id))] = progress
+      return [...state];
+    case SUB_PROGRESS_HABITS:
+      state[state.indexOf(state.find((item) => item.id === progress.id))] = progress
+      return [...state];
     default:
-      return state;
+      return [...state];
   }
 };
 

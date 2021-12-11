@@ -23,7 +23,7 @@ export const Card = styled.div`
   height: 265px;
   margin-bottom: 2rem;
   border-radius: 10px 10px 0 0;
-  background: var(--light-green);
+  background: ${props => props.color? "var(--light-green)" : "var(--light-yellow)"};
   @media (min-width: 767px) {
     margin-right: 1.4rem;
     margin-left: 1.4rem;
@@ -32,10 +32,9 @@ export const Card = styled.div`
 
 export const Specs = styled.div`
   margin-top: 2.5rem;
-  margin-left: 1rem;
+  margin-left: 10px;
   font-size: 18px;
-  color: var(--dark-grey);
-
+  color:  var(--dark-grey);
   div {
     margin-bottom: 0.7rem;
   }
@@ -65,32 +64,33 @@ export const Empty = styled.div`
 export const Title = styled.div`
   height: 90px;
   border-radius: 10px 10px 0 0;
-  background: var(--dark-medium-green);
+  background: ${props => props.color? "var(--dark-medium-green)" : "var(--dark-yellow)"};
   img {
     width: 45px;
     height: 45px;
     margin-left: 17%;
     margin-top: 10%;
   }
+ 
 `;
 
 export const Upside = styled.div`
   display: flex;
-  justify-content: space-around;
-  color: white;
+  justify-content: center;
+  color: var(--white);
   h3 {
-    margin-top: 1rem;
     font-size: 23px;
+    margin-bottom:8px;
   }
-  div {
-    margin-top: 1.2rem;
-  }
+  
 `;
 
 export const Downside = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 1rem;
+  svg{
+    cursor:pointer;
+  }
 `;
 
 export const Background = styled.div`
@@ -101,4 +101,11 @@ export const Background = styled.div`
   height: 70px;
 `;
 
-export const Close = styled.div``;
+export const Close = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 5px 5px 0 0;
+  box-sizing: border-box;
+  color: var(--white);
+`;

@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 		--light-blue: #A1CCFA;
 		--dark-blue: #017AFE;
 		--light-medium-blue: #50A8DA;
+		--dark-yellow: #FDEA65;
 	}
 
 
