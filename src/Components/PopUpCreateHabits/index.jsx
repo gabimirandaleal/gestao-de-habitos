@@ -7,7 +7,6 @@ import {Div, Form, DivA, DivContainer} from "./style";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
-import {addHabitThunk} from "../../Store/modules/habits/thunk"
 
 function PopUpCreateHabits({setPopup}) {
     const formSchema = yup.object().shape({
@@ -26,8 +25,9 @@ function PopUpCreateHabits({setPopup}) {
     })
 
     const onSubmitFunction = data => {
-        setPopup(false)
-        addHabitThunk(data)
+
+        data = {...data, "achieved": "false", "how_much_achieved": "0"}
+        console.log(data)
     }
     return(
         <DivA>
@@ -38,20 +38,20 @@ function PopUpCreateHabits({setPopup}) {
                         <h3>Criar Hábito</h3>
                         <TextField fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.title?.message} {...register("title")}/>
                         <InputLabel htmlFor="select">Selecionar a categoria:</InputLabel>
-                        <NativeSelect margin="normal" {...register("category")} error={!!errors.category?.message} fullWidth id="select" >
+                        <NativeSelect {...register("category")} error={!!errors.category?.message} fullWidth id="select" >
                             <option defaultValue={(event) => event.target.value}>Alimentação</option>
                             <option defaultValue={(event) => event.target.value}>Saúde</option>
                             <option defaultValue={(event) => event.target.value}>Esporte</option>
                             <option defaultValue={(event) => event.target.value}>Lazer</option>
                         </NativeSelect>
                         <InputLabel htmlFor="select">Selecionar a dificuldade:</InputLabel>
-                        <NativeSelect {...register("category")} error={!!errors.difficulty?.message} fullWidth id="select" >
+                        <NativeSelect {...register("difficulty")} error={!!errors.difficulty?.message} fullWidth id="select" >
                             <option defaultValue={(event) => event.target.value}>Fácil</option>
                             <option defaultValue={(event) => event.target.value}>Médio</option>
                             <option defaultValue={(event) => event.target.value}>Difícil</option>
                         </NativeSelect>
                         <InputLabel htmlFor="select">Selecionar a frequência:</InputLabel>
-                        <NativeSelect {...register("category")} error={!!errors.frequency?.message} fullWidth id="select" >
+                        <NativeSelect {...register("frequency")} error={!!errors.frequency?.message} fullWidth id="select" >
                             <option defaultValue={(event) => event.target.value}>Diária</option>
                             <option defaultValue={(event) => event.target.value}>Semanal</option>
                             <option defaultValue={(event) => event.target.value}>Mensal</option>
