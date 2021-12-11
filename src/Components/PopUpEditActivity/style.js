@@ -45,7 +45,7 @@ export const Error = styled.ul`
 
 export const DivA = styled.div`
     position: fixed;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: rgba(51, 51, 51, 0.5);;
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -74,7 +74,7 @@ export const DivContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--white);
+    background-color: #FFFFFF;
     border-radius: 30px;
     width: 400px;
     min-width: 200px;

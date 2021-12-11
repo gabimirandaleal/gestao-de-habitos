@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png"
 import { useSelector, useDispatch } from "react-redux";
 // import GroupsThunk from "../../Store/modules/groups/thunk"
-import searchGroupThunk from "../../Store/modules/groups/thunk"
+import {searchGroupThunk} from "../../Store/modules/groups/thunk"
 
 function Groups() {
 

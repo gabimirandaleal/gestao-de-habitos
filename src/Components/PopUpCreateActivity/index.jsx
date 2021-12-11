@@ -7,13 +7,16 @@ import {Div, Form, DivA, DivContainer} from "./style"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import {addActivityThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpCreateActivity({setPopup}) {
+function PopUpCreateActivity({setPopup, idGroup}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Título obrigatório"),
         realization_time: yup.string().required("Data obrigatória")
     })
 
+    const dispatch = useDispatch();
 
     const { register, 
         handleSubmit, 
@@ -24,8 +27,10 @@ function PopUpCreateActivity({setPopup}) {
 
     const onSubmitFunction = data => {
         const {realization_time} = data
-        data = {...data, realization_time: `${realization_time}:00Z`}
+        data = {...data, realization_time: `${realization_time}:00Z`, "group":idGroup}
         console.log(data)
+        dispatch(addActivityThunk(data))
+        setPopup(false)
     }
     return(
         <DivA>
@@ -33,7 +38,7 @@ function PopUpCreateActivity({setPopup}) {
                 <Div>
                     <Form onSubmit={handleSubmit(onSubmitFunction)}>
                         <IoCloseCircle onClick={() => setPopup(false)}/>
-                        <h3>Criar Meta</h3>
+                        <h3>Criar Atividade</h3>
                         <TextField margin="normal" fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.title?.message} {...register("title")}/>
                         <TextField
                             margin="normal"
@@ -41,7 +46,7 @@ function PopUpCreateActivity({setPopup}) {
                             label="Data de realização"
                             id="datetime-local"
                             type="datetime-local"
-                            defaultValue="2017-05-24T10:30"
+                            defaultValue="2021-12-10T10:30"
                             error={!!errors.realization_time?.message}
                             {...register("realization_time")}
                         />                            

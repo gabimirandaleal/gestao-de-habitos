@@ -3,17 +3,19 @@ import Button from "../Button"
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import {Error, Div, Form, DivA, DivContainer} from "./style"
+import {Div, Form, DivA, DivContainer} from "./style"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import {addGoalThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpCreateGoal({setPopup}) {
+function PopUpCreateGoal({setPopup, idGroup}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Título obrigatório"),
         difficulty: yup.string().required("Dificuldade obrigatória")
     })
-
+    const dispatch = useDispatch();
 
     const { register, 
         handleSubmit, 
@@ -23,7 +25,9 @@ function PopUpCreateGoal({setPopup}) {
     })
 
     const onSubmitFunction = data => {
+        data = {...data, "achieved": "false", "how_much_achieved": "0", "group": idGroup}
         console.log(data)
+        dispatch(addGoalThunk(data))
         setPopup(false)
     }
     return(

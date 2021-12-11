@@ -4,11 +4,11 @@ import Header from "../../Components/Header"
 import { useDispatch } from "react-redux";
 import {logOutThunk} from "../../Store/modules/user/thunk"
 import { FiLogOut } from "react-icons/fi";
-import { BsPencil } from "react-icons/bs";
 
 import GroupsImg from '../../assets/img/groups.png'
 import HabitsImg from '../../assets/img/habits.png'
-import UserImg from '../../assets/img/userAvatar.png'
+import CardUsuario from "../../Components/CardUsuario";
+import Habits from "../../Components/Habits";
 
 import Groups from "../Groups";
 
@@ -36,6 +36,7 @@ const Dashboard = () => {
 
     <>
       <HeaderDashboard >
+        
         <Header/>
 
         
@@ -46,11 +47,8 @@ const Dashboard = () => {
           </ul>
         </ButtonsDashboard>
         <UserBox>
-          <img src={UserImg} alt=''/>
-          <ul>
-            <li><span>Username</span> <BsPencil/></li>
-            <li>username@teste.com</li>
-          </ul>
+          
+          <CardUsuario/>
           
         </UserBox>
 
@@ -58,9 +56,10 @@ const Dashboard = () => {
         
       </HeaderDashboard>
       <Container>
-            {isHabits && <>Hábitos</> }
+            {isHabits && <Habits></Habits> }
             {isGroup && <Groups/> }
       </Container>
+      
     </>
 
   )

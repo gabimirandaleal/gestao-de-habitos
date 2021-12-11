@@ -1,5 +1,7 @@
-export const LIST_GROUPS = "Groups@/List";
-export const ADD_GROUP = "Groups@/Add"
-export const RM_GROUP = "Groups@/Remove"
-export const UPDATE_GROUP = "Groups@/Update"
-export const SEARCH_GROUP = "Groups@/Search"
+export const LIST_GROUPS = "GroupsList@/List";
+export const ADD_GROUPS = "ADDGroupsList@/List";
+export const ADD_GOALS = "ADDGoalsList@/List"; 
+export const ADD_ACTIVITY = "ADDActivityList@/List"; 
+export const EDIT_GROUPS = "EDITGroupList@/List";
+export const EDIT_ACTIVITY = "EDITActivityList@/List";
+export const EDIT_GOAL = "EDITGoalList@/List";
