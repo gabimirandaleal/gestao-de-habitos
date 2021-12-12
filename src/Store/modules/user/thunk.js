@@ -18,6 +18,21 @@ export const signInThunk = (data) => (dispatch) => {
     });
 };
 
+export const editUserThunk = (data) => (dispatch) => {
+  api
+    .post(`/sessions/`, data)
+    .then((response) => {
+      const { access } = response.data;
+      localStorage.clear();
+      localStorage.setItem("@GestaoHabitos:token", JSON.stringify(access));
+      dispatch(signIn(access));
+      toast.success("Login feito com sucesso!");
+    })
+    .catch((_) => {
+      toast.error("Usuário ou senha inválidos");
+    });
+};
+
 export const logOutThunk = () => (dispatch) => {
   localStorage.clear();
   dispatch(logOut());

@@ -5,7 +5,7 @@ import api from '../../Services/api.js'
 
 import UserImg from '../../assets/img/userAvatar.png'
 import { BsPencil } from "react-icons/bs";
-
+import PopUpEditUser from "../PopUpEditUser"
 
 const CardUsuario = () => {
   
