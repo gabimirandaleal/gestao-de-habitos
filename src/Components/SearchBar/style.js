@@ -12,7 +12,9 @@ export const Conteiner = styled.div`
     Button {
         height: 100%;
         max-width: 160px;
+        border-radius: 0px 8px 8px 0px;
     }
+
 `;
 
 export const Input = styled.input`
@@ -20,6 +22,6 @@ export const Input = styled.input`
     outline: none;
     padding: 0px 10px 0px 15px;
     width: 100%;
-    height: 78%;
+    height: 100%;
     background-color: var(--light-grey);
 `;

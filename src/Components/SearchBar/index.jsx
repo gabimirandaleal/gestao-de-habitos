@@ -5,8 +5,8 @@ const SearchBar = ({onclick, onchange}) => {
 
     return(
         <Conteiner>
-            <Input placeholder="Buscar..." onChange={onchange}/>
-            <Button onclick={onclick} text={"Buscar"}/>
+            <Input placeholder="Buscar..."  onChange={onchange}/>
+            <Button onClick={onclick} text={"Buscar"}/>
         </Conteiner>
     )
 }

@@ -7,6 +7,7 @@ export const Conteiner = styled.div`
     width: 80%;
 `
 
+
 export const DivName = styled.div`
   width: 100%;
   display: flex;
@@ -14,6 +15,7 @@ export const DivName = styled.div`
   align-items:center;
   box-sizing:border-box;
   margin-bottom: 10px;
+  
   div{
     display: flex;
     align-items: center;
@@ -42,6 +44,7 @@ export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom:20px;
+    padding: 0px 25px;
 `
 
 export const CardsBox = styled.div`

@@ -1,5 +1,5 @@
 import SearchBar from "../../Components/SearchBar";
-import { Conteiner, NotCards, CardsBox, ContentBox, DivName } from "./style";
+import { Conteiner, NotCards, CardsBox, ContentBox, DivName} from "./style";
 import CardGroups from "../../Components/CardGroups";
 import { useEffect, useState, useMemo } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
@@ -15,7 +15,6 @@ import {NativeSelect} from "@mui/material"
 function Groups() {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
-  const todosgrupos = useSelector((state) => state)
   const [popup, setPopup] = useState(false)
   const [ispage] = useState(true);
   const [nextPage, setNextPage] = useState("");
@@ -34,7 +33,7 @@ function Groups() {
   const filtergroups = useMemo(() => {
     const lowerSearchGroup = searchGroup.toLowerCase()
     return groups.filter((item) => ((item.name).toLowerCase().includes(lowerSearchGroup) || (item.category).toLowerCase().includes(lowerSearchGroup) || (item.description).toLowerCase().includes(lowerSearchGroup)))
-  }, [searchGroup])
+  }, [searchGroup, groups])
 
 
   useEffect(() => {

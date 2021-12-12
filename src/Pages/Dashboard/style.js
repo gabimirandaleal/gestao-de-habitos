@@ -30,8 +30,6 @@ export const ButtonsDashboard = styled.div`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    height: 10vh;
-    width: 100vw;
     font-family: 'Sansita';
     font-weight: 400;
     font-style: normal;
@@ -113,9 +111,7 @@ export const UserBox = styled.div`
 
 
 export const Container = styled.div`
-    padding: 20px 20px 0px 20px;
     box-sizing: border-box;
-    /* height: 90vh; */
     background-color: var(--light-grey);
     display: flex;
     justify-content:center;
