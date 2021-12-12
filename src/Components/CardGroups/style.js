@@ -13,6 +13,7 @@ export const Conteiner = styled.div`
   font: unset;
   color: var(--white);
   border-radius: 30px;
+  margin-left:10px;
   .icone {
     position: absolute;
     margin: 0px;
@@ -29,7 +30,6 @@ export const Conteiner = styled.div`
     background-color: ${(props) =>
       props.color ? "var(--dark-orange)" : "#9E9E9E"};
   }
-
 `;
 
 export const Content = styled.div`
@@ -46,18 +46,11 @@ export const Content = styled.div`
   }
   h2 {
     font-weight: bold;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     font-size: 23px;
-    overflow: hidden;
     margin-bottom: 10px;
-    max-width: 242px;
   }
   span {
     margin-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     font: unset;
   }
   p {

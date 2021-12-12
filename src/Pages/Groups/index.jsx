@@ -1,7 +1,7 @@
 import SearchBar from "../../Components/SearchBar";
-import { Conteiner, NotCards, CardsBox, ContentBox, DivName} from "./style";
+import { Conteiner, NotCards, CardsBox, ContentBox, DivName, DivButton, Div} from "./style";
 import CardGroups from "../../Components/CardGroups";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
@@ -20,8 +20,9 @@ function Groups() {
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
-  const [searchGroup, setSearchGroup] = useState("")
-  const [filterGroupsT, setFilterGroupsT] = useState(groups)
+  const [searchBar, setSearchBar] = useState("")
+  const [filteredProducts, setFilteredProducts] = useState(groups)
+
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -31,16 +32,21 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
-  const filtergroups = (text) => {
-    setSearchGroup(text)
-    setFilterGroupsT(groups.filter((item) => {
-      return ((item.name).toLowerCase().includes(text.toLowerCase()) || (item.category).toLowerCase().includes(text.toLowerCase()) || (item.description).toLowerCase().includes(text.toLowerCase()))
-    }))
+  const filtrarItens = (text) =>{
+    setSearchBar(text)
+    setFilteredProducts(groups.filter((item) => {
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+    }));
   }
 
+  useEffect(() => {
+    setFilteredProducts(groups)
+  }, [groups]);
+
   const submit = () => {
-    setSearchGroup("")
+    setSearchBar("")
   }
+
 
   useEffect(() => {
     if(atualizar){
@@ -51,37 +57,42 @@ function Groups() {
   }, [atualizar]);
 
   return ispage ? (
-    <>
     <Conteiner>
+      {/* <section> */}
       <ContentBox>
+        <Div>
         <DivName>
           <div>
             <img src={habitsImg} alt="habits" />
-            <NativeSelect onChange={showSubs} fullWidth fullHeigth id="select" >
+            <NativeSelect onChange={showSubs} fullWidth id="select" >
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos</option>
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
+          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar searchBar={searchGroup} filtrarItens={filtergroups}  onclick={submit}/>
+        <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}/>
+        </Div>
         <CardsBox>
-          {filterGroupsT &&
-            filterGroupsT.map((item, index) => (
+          {filteredProducts &&
+            filteredProducts.map((item, index) => (
                 <CardGroups
                   key={index}
                   item={item}
-                  groups={groups}
+                  filteredProducts={filteredProducts}
                 />
             ))}
         </CardsBox>
-        {atualizar && <Button onclick={show_more} text={"Mostrar Mais"}></Button>}
+        
+        {atualizar && <DivButton><Button onclick={show_more} text={"Mostrar Mais"}></Button></DivButton>}
+      
       </ContentBox>
-    </Conteiner>
       {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
-      </>
+      {/* </section> */}
+    </Conteiner>
   ) : (
     <Conteiner>
+      {/* <section> */}
       <ContentBox>
         <SearchBar />
         <NotCards>
@@ -91,6 +102,7 @@ function Groups() {
           <h2> Sem grupos... </h2>
         </NotCards>
       </ContentBox>
+      {/* </section> */}
     </Conteiner>
   );
 }

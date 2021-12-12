@@ -4,9 +4,25 @@ export const Conteiner = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background: var(--light-grey);
+    height: 100vh;
     width: 100%;
 `
 
+export const Div = styled.div`
+    padding: 0px 25px;
+`
+export const DivButton = styled.div`
+  background: var(--light-grey);
+  width: 100%;
+  display: flex;
+  justify-content:center;
+    button{
+      width: 90%;
+      align-self:center;
+      margin-bottom: 20px;
+    }
+`
 
 export const DivName = styled.div`
   width: 100%;
@@ -15,7 +31,6 @@ export const DivName = styled.div`
   align-items:center;
   box-sizing:border-box;
   margin-bottom: 10px;
-  
   div{
     display: flex;
     align-items: center;
@@ -44,14 +59,16 @@ export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom:20px;
-    padding: 0px 25px;
+    height: 100vh;
+    background: var(--light-grey);    
+    box-sizing:border-box;
 `
 
 export const CardsBox = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    div{margin-right:10px}
+    background: var(--light-grey);
 `
 
 export const NotCards = styled.div`
@@ -63,6 +80,5 @@ export const NotCards = styled.div`
     h2{
         font-size: 40px;
         font-family: "Sansita", sans-serif;
-        
     } 
 `

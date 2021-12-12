@@ -120,3 +120,7 @@ export const Container = styled.div`
       height: 90vh;
       } */
 `;
+
+export const Div = styled.div`
+    background-color: var(--light-grey);
+`;

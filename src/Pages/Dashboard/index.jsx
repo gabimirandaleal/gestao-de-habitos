@@ -1,4 +1,4 @@
-import { HeaderDashboard, ButtonsDashboard, UserBox, Container } from "./style"
+import { HeaderDashboard, ButtonsDashboard, UserBox, Container, Div } from "./style"
 import { useState } from "react"
 import Header from "../../Components/Header"
 import { useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   return (
 
-    <>
+    <Div>
       <HeaderDashboard>
         
         <Header/>
@@ -60,7 +60,7 @@ const Dashboard = () => {
             {isGroup && <Groups/> }
       </Container>
       
-    </>
+    </Div>
 
   )
 }
