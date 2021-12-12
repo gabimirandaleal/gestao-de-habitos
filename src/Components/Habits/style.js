@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   font-family: "Sansita";
   box-sizing:border-box;
+  height: 100vh;
 `;
 export const Div = styled.div`
   padding: 0px 25px;
