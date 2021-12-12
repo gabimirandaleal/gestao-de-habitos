@@ -14,19 +14,19 @@ import Groups from "../Groups";
 
 const Dashboard = () => {
   
-  const [isHabits,setIsHabits] = useState(false)
-  const [isGroup,setIsGroup] = useState(true)
+  const [isHabits,setIsHabits] = useState(true)
+  const [isGroup,setIsGroup] = useState(false)
   const dispatch = useDispatch()
 
   const groups = () => {
-    setIsGroup(true)
-    setIsHabits(false)
+    setIsGroup(!isGroup)
+    setIsHabits(!isHabits)
   } 
 
   const habits = () => {
-    setIsGroup(false)
-    setIsHabits(true)
-    } 
+    setIsGroup(!isGroup)
+    setIsHabits(!isHabits)
+  } 
   
   const logout = () => {
     dispatch(logOutThunk())
@@ -42,8 +42,8 @@ const Dashboard = () => {
         
         <ButtonsDashboard>
           <ul>
-            <li onClick={habits}><img src={HabitsImg} alt=''/><span>Seus Hábitos</span></li>
-            <li onClick={groups}><img src={GroupsImg} alt=''/><span>Seus Grupos</span></li>
+            <li onClick={() => habits()}><img src={HabitsImg} alt=''/><span>Seus Hábitos</span></li>
+            <li onClick={() => groups()}><img src={GroupsImg} alt=''/><span>Seus Grupos</span></li>
           </ul>
         </ButtonsDashboard>
         <UserBox>

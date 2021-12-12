@@ -12,6 +12,7 @@ export const Conteiner = styled.div`
     Button {
         height: 100%;
         max-width: 160px;
+        border-radius: 0px 8px 8px 0px;
     }
 
 `;
