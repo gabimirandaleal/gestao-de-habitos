@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderDashboard = styled.div`
   padding-right: 20px;
-  padding-top: 2vh;
+  padding-top: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
@@ -23,6 +23,7 @@ export const HeaderDashboard = styled.div`
       justify-content: space-between;
       height: 15vh;
       padding-left: 2vw;
+      box-sizing: border-box;
     }
 `;
 
@@ -49,16 +50,17 @@ export const ButtonsDashboard = styled.div`
       img {
         margin: 0px 5px 0 20px;
         width: 2.5vh
-
       }
     @media (min-width:790px){
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       padding-left: 2vw;
+      box-sizing: border-box;
         ul {
           display: flex;
           flex-direction: row;
+          box-sizing: border-box;
         }
     }
     
@@ -106,6 +108,7 @@ export const UserBox = styled.div`
     
   @media (min-width:790px){
       padding-left: 2vw;
+      box-sizing: border-box;
   }
 `;
 
@@ -119,8 +122,10 @@ export const Container = styled.div`
     /* @media (min-width:1190px){
       height: 90vh;
       } */
+
 `;
 
 export const Div = styled.div`
     background-color: var(--light-grey);
+
 `;

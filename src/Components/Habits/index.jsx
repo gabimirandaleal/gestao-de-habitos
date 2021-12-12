@@ -33,6 +33,9 @@ import {
 } from "../../Store/modules/habits/thunk";
 import PopUpRemove from "../PopUpRemove"
 
+import { set } from "react-hook-form/dist/index.cjs";
+
+
 const Habits = () => {
   const [popUp, setPopUp] = useState(false);
   const [popUpRemove, setPopUpRemove] = useState(false);
