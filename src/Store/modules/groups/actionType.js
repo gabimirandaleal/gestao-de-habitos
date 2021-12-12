@@ -8,3 +8,4 @@ export const EDIT_GOAL = "EDITGoalList@/List";
 export const SUBSCRIBE_GROUP = "SUBSCRIBEgroup@/List";
 export const UNSUBSCRIBE_GROUP = "UNSUBSCRIBEgroup@/List"
 export const SHOW_MORE = "SHOWMOREgroup@/List"
+export const LIST_MY_GROUP = "LISTMYgroup@/List"

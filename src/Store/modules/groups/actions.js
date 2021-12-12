@@ -8,7 +8,8 @@ import {
   EDIT_GOAL,
   SUBSCRIBE_GROUP,
   UNSUBSCRIBE_GROUP,
-  SHOW_MORE
+  SHOW_MORE,
+  LIST_MY_GROUP
 } from "./actionType";
 
 export const GroupsList = (group) => ({
@@ -65,4 +66,9 @@ export const showMore = (group, groups) => ({
   type: SHOW_MORE,
   group,
   groups
+});
+
+export const listGroup = (group, groups) => ({
+  type: LIST_MY_GROUP,
+  group,
 });

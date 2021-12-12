@@ -1,5 +1,5 @@
 import api from "../../../Services/api"
-import {GroupsList, addGroupsList, addGoalList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore} from "./actions"
+import {listGroup, GroupsList, addGroupsList, addGoalList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore} from "./actions"
 import axios from "axios"
 // import {GroupsList, GroupsAdd} from "./actions"
 import {toast} from "react-toastify"
@@ -11,9 +11,21 @@ export const searchGroupThunk = (setNextPage) => (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
-      console.log(response.data)
       setNextPage(response.data.next)
-      dispatch(GroupsList(response.data))
+      dispatch(GroupsList(response.data.results))
+    })
+    .catch((err) => console.log(err))
+};
+
+export const searchGroupSubscriptionsThunk = () => (dispatch) => { 
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  api
+    .get(`/groups/subscriptions/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      console.log(response.data)
+      dispatch(listGroup(response.data))
     })
     .catch((err) => console.log(err))
 };

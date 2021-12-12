@@ -9,7 +9,8 @@ import  {
   EDIT_GOAL, 
   SUBSCRIBE_GROUP,
   UNSUBSCRIBE_GROUP,
-  SHOW_MORE
+  SHOW_MORE,
+  LIST_MY_GROUP
 }  from "./actionType";
 
 const defaultState = [];
@@ -23,7 +24,7 @@ const groupReducer = (state = defaultState, action) => {
   const {groups} = action
   switch (action.type) {
     case LIST_GROUPS:
-      return [...group.results]
+      return [...group]
     case ADD_GROUPS:
       return data
     case ADD_GOALS:
@@ -43,8 +44,9 @@ const groupReducer = (state = defaultState, action) => {
       group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group = [...group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group.filter((item) => item.id !== userID)]
       return [...group];
     case SHOW_MORE:
-        
         return [...groups.concat(group)]
+    case LIST_MY_GROUP:
+      return [...group]
     default:
       return state;
   }
