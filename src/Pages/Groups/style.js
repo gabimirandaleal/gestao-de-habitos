@@ -20,7 +20,7 @@ export const DivButton = styled.div`
     button{
       width: 90%;
       align-self:center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 `
 
