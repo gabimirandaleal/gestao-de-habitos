@@ -1,7 +1,7 @@
 import SearchBar from "../../Components/SearchBar";
 import { Conteiner, NotCards, CardsBox, ContentBox, DivName } from "./style";
 import CardGroups from "../../Components/CardGroups";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
@@ -15,13 +15,13 @@ import {NativeSelect} from "@mui/material"
 function Groups() {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
+  const todosgrupos = useSelector((state) => state)
   const [popup, setPopup] = useState(false)
   const [ispage] = useState(true);
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
-  const [searchGroup, setSearchGroup] = useState("oi")
-  const [groupsfilters, setGroupsfilters] = useState([])
+  const [searchGroup, setSearchGroup] = useState("")
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -31,14 +31,11 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
-  const filtergroups = () => {
-    setGroupsfilters(groups.filter((item) => {
-        console.log(item.creator.description === searchGroup)
-        return (item.name === searchGroup || item.category === searchGroup || item.description === searchGroup)
-    }));
-  }
+  const filtergroups = useMemo(() => {
+    const lowerSearchGroup = searchGroup.toLowerCase()
+    return groups.filter((item) => ((item.name).toLowerCase().includes(lowerSearchGroup) || (item.category).toLowerCase().includes(lowerSearchGroup) || (item.description).toLowerCase().includes(lowerSearchGroup)))
+  }, [searchGroup])
 
-  console.log("groupsfilters", groupsfilters, searchGroup)
 
   useEffect(() => {
     if(atualizar){
@@ -51,7 +48,6 @@ function Groups() {
   return ispage ? (
     <>
     <Conteiner>
-      {/* <section> */}
       <ContentBox>
         <DivName>
           <div>
@@ -65,8 +61,8 @@ function Groups() {
         </DivName>
         <SearchBar onchange={(event) => setSearchGroup(event.target.value)}  onclick={filtergroups}/>
         <CardsBox>
-          {groups &&
-            groups.map((item, index) => (
+          {filtergroups &&
+            filtergroups.map((item, index) => (
                 <CardGroups
                   key={index}
                   item={item}
@@ -76,13 +72,11 @@ function Groups() {
         </CardsBox>
         {atualizar && <Button onclick={show_more} text={"Mostrar Mais"}></Button>}
       </ContentBox>
-      {/* </section> */}
     </Conteiner>
       {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
       </>
   ) : (
     <Conteiner>
-      {/* <section> */}
       <ContentBox>
         <SearchBar />
         <NotCards>
@@ -92,7 +86,6 @@ function Groups() {
           <h2> Sem grupos... </h2>
         </NotCards>
       </ContentBox>
-      {/* </section> */}
     </Conteiner>
   );
 }
