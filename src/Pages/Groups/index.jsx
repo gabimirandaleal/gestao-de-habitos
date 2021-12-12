@@ -30,7 +30,8 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
-  const filtergroups = useMemo(() => {
+  const filtergroups = useMemo((text) => {
+    setSearchGroup(text)
     const lowerSearchGroup = searchGroup.toLowerCase()
     return groups.filter((item) => ((item.name).toLowerCase().includes(lowerSearchGroup) || (item.category).toLowerCase().includes(lowerSearchGroup) || (item.description).toLowerCase().includes(lowerSearchGroup)))
   }, [searchGroup, groups])
@@ -58,7 +59,7 @@ function Groups() {
           </div>
           <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar onchange={(event) => setSearchGroup(event.target.value)}  onclick={filtergroups}/>
+        <SearchBar searchBar={searchGroup} filtrarItens={(event) => setSearchGroup(event.target.value)}  onclick={filtergroups}/>
         <CardsBox>
           {filtergroups &&
             filtergroups.map((item, index) => (
