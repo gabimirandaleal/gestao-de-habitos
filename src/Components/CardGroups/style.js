@@ -46,11 +46,18 @@ export const Content = styled.div`
   }
   h2 {
     font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: 23px;
+    overflow: hidden;
     margin-bottom: 10px;
+    max-width: 242px;
   }
   span {
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font: unset;
   }
   p {

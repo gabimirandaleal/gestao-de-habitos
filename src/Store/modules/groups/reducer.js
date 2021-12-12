@@ -26,7 +26,7 @@ const groupReducer = (state = defaultState, action) => {
     case LIST_GROUPS:
       return [...group]
     case ADD_GROUPS:
-      return data
+      return [...group, data]
     case ADD_GOALS:
       return data
     case ADD_ACTIVITY:

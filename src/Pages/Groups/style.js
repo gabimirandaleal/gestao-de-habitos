@@ -4,6 +4,7 @@ export const Conteiner = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 `
 
 
@@ -49,7 +50,8 @@ export const ContentBox = styled.div`
 export const CardsBox = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    div{margin-right:10px}
 `
 
 export const NotCards = styled.div`
@@ -61,5 +63,6 @@ export const NotCards = styled.div`
     h2{
         font-size: 40px;
         font-family: "Sansita", sans-serif;
+        
     } 
 `

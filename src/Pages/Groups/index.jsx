@@ -1,7 +1,7 @@
 import SearchBar from "../../Components/SearchBar";
 import { Conteiner, NotCards, CardsBox, ContentBox, DivName} from "./style";
 import CardGroups from "../../Components/CardGroups";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
@@ -20,6 +20,8 @@ function Groups() {
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
+  const [searchGroup, setSearchGroup] = useState("")
+  const [filterGroupsT, setFilterGroupsT] = useState(groups)
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -29,6 +31,16 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
+  const filtergroups = (text) => {
+    setSearchGroup(text)
+    setFilterGroupsT(groups.filter((item) => {
+      return ((item.name).toLowerCase().includes(text.toLowerCase()) || (item.category).toLowerCase().includes(text.toLowerCase()) || (item.description).toLowerCase().includes(text.toLowerCase()))
+    }))
+  }
+
+  const submit = () => {
+    setSearchGroup("")
+  }
 
   useEffect(() => {
     if(atualizar){
@@ -39,23 +51,23 @@ function Groups() {
   }, [atualizar]);
 
   return ispage ? (
+    <>
     <Conteiner>
-      {/* <section> */}
       <ContentBox>
         <DivName>
           <div>
             <img src={habitsImg} alt="habits" />
-            <NativeSelect onChange={showSubs} fullWidth id="select" >
+            <NativeSelect onChange={showSubs} fullWidth fullHeigth id="select" >
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos</option>
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar />
+        <SearchBar searchBar={searchGroup} filtrarItens={filtergroups}  onclick={submit}/>
         <CardsBox>
-          {groups &&
-            groups.map((item, index) => (
+          {filterGroupsT &&
+            filterGroupsT.map((item, index) => (
                 <CardGroups
                   key={index}
                   item={item}
@@ -65,12 +77,11 @@ function Groups() {
         </CardsBox>
         {atualizar && <Button onclick={show_more} text={"Mostrar Mais"}></Button>}
       </ContentBox>
-      {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
-      {/* </section> */}
     </Conteiner>
+      {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
+      </>
   ) : (
     <Conteiner>
-      {/* <section> */}
       <ContentBox>
         <SearchBar />
         <NotCards>
@@ -80,7 +91,6 @@ function Groups() {
           <h2> Sem grupos... </h2>
         </NotCards>
       </ContentBox>
-      {/* </section> */}
     </Conteiner>
   );
 }

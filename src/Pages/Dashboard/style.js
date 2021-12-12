@@ -21,7 +21,7 @@ export const HeaderDashboard = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      height: 10vh;
+      height: 15vh;
       padding-left: 2vw;
     }
 `;
