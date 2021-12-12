@@ -21,7 +21,7 @@ export const HeaderDashboard = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      height: 10vh;
+      height: 15vh;
       padding-left: 2vw;
       box-sizing: border-box;
     }
@@ -115,12 +115,6 @@ export const UserBox = styled.div`
 
 export const Container = styled.div`
     box-sizing: border-box;
-<<<<<<< HEAD
-    height: 100vh;
-    background-color: var(--light-grey);
-    display: flex;
-    justify-content:center;
-=======
     background-color: var(--light-grey);
     display: flex;
     justify-content:center;
@@ -128,5 +122,10 @@ export const Container = styled.div`
     /* @media (min-width:1190px){
       height: 90vh;
       } */
->>>>>>> aa00bcfd25da0be621ef495d8f795af2a4473275
+
+`;
+
+export const Div = styled.div`
+    background-color: var(--light-grey);
+
 `;

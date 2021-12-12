@@ -27,14 +27,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"; 
 import { BsPlusCircleFill } from "react-icons/bs";
 import {
-  addHabitThunk,
-  attHabitThunk,
   updateHabitsThunk,
   plusProgressHabitsThunk,
   subtractProgressHabitsThunk
 } from "../../Store/modules/habits/thunk";
 import PopUpRemove from "../PopUpRemove"
+
 import { set } from "react-hook-form/dist/index.cjs";
+
 
 const Habits = () => {
   const [popUp, setPopUp] = useState(false);

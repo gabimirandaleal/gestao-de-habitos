@@ -54,6 +54,7 @@ export const DivA = styled.div`
     justify-content: center;
     align-items: center;
     top:0px;    
+    left:0px;
     button{
       margin-top:15px;
     }

@@ -83,7 +83,10 @@ export const addGroupsThunk = (data) => (dispatch) => {
           Authorization: `Bearer ${token}`
         },
         })
-        .then((response) => dispatch(addGroupsList(response.data)))
+        .then((response) => {
+          toast.success("Grupo criado")
+          dispatch(addGroupsList(response.data))
+        })
         .catch((err) => console.log(err))
 };
 

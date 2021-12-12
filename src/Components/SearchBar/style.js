@@ -19,7 +19,8 @@ export const Conteiner = styled.div`
 export const Input = styled.input`
     border: none;
     outline: none;
-    padding: 0px 10px 0px 15px;   
-    background-color: var(--light-grey);
+    padding: 0px 10px 0px 15px;
     width: 100%;
+    height: 100%;
+    background-color: var(--light-grey);
 `;
