@@ -115,11 +115,12 @@ export const UserBox = styled.div`
 export const Container = styled.div`
     padding: 20px 20px 0px 20px;
     box-sizing: border-box;
-    height: 90vh;
+    /* height: 90vh; */
     background-color: var(--light-grey);
     display: flex;
     justify-content:center;
-    @media (min-width:1190px){
+    width: 100%;
+    /* @media (min-width:1190px){
       height: 90vh;
-      }
+      } */
 `;

@@ -46,7 +46,7 @@ export const Content = styled.div`
   }
   h2 {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 23px;
     margin-bottom: 10px;
   }
   span {
