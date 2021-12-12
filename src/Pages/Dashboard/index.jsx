@@ -19,13 +19,13 @@ const Dashboard = () => {
   const dispatch = useDispatch()
 
   const groups = () => {
-    setIsGroup(!isGroup)
-    setIsHabits(!isHabits)
+    setIsGroup(true)
+    setIsHabits(false)
   } 
 
   const habits = () => {
-    setIsGroup(!isGroup)
-    setIsHabits(!isHabits)
+    setIsGroup(false)
+    setIsHabits(true)
   } 
   
   const logout = () => {
