@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--light-grey);
-  width: 100%;
+  width: 80%;
   font-family: "Sansita";
   box-sizing:border-box;
   height: 100vh;
