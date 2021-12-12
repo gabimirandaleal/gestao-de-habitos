@@ -21,7 +21,7 @@ export const HeaderDashboard = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      height: 10vh;
+      height: 15vh;
       padding-left: 2vw;
     }
 `;
@@ -119,4 +119,8 @@ export const Container = styled.div`
     /* @media (min-width:1190px){
       height: 90vh;
       } */
+`;
+
+export const Div = styled.div`
+    background-color: var(--light-grey);
 `;

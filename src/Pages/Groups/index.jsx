@@ -1,5 +1,5 @@
 import SearchBar from "../../Components/SearchBar";
-import { Conteiner, NotCards, CardsBox, ContentBox, DivName} from "./style";
+import { Conteiner, NotCards, CardsBox, ContentBox, DivName, DivButton, Div} from "./style";
 import CardGroups from "../../Components/CardGroups";
 import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
@@ -20,6 +20,9 @@ function Groups() {
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
+  const [searchBar, setSearchBar] = useState("")
+  const [filteredProducts, setFilteredProducts] = useState(groups)
+
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -27,6 +30,21 @@ function Groups() {
 
   const showSubs= () =>{
     setAtualizar(!atualizar)
+  }
+
+  const filtrarItens = (text) =>{
+    setSearchBar(text)
+    setFilteredProducts(groups.filter((item) => {
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+    }));
+  }
+
+  useEffect(() => {
+    setFilteredProducts(groups)
+  }, [groups]);
+
+  const submit = () => {
+    setSearchBar("")
   }
 
 
@@ -42,6 +60,7 @@ function Groups() {
     <Conteiner>
       {/* <section> */}
       <ContentBox>
+        <Div>
         <DivName>
           <div>
             <img src={habitsImg} alt="habits" />
@@ -52,18 +71,21 @@ function Groups() {
           </div>
           <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar />
+        <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}/>
+        </Div>
         <CardsBox>
-          {groups &&
-            groups.map((item, index) => (
+          {filteredProducts &&
+            filteredProducts.map((item, index) => (
                 <CardGroups
                   key={index}
                   item={item}
-                  groups={groups}
+                  filteredProducts={filteredProducts}
                 />
             ))}
         </CardsBox>
-        {atualizar && <Button onclick={show_more} text={"Mostrar Mais"}></Button>}
+        
+        {atualizar && <DivButton><Button onclick={show_more} text={"Mostrar Mais"}></Button></DivButton>}
+      
       </ContentBox>
       {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
       {/* </section> */}

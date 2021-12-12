@@ -1,11 +1,11 @@
 import {Container} from "./style"
 
-function ButtonYesOrNo () {
+function ButtonYesOrNo ({onclickYes, onclickNo}) {
 
   return (
     <Container>
-      <button>Sim</button>
-      <button>Não</button>
+      <button onClick={onclickYes}>Sim</button>
+      <button onClick={onclickNo}>Não</button>
     </Container>
   )
 }

@@ -27,20 +27,21 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"; 
 import { BsPlusCircleFill } from "react-icons/bs";
 import {
-  addHabitThunk,
-  attHabitThunk,
   updateHabitsThunk,
   plusProgressHabitsThunk,
   subtractProgressHabitsThunk
 } from "../../Store/modules/habits/thunk";
+import PopUpRemove from "../PopUpRemove"
 
 const Habits = () => {
   const [popUp, setPopUp] = useState(false);
+  const [popUpRemove, setPopUpRemove] = useState(false);
   const dispatch = useDispatch();
   const habits = useSelector((state) => state.habits);
   const [atualizar, setAtualizar] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(habits)
   const [searchBar, setSearchBar] = useState("")
+  const [id, setId] = useState(0);
   
   const addProgress = (id, progress) =>{
     dispatch(plusProgressHabitsThunk(id, progress))
@@ -50,7 +51,12 @@ const Habits = () => {
     dispatch(subtractProgressHabitsThunk(id, progress))
   }
   
-  const deleteHabit = (id) => {
+  const deleteHabit = (ID) => {
+    setId(ID)
+    setPopUpRemove(!popUpRemove)
+    
+  } 
+  const deleteHabitPop = () =>{
     dispatch(delHabitThunk(id))
     setAtualizar(!atualizar)
   }
@@ -78,6 +84,7 @@ const Habits = () => {
   return (
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
+      {popUpRemove && <PopUpRemove text={"hábito"} deleteHabitPop={deleteHabitPop} setPopup={setPopUpRemove} />}
         <Div>
         <DivName>
           <div>
