@@ -10,11 +10,7 @@ export const Conteiner = styled.div`
     width: 100%;
     Button {
         height: 100%;
-<<<<<<< HEAD
-        max-width: 150px;
-=======
         max-width: 160px;
->>>>>>> aa00bcfd25da0be621ef495d8f795af2a4473275
         border-radius: 0px 8px 8px 0px;
     }
 
