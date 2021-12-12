@@ -96,7 +96,7 @@ const Habits = () => {
           </div>
           <BsPlusCircleFill onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar onclick={submit} searchBar={searchBar} onchange={filtrarItens}></SearchBar>
+        <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}></SearchBar>
         </Div>
       <Cards>
         {filteredProducts &&

@@ -21,6 +21,7 @@ function Groups() {
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
   const [searchGroup, setSearchGroup] = useState("")
+  const [filterGroupsT, setFilterGroupsT] = useState(groups)
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -30,12 +31,16 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
-  const filtergroups = useMemo((text) => {
+  const filtergroups = (text) => {
     setSearchGroup(text)
-    const lowerSearchGroup = searchGroup.toLowerCase()
-    return groups.filter((item) => ((item.name).toLowerCase().includes(lowerSearchGroup) || (item.category).toLowerCase().includes(lowerSearchGroup) || (item.description).toLowerCase().includes(lowerSearchGroup)))
-  }, [searchGroup, groups])
+    setFilterGroupsT(groups.filter((item) => {
+      return ((item.name).toLowerCase().includes(text.toLowerCase()) || (item.category).toLowerCase().includes(text.toLowerCase()) || (item.description).toLowerCase().includes(text.toLowerCase()))
+    }))
+  }
 
+  const submit = () => {
+    setSearchGroup("")
+  }
 
   useEffect(() => {
     if(atualizar){
@@ -59,10 +64,10 @@ function Groups() {
           </div>
           <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar searchBar={searchGroup} filtrarItens={(event) => setSearchGroup(event.target.value)}  onclick={filtergroups}/>
+        <SearchBar searchBar={searchGroup} filtrarItens={filtergroups}  onclick={submit}/>
         <CardsBox>
-          {filtergroups &&
-            filtergroups.map((item, index) => (
+          {filterGroupsT &&
+            filterGroupsT.map((item, index) => (
                 <CardGroups
                   key={index}
                   item={item}
