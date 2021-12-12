@@ -20,6 +20,8 @@ function Groups() {
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [input, setInput] = useState("Grupos")
+  const [searchGroup, setSearchGroup] = useState("oi")
+  const [groupsfilters, setGroupsfilters] = useState([])
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -29,6 +31,14 @@ function Groups() {
     setAtualizar(!atualizar)
   }
 
+  const filtergroups = () => {
+    setGroupsfilters(groups.filter((item) => {
+        console.log(item.creator.description === searchGroup)
+        return (item.name === searchGroup || item.category === searchGroup || item.description === searchGroup)
+    }));
+  }
+
+  console.log("groupsfilters", groupsfilters, searchGroup)
 
   useEffect(() => {
     if(atualizar){
@@ -53,7 +63,7 @@ function Groups() {
           </div>
           <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar />
+        <SearchBar onchange={(event) => setSearchGroup(event.target.value)}  onclick={filtergroups}/>
         <CardsBox>
           {groups &&
             groups.map((item, index) => (
