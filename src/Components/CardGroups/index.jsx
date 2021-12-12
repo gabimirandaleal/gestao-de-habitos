@@ -2,27 +2,42 @@ import { CardHeader, Conteiner, Content, DescriptionGroup, Details } from "./sty
 import {HighlightOff} from "@mui/icons-material"
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
-import { useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import GroupsThunk from "../../Store/modules/groups/thunk"
+import { useState, useEffect } from "react";
+import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
+import { useDispatch } from "react-redux";
+import jwt_decode from "jwt-decode";
+import groupReducer from "../../Store/modules/groups/reducer";
 
-const CardGroups = () => {
-  //  const dispatch = useDispatch()
-  const [change, setChange] = useState(true);
-  const [text, setText] = useState("Junte-se");
+const CardGroups = ({item, groups}) => {
+  const dispatch = useDispatch()
+  
+  // const [popUp, setPopUp] = useState(false);
+  const [token] = useState(
+      JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
+  );
 
+  const userID = jwt_decode(token).user_id
+  const [text, setText] = useState("oi");
+
+  
+  const verificaInscrito = () => {
+    if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
+      return true
+    }
+    return false
+  }
+  const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
-    if (change === false) {
-      setChange(true);
-      setText("Junte-se");
+    if (change) {
+      setChange(!change);
+      dispatch(subscribeGroupThunk(item.id, groups, userID))
     } else {
-      setChange(false);
-      setText("Inscrito");
+      setChange(!change);
+      dispatch(unsubscribeGroupThunk(item.id, groups, userID))
     }
   };
-
   return (
-    <Conteiner text={text} color={change}>
+    <Conteiner text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        <span className="icone">
             <HighlightOff />
         </span>
@@ -32,24 +47,24 @@ const CardGroups = () => {
             <img src={LogoCardGroup} alt="LogoCardGroup" />
           </figure>
           <DescriptionGroup>
-            <h2>Família</h2>
-            <span> Saúde </span>
+            <h2>{item.name}</h2>
+            <span> {item.category} </span>
           </DescriptionGroup>
         </CardHeader>
-        <p> Criado por NomeDoCriador </p>
+        <p> {item.creator.username} </p>
       </Content>
       <Details>
         <span>
-          <p>Incritos</p> <p>5</p>
+          <p>Incritos</p> <p>{item.users_on_group.length}</p>
         </span>
         <span>
-          <p>Metas</p> <p>6</p>
+          <p>Metas</p> <p>{item.goals.length}</p>
         </span>
         <span>
-          <p>Atividades</p> <p>10</p>
+          <p>Atividades</p> <p>{item.activities.length}</p>
         </span>
       </Details>
-      <Button onclick={onChange} color={change} text={text} />
+      <Button onclick={onChange} color={verificaInscrito() ? "true" : ""} text={verificaInscrito() ? "Junte-se" : "Inscrito"} />
     </Conteiner>
   );
 };
