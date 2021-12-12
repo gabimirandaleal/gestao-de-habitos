@@ -35,7 +35,7 @@ const Dashboard = () => {
   return (
 
     <>
-      <HeaderDashboard >
+      <HeaderDashboard>
         
         <Header/>
 

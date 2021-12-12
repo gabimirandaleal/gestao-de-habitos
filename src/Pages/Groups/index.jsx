@@ -39,18 +39,19 @@ function Groups() {
   }, [atualizar]);
 
   return ispage ? (
+    <>
     <Conteiner>
       {/* <section> */}
       <ContentBox>
         <DivName>
           <div>
             <img src={habitsImg} alt="habits" />
-            <NativeSelect onChange={showSubs} fullWidth id="select" >
+            <NativeSelect onChange={showSubs} fullWidth fullHeigth id="select" >
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos</option>
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill onClick={() => setPopup(true)} cursor={"pointer"} size={"27px"} color="#2ECC71"/>
         </DivName>
         <SearchBar />
         <CardsBox>
@@ -65,9 +66,10 @@ function Groups() {
         </CardsBox>
         {atualizar && <Button onclick={show_more} text={"Mostrar Mais"}></Button>}
       </ContentBox>
-      {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
       {/* </section> */}
     </Conteiner>
+      {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
+      </>
   ) : (
     <Conteiner>
       {/* <section> */}

@@ -4,6 +4,7 @@ export const Conteiner = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 80%;
 `
 
 export const DivName = styled.div`
