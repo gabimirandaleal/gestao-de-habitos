@@ -7,7 +7,7 @@ export const Container = styled.div`
   box-sizing:border-box;
 `;
 export const Div = styled.div`
-  padding: 0px 30px;
+  padding: 0px 25px;
   margin-bottom: 30px;
 `;
 

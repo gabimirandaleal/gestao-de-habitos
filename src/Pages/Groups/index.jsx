@@ -1,5 +1,5 @@
 import SearchBar from "../../Components/SearchBar";
-import { Conteiner, NotCards, CardsBox, ContentBox, DivName } from "./style";
+import { Conteiner, NotCards, CardsBox, ContentBox, DivName} from "./style";
 import CardGroups from "../../Components/CardGroups";
 import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
