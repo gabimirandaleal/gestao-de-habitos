@@ -1,11 +1,12 @@
 import ButtonYesOrNo from "../ButtonYesOrNo"
 import {DivA, DivContainer, Div} from "./style"
 
-function PopUpRemove ({text, card}) {
+function PopUpRemove ({text, deleteHabitPop, setPopup}) {
 
   function removerCard(){
     if(text === "hábito"){
-
+      setPopup()
+      deleteHabitPop()
     }else if(text === "meta"){
 
     }else if(text === "grupo"){
@@ -20,7 +21,7 @@ function PopUpRemove ({text, card}) {
       <DivContainer> 
           <Div>
               <h3>Remover {text}?</h3>
-              <ButtonYesOrNo></ButtonYesOrNo>
+              <ButtonYesOrNo onclickYes={removerCard} onclickNo={() => setPopup(false)}></ButtonYesOrNo>
           </Div>
       </DivContainer>
     </DivA>
