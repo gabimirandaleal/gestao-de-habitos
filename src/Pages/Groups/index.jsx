@@ -4,33 +4,23 @@ import CardGroups from "../../Components/CardGroups";
 import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
-// import {GroupsThunk} from "../../Store/modules/groups/thunk"
+ import {addSubPageThunk} from "../../Store/modules/groups/thunk"
 import { searchGroupThunk } from "../../Store/modules/groups/thunk";
+import Button from "../../Components/Button";
 
 function Groups() {
   const dispatch = useDispatch();
-  const groups = useSelector((state) => state.groupReducer.results);
+  const groups = useSelector((state) => state.group);
   const [ispage] = useState(true);
-
-  const [atualizar, setAtualizar] = useState(false);
-
-  // const groupList = groups.map((item) => {
-  //   return(
-  //     <CardGroups
-  //     id={item.id}
-  //     name={item.name}
-  //     category={item.category}
-  //     creator={item.creator.username}
-  //     inscribed={item.users_on_group.length}
-  //     goals={item.goals.length}
-  //     activities={item.activities.length}
-  //     />
-  //   )
-  // })
-
+  const [nextPage, setNextPage] = useState("");
   useEffect(() => {
-    dispatch(searchGroupThunk());
+    dispatch(searchGroupThunk(setNextPage));
   }, []);
+
+
+  const show_more = () =>{
+    dispatch(addSubPageThunk(nextPage, groups, setNextPage))
+  }
 
   return ispage ? (
     <Conteiner>
@@ -43,9 +33,11 @@ function Groups() {
                 <CardGroups
                   key={index}
                   item={item}
+                  groups={groups}
                 />
             ))}
         </CardsBox>
+        <Button onclick={show_more} text={"Mostrar Mais"}></Button>
       </ContentBox>
       {/* </section> */}
     </Conteiner>

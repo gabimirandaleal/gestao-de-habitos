@@ -9,8 +9,7 @@ export const Conteiner = styled.div`
 export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
-    width: 85%;
+    margin-bottom:20px;
 `
 
 export const CardsBox = styled.div`

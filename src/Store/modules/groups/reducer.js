@@ -1,3 +1,4 @@
+import { Groups } from "@mui/icons-material";
 import  { 
   LIST_GROUPS, 
   ADD_GROUPS, 
@@ -7,16 +8,22 @@ import  {
   EDIT_ACTIVITY, 
   EDIT_GOAL, 
   SUBSCRIBE_GROUP,
-  UNSUBSCRIBE_GROUP
+  UNSUBSCRIBE_GROUP,
+  SHOW_MORE
 }  from "./actionType";
 
-const groupReducer = (state = [], action) => {
+const defaultState = [];
+
+const groupReducer = (state = defaultState, action) => {
   const {data} = action
   const {group} = action
+  const {groupId} = action
+  const {userID} = action
   const {response} = action
+  const {groups} = action
   switch (action.type) {
     case LIST_GROUPS:
-      return group
+      return [...group.results]
     case ADD_GROUPS:
       return data
     case ADD_GOALS:
@@ -30,11 +37,14 @@ const groupReducer = (state = [], action) => {
     case EDIT_GOAL:
       return data
     case SUBSCRIBE_GROUP:
-      console.log(group, state)
-      return [...state.results];
+      group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group = [...group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group, response.user]
+      return [...group];
     case UNSUBSCRIBE_GROUP:
-      state.results[state.results.indexOf(state.results.find((item) => item.id === group.id))] = group
-      return [...(state.results)];
+      group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group = [...group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group.filter((item) => item.id !== userID)]
+      return [...group];
+    case SHOW_MORE:
+        
+        return [...groups.concat(group)]
     default:
       return state;
   }

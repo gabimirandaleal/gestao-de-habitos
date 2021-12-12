@@ -7,7 +7,8 @@ import {
   EDIT_ACTIVITY, 
   EDIT_GOAL,
   SUBSCRIBE_GROUP,
-  UNSUBSCRIBE_GROUP
+  UNSUBSCRIBE_GROUP,
+  SHOW_MORE
 } from "./actionType";
 
 export const GroupsList = (group) => ({
@@ -45,12 +46,23 @@ export const editGoalList = (data) => ({
   data,
 });
 
-export const subscribeGroup = (group) => ({
+export const subscribeGroup = (group, groupId, userID, response) => ({
   type: SUBSCRIBE_GROUP,
-  group
+  group, 
+  groupId,
+  userID,
+  response
 });
 
-export const unsubscribeGroup = (group) => ({
+export const unsubscribeGroup = (group, groupId, userID) => ({
   type: UNSUBSCRIBE_GROUP,
   group,
+  groupId,
+  userID
+});
+
+export const showMore = (group, groups) => ({
+  type: SHOW_MORE,
+  group,
+  groups
 });

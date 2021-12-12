@@ -119,6 +119,7 @@ export const Container = styled.div`
     background-color: var(--light-grey);
     display: flex;
     justify-content:center;
+    width: 100%;
     /* @media (min-width:1190px){
       height: 90vh;
       } */

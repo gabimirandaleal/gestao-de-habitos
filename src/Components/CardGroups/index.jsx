@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import groupReducer from "../../Store/modules/groups/reducer";
 
-const CardGroups = ({item}) => {
+const CardGroups = ({item, groups}) => {
   const dispatch = useDispatch()
   
   // const [popUp, setPopUp] = useState(false);
@@ -17,13 +17,11 @@ const CardGroups = ({item}) => {
   );
 
   const userID = jwt_decode(token).user_id
-
   const [text, setText] = useState("oi");
 
   
   const verificaInscrito = () => {
-    console.log(item.name, item.users_on_group.filter((itens) => itens.id === item.id).length === 0)
-    if(item.users_on_group.filter((itens) => itens.id === item.id).length === 0){
+    if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
       return true
     }
     return false
@@ -32,12 +30,10 @@ const CardGroups = ({item}) => {
   const onChange = () => {
     if (change) {
       setChange(!change);
-      dispatch(subscribeGroupThunk(item.id, item))
-      setText("Junte-se");
+      dispatch(subscribeGroupThunk(item.id, groups, userID))
     } else {
       setChange(!change);
-      dispatch(unsubscribeGroupThunk(item.id, item))
-      setText("Inscrito");
+      dispatch(unsubscribeGroupThunk(item.id, groups, userID))
     }
   };
   return (
