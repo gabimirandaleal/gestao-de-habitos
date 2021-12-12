@@ -42,6 +42,7 @@ export const Cards = styled.div`
   align-items: center;
   box-sizing:border-box;
   flex-wrap: wrap;
+  background-color: var(--light-grey);
 `;
 
 export const Card = styled.div`
@@ -52,7 +53,6 @@ export const Card = styled.div`
   background: ${props => props.color? "var(--light-green)" : "var(--light-yellow)"};
   margin-right: 1.4rem;
   margin-left: 1.4rem;
-
 `;
 
 export const Specs = styled.div`
