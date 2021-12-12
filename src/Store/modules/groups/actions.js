@@ -47,7 +47,7 @@ export const editGoalList = (data) => ({
 
 export const subscribeGroup = (group) => ({
   type: SUBSCRIBE_GROUP,
-  group,
+  group
 });
 
 export const unsubscribeGroup = (group) => ({

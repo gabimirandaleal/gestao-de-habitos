@@ -1,25 +1,19 @@
 import api from "../../../Services/api"
-import {GroupsList, addGroupsList, addGoalList, addActivityList, editGoalList,editGroupsList, editActivityList} from "./actions"
+import {GroupsList, addGroupsList, addGoalList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup} from "./actions"
 import axios from "axios"
 // import {GroupsList, GroupsAdd} from "./actions"
 import {toast} from "react-toastify"
 
-export const GroupsThunk = () => async (dispatch) => {
-    await axios
-      .get(`https://kenzie-habits.herokuapp.com/groups/`)
-      .then((response) => dispatch(GroupsList(response.data)))
-      .catch((err) => console.log(err))
-};
-
-export const searchGroupThunk = (string) => async (dispatch) => { 
-  // passar a string que é o numero da pagina
-  console.log("oi")
-  await axios
-  .get(`https://kenzie-habits.herokuapp.com/groups/`).then((response) => {
-    console.log(response.data)
-    dispatch(GroupsList(response.data))
-  })
-  .catch((err) => console.log(err))
+export const searchGroupThunk = () => (dispatch) => { 
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  api
+    .get(`groups/?page=3`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      dispatch(GroupsList(response.data))
+    })
+    .catch((err) => console.log(err))
 };
 
 
@@ -125,30 +119,29 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
       .catch((err) => console.log(err))
 };
 
-export const subscribeGroup = (groupId) => (dispatch) => {
+export const subscribeGroupThunk = (groupId, item) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  console.log(groupId, token)
   api
-    .post(`/groups/${groupId}/subscribe/`, "", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    .post(`groups/${groupId}/subscribe/`, groupId, {headers: { Authorization: `Bearer ${token}`}})
+    .then((response) => {
+      console.log(response.data)
+      dispatch(subscribeGroup(response.data))
     })
-    .then((_) => {
-      toast.success("requisição aceita");
-    })
-    .catch((error) => toast.error("error"));
+    .catch((err) => console.log(err))
 };
 
-export const unsubscribeGroup = (groupId) => {
+export const unsubscribeGroupThunk = (groupId, item) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
   api
-    .delete(`/groups/${groupId}/unsubscribe/`, {
+    .delete(`groups/${groupId}/unsubscribe/`,  groupId, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((_) => {
+    .then((response) => {
+      dispatch(unsubscribeGroup(item))
       toast.success("Requisição aceita");
     })
-    .catch((_) => toast.error("error"));
+    .catch((err) => toast.error(err));
 };

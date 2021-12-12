@@ -3,35 +3,45 @@ import {HighlightOff} from "@mui/icons-material"
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
 import { useState, useEffect } from "react";
-import {subscribeGroup, unsubscribeGroup} from "../../Store/modules/groups/thunk"
+import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
 import { useDispatch } from "react-redux";
+import jwt_decode from "jwt-decode";
+import groupReducer from "../../Store/modules/groups/reducer";
 
-
-const CardGroups = ({name, category, creator, inscribed, goals, activities, id}) => {
+const CardGroups = ({item}) => {
   const dispatch = useDispatch()
-  const [change, setChange] = useState(true);
-  const [text, setText] = useState("Junte-se");
+  
   // const [popUp, setPopUp] = useState(false);
+  const [token] = useState(
+      JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
+  );
 
+  const userID = jwt_decode(token).user_id
 
+  const [text, setText] = useState("oi");
+
+  
+  const verificaInscrito = () => {
+    console.log(item.name, item.users_on_group.filter((itens) => itens.id === item.id).length === 0)
+    if(item.users_on_group.filter((itens) => itens.id === item.id).length === 0){
+      return true
+    }
+    return false
+  }
+  const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
-    if (change === false) {
-      setChange(true);
-      dispatch(subscribeGroup(id))
+    if (change) {
+      setChange(!change);
+      dispatch(subscribeGroupThunk(item.id, item))
       setText("Junte-se");
     } else {
-      setChange(false);
-      dispatch(unsubscribeGroup(id))
+      setChange(!change);
+      dispatch(unsubscribeGroupThunk(item.id, item))
       setText("Inscrito");
     }
   };
-
-  useEffect(() => {
-    onChange();
-  }, []);
-
   return (
-    <Conteiner text={text} color={change}>
+    <Conteiner text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        <span className="icone">
             <HighlightOff />
         </span>
@@ -41,24 +51,24 @@ const CardGroups = ({name, category, creator, inscribed, goals, activities, id})
             <img src={LogoCardGroup} alt="LogoCardGroup" />
           </figure>
           <DescriptionGroup>
-            <h2>{name}</h2>
-            <span> {category} </span>
+            <h2>{item.name}</h2>
+            <span> {item.category} </span>
           </DescriptionGroup>
         </CardHeader>
-        <p> {creator} </p>
+        <p> {item.creator.username} </p>
       </Content>
       <Details>
         <span>
-          <p>Incritos</p> <p>{inscribed}</p>
+          <p>Incritos</p> <p>{item.users_on_group.length}</p>
         </span>
         <span>
-          <p>Metas</p> <p>{goals}</p>
+          <p>Metas</p> <p>{item.goals.length}</p>
         </span>
         <span>
-          <p>Atividades</p> <p>{activities}</p>
+          <p>Atividades</p> <p>{item.activities.length}</p>
         </span>
       </Details>
-      <Button onclick={onChange} color={change} text={text} />
+      <Button onclick={onChange} color={verificaInscrito() ? "true" : ""} text={verificaInscrito() ? "Junte-se" : "Inscrito"} />
     </Conteiner>
   );
 };

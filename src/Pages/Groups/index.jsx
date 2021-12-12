@@ -29,8 +29,7 @@ function Groups() {
   // })
 
   useEffect(() => {
-    dispatch(searchGroupThunk(2));
-    console.log("oiiiii");
+    dispatch(searchGroupThunk());
   }, []);
 
   return ispage ? (
@@ -40,16 +39,10 @@ function Groups() {
         <SearchBar />
         <CardsBox>
           {groups &&
-            groups.map((item) => (
-
+            groups.map((item, index) => (
                 <CardGroups
-                  id={item.id}
-                  name={item.name}
-                  category={item.category}
-                  creator={item.creator.username}
-                  inscribed={item.users_on_group.length}
-                  goals={item.goals.length}
-                  activities={item.activities.length}
+                  key={index}
+                  item={item}
                 />
             ))}
         </CardsBox>

@@ -13,9 +13,9 @@ import  {
 const groupReducer = (state = [], action) => {
   const {data} = action
   const {group} = action
+  const {response} = action
   switch (action.type) {
     case LIST_GROUPS:
-      console.log(state, action)
       return group
     case ADD_GROUPS:
       return data
@@ -28,12 +28,13 @@ const groupReducer = (state = [], action) => {
     case EDIT_ACTIVITY:
         return data
     case EDIT_GOAL:
-      console.log(data)
       return data
     case SUBSCRIBE_GROUP:
-      return group
+      console.log(group, state)
+      return [...state.results];
     case UNSUBSCRIBE_GROUP:
-      return group
+      state.results[state.results.indexOf(state.results.find((item) => item.id === group.id))] = group
+      return [...(state.results)];
     default:
       return state;
   }
