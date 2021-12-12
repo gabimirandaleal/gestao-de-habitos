@@ -1,5 +1,5 @@
 import api from "../../../Services/api";
-import { signIn, logOut } from "./actions"
+import { signIn, logOut, editUser } from "./actions"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -18,19 +18,35 @@ export const signInThunk = (data) => (dispatch) => {
     });
 };
 
+
+
 export const editUserThunk = (data) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+
   api
-    .post(`/sessions/`, data)
+    .patch(`users/${data.id}/`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
     .then((response) => {
-      const { access } = response.data;
-      localStorage.clear();
-      localStorage.setItem("@GestaoHabitos:token", JSON.stringify(access));
-      dispatch(signIn(access));
-      toast.success("Login feito com sucesso!");
+      dispatch(editUser(response.data));
+      toast.success("User editado com sucesso!");
     })
     .catch((_) => {
-      toast.error("Usuário ou senha inválidos");
+      toast.error("Email ou usuário já existem");
     });
+};
+
+export const searchUserThunk = (data) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+
+  api
+      .get(`/users/${data}/`)
+      .then((response) => {
+        dispatch(editUser(response.data))
+      })
+      .catch((err) => {
+        console.error("Ops! ocorreu um erro" + err);
+      })
 };
 
 export const logOutThunk = () => (dispatch) => {

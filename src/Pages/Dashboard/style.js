@@ -31,10 +31,6 @@ export const ButtonsDashboard = styled.div`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-<<<<<<< HEAD
-    width: 100%;
-=======
->>>>>>> aa00bcfd25da0be621ef495d8f795af2a4473275
     font-family: 'Sansita';
     font-weight: 400;
     font-style: normal;

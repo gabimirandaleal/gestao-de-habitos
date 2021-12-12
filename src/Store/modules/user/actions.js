@@ -1,4 +1,4 @@
-import {SIGN_IN, LOG_OUT} from "./actionType"
+import {SIGN_IN, LOG_OUT, EDIT_USER} from "./actionType"
 
 export const signIn = (token) => (
     {
@@ -10,5 +10,12 @@ export const signIn = (token) => (
 export const logOut = () => (
     {
         type: LOG_OUT,
+    }   
+)
+
+export const editUser = (data) => (
+    {
+        type: EDIT_USER,
+        data
     }   
 )

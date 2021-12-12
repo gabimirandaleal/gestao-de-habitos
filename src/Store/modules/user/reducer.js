@@ -1,4 +1,4 @@
-import { SIGN_IN, LOG_OUT } from "./actionType";
+import { SIGN_IN, LOG_OUT, EDIT_USER } from "./actionType";
 
 const token = localStorage.getItem("@GestaoHabitos:token") || "";
 
@@ -13,6 +13,9 @@ const userReducer = (state = defaultState, action) => {
       return { ...state, token };
     case LOG_OUT:
       return { ...state, token: "" };
+    case EDIT_USER:
+      const {data} = action
+      return { ...state, data };
     default:
       return state;
   }

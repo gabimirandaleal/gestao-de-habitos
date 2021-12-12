@@ -2,17 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--light-grey);
-<<<<<<< HEAD
-  height:100vh;
-  width: 100%;
-  font-family: "Sansita";
-  box-sizing:border-box;
-`;
-export const Div = styled.div`
-  padding: 0px 20px;
-  margin-bottom: 30px;
-  box-sizing:border-box;
-=======
   width: 100%;
   font-family: "Sansita";
   box-sizing:border-box;
@@ -21,36 +10,10 @@ export const Div = styled.div`
 export const Div = styled.div`
   padding: 0px 25px;
   margin-bottom: 30px;
->>>>>>> aa00bcfd25da0be621ef495d8f795af2a4473275
 `;
 
 export const DivName = styled.div`
   width: 100%;
-<<<<<<< HEAD
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  box-sizing:border-box;
-  margin-bottom: 10px;
-  div{
-    display: flex;
-    align-items: center;
-    justify-content:center;
-  }
-  h3{
-    color: var(--dark-grey);
-    font-family: 'Sansita', sans-serif;
-    font-weight: 700;
-    font-size: 25px;
-    margin-left:15px;
-    padding-bottom: 8px;
-  }
-
-`;
-export const Cards = styled.div`
-  width: 100%;
-  display: flex;
-=======
   display: flex;
   justify-content: space-between;
   align-items:center;
@@ -75,7 +38,6 @@ export const Cards = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
->>>>>>> aa00bcfd25da0be621ef495d8f795af2a4473275
   justify-content: center;
   align-items: center;
   box-sizing:border-box;

@@ -10,7 +10,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editUserThunk} from "../../Store/modules/user/thunk"
 
-function PopUpEditUser({setPopup, idUser}) {
+function PopUpEditUser({setPopup, user}) {
     const formSchema = yup.object().shape({
         username: yup.string().required("Username obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail invalido"),
@@ -25,8 +25,8 @@ function PopUpEditUser({setPopup, idUser}) {
     })
 
     const onSubmitFunction = data => {
-        console.log(data)
-        dispatch(editUserThunk(data, idUser))
+        data ={...data, id: user.id}
+        dispatch(editUserThunk(data, user))
         setPopup(false)
     }
     return(
@@ -36,8 +36,8 @@ function PopUpEditUser({setPopup, idUser}) {
                     <Form onSubmit={handleSubmit(onSubmitFunction)}>
                         <IoCloseCircle onClick={() => setPopup(false)}/>
                         <h3>Editar Perfil</h3>
-                        <TextField margin="normal" fullWidth id="login-basic" label="Usuário" variant="outlined" error={!!errors.username?.message} {...register("username")}/>
-                        <TextField margin="normal" fullWidth id="login-basic" label="E-mail" variant="outlined" error={!!errors.email?.message} {...register("email")}/>
+                        <TextField defaultValue={user.username} margin="normal" fullWidth id="login-basic" label="Usuário" variant="outlined" error={!!errors.username?.message} {...register("username")}/>
+                        <TextField defaultValue={user.email} margin="normal" fullWidth id="login-basic" label="E-mail" variant="outlined" error={!!errors.email?.message} {...register("email")}/>
                         <Button type="submit" text={"Alterar"}></Button>
                     </Form>     
                 </Div>
