@@ -33,12 +33,18 @@ import {
   plusProgressHabitsThunk,
   subtractProgressHabitsThunk
 } from "../../Store/modules/habits/thunk";
+import PopUpRemove from "../PopUpRemove"
+import { set } from "react-hook-form/dist/index.cjs";
 
 const Habits = () => {
   const [popUp, setPopUp] = useState(false);
+  const [popUpRemove, setPopUpRemove] = useState(false);
   const dispatch = useDispatch();
   const habits = useSelector((state) => state.habits);
   const [atualizar, setAtualizar] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState(habits)
+  const [searchBar, setSearchBar] = useState("")
+  const [id, setId] = useState(0);
   
   const addProgress = (id, progress) =>{
     dispatch(plusProgressHabitsThunk(id, progress))
@@ -48,10 +54,30 @@ const Habits = () => {
     dispatch(subtractProgressHabitsThunk(id, progress))
   }
   
-  const deleteHabit = (id) => {
+  const deleteHabit = (ID) => {
+    setId(ID)
+    setPopUpRemove(!popUpRemove)
+    
+  } 
+  const deleteHabitPop = () =>{
     dispatch(delHabitThunk(id))
     setAtualizar(!atualizar)
   }
+
+  const filtrarItens = (text) =>{
+    setSearchBar(text)
+    setFilteredProducts(habits.filter((item) => {
+      return ((item.title).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.title
+    }));
+  }
+
+  const submit = () => {
+    setSearchBar("")
+  }
+
+  useEffect(() => {
+    setFilteredProducts(habits)
+  }, [habits]);
 
   useEffect(() => {
     dispatch(updateHabitsThunk());
@@ -61,6 +87,7 @@ const Habits = () => {
   return (
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
+      {popUpRemove && <PopUpRemove text={"hábito"} deleteHabitPop={deleteHabitPop} setPopup={setPopUpRemove} />}
         <Div>
         <DivName>
           <div>
@@ -69,11 +96,11 @@ const Habits = () => {
           </div>
           <BsPlusCircleFill onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
-        <SearchBar></SearchBar>
+        <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}></SearchBar>
         </Div>
       <Cards>
-        {habits &&
-          habits.map((habit, index) => (
+        {filteredProducts &&
+          filteredProducts.map((habit, index) => (
             <Card color={habit.achieved ? "true" : ""} key={index}>
               <Title color={habit.achieved ? "true" : ""}>
                 <Close onClick={() => deleteHabit(habit.id)}>

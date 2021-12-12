@@ -52,6 +52,7 @@ function Signup() {
       .post("users/", data)
       .then((response) => {
         console.log(response.data);
+        toast.success("Usuário cadastrado com sucesso!")
       })
       .catch((err) => {
         console.log(err);

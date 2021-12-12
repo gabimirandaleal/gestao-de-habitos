@@ -6,11 +6,44 @@ export const Conteiner = styled.div`
     flex-direction: column;
 `
 
+
+export const DivName = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  box-sizing:border-box;
+  margin-bottom: 10px;
+  
+  div{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+  }
+  h3{
+    color: var(--dark-grey);
+    font-family: 'Sansita', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    margin-left:15px;
+    padding-bottom: 8px;
+  }
+  img{
+      margin-right: 10px;
+  }
+  select{
+    color: var(--dark-grey);
+    font-family: 'Sansita', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+`;
+
 export const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
-    width: 85%;
+    margin-bottom:20px;
+    padding: 0px 25px;
 `
 
 export const CardsBox = styled.div`

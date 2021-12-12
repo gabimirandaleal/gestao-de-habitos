@@ -1,7 +1,7 @@
 import api from "../../../Services/api";
-import { signIn, logOut } from "./actions";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { signIn, logOut } from "./actions"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const signInThunk = (data) => (dispatch) => {
   api

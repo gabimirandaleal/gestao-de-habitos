@@ -1,7 +1,6 @@
 import { HeaderDashboard, ButtonsDashboard, UserBox, Container } from "./style"
 import { useState } from "react"
 import Header from "../../Components/Header"
-
 import { useDispatch } from "react-redux";
 import {logOutThunk} from "../../Store/modules/user/thunk"
 import { FiLogOut } from "react-icons/fi";
@@ -11,10 +10,11 @@ import HabitsImg from '../../assets/img/habits.png'
 import CardUsuario from "../../Components/CardUsuario";
 import Habits from "../../Components/Habits";
 
+import Groups from "../Groups";
 
 const Dashboard = () => {
   
-  const [isHabits,setIsHabits] = useState(false)
+  const [isHabits,setIsHabits] = useState(true)
   const [isGroup,setIsGroup] = useState(false)
   const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ const Dashboard = () => {
   const habits = () => {
     setIsGroup(false)
     setIsHabits(true)
-    } 
+  } 
   
   const logout = () => {
     dispatch(logOutThunk())
@@ -42,8 +42,8 @@ const Dashboard = () => {
         
         <ButtonsDashboard>
           <ul>
-            <li onClick={habits}><img src={HabitsImg} alt=''/><span>Seus Hábitos</span></li>
-            <li onClick={groups}><img src={GroupsImg} alt=''/><span>Seus Grupos</span></li>
+            <li onClick={() => habits()}><img src={HabitsImg} alt=''/><span>Seus Hábitos</span></li>
+            <li onClick={() => groups()}><img src={GroupsImg} alt=''/><span>Seus Grupos</span></li>
           </ul>
         </ButtonsDashboard>
         <UserBox>
@@ -57,7 +57,7 @@ const Dashboard = () => {
       </HeaderDashboard>
       <Container>
             {isHabits && <Habits></Habits> }
-            {isGroup && <>Grupos</> }
+            {isGroup && <Groups/> }
       </Container>
       
     </>
