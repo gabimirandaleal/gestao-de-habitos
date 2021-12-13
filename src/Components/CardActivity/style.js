@@ -4,7 +4,7 @@ export const Cards = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   box-sizing:border-box;
   flex-wrap: wrap;

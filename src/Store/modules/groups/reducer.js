@@ -45,8 +45,11 @@ const groupReducer = (state = defaultState, action) => {
       return [...state]
     case EDIT_GOAL:
       state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item) => item.id === data.id)[0].title = data.title
-      const goals = state[state.indexOf(state.find((item)=> item.id === data.group))].goals
-      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [...goals]
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item) => item.id === data.id)[0].difficulty = data.difficulty
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item) => item.id === data.id)[0].achieved = data.achieved
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item) => item.id === data.id)[0].how_much_achieved = data.how_much_achieved
+      const goals = state[state.indexOf(state.find((item)=> item.id === data.group))].goals 
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [...goals]
       return [...state]
     case SUBSCRIBE_GROUP:
       state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group = [...state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group, response.user]

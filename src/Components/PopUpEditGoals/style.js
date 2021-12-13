@@ -53,7 +53,8 @@ export const DivA = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    top:0px;    
+    top:0px;   
+    left: 0px;
     button{
       margin-top:15px;
     }
@@ -67,6 +68,7 @@ export const DivA = styled.div`
         align-self: flex-end;
         width: 35px;
         height: 35px;
+        color: black;
     }
 `;
 

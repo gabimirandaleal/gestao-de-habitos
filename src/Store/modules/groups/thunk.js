@@ -131,7 +131,7 @@ export const editGroupThunk = (data, idGroup) => (dispatch) => {
 export const editGoalThunk = (data, idGoal) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
     api
-      .patch(`groups/${idGoal}/`, data, {
+      .patch(`goals/${idGoal}/`, data, {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -158,13 +158,16 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
 export const deleteGoalThunk = (idGoal, item) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
     api
-      .delete(`groups/${idGoal}/`, idGoal, {
+      .delete(`goals/${idGoal}/`, {
       headers: {
         Authorization: `Bearer ${token}`
       },
       })
-      .then((response) => dispatch(deleteGoalList(item)))
-      .catch((err) => console.log(err))
+      .then((response) =>{ 
+        toast.success("Meta removida com sucesso");
+        dispatch(deleteGoalList(item))
+      })
+      .catch((err) => toast.error("Erro ao remover meta"))
 };
 
 export const deleteActivityThunk = (idActivity, item) => (dispatch) => {
@@ -176,10 +179,10 @@ export const deleteActivityThunk = (idActivity, item) => (dispatch) => {
       },
       })
       .then((response) => {
-        toast.success("Você atualizou sua atividade");
+        toast.success("Atividade removida com sucesso");
         dispatch(deleteActivityList(item))
       })
-      .catch((err) => toast.error("Não toque no que não é seu"))
+      .catch((err) =>  toast.error("Erro ao remover atividade"))
 };
 
 export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
@@ -206,4 +209,39 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
       toast.success("Você se desinscreveu do grupo");
     })
     .catch((err) => toast.error(err));
+};
+
+export const plusProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  if(progress < 100 && progress == 90){
+    const data = {"achieved": true, "how_much_achieved": 100}
+    api
+    .patch(`goals/${idGoal}/`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => dispatch(editGoalList(response.data)));
+  }else if(progress < 100){
+    const data = {"how_much_achieved": (Number(progress)+10)}
+    api
+    .patch(`goals/${idGoal}/`, data,{
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => dispatch(editGoalList(response.data)))
+    .catch((err) => console.log("oi"))
+  }
+};
+
+export const subtractProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  if(progress > 0 ){
+    const data = {"achieved": false, "how_much_achieved": (progress-10)}
+    api
+    .patch(`goals/${idGoal}/`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      dispatch(editGoalList(response.data))
+    })
+    .catch((err) => console.log(err))
+  }
 };

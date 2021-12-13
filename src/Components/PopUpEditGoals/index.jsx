@@ -8,14 +8,14 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import {editActivityThunk} from "../../Store/modules/groups/thunk"
+import {editGoalThunk} from "../../Store/modules/groups/thunk"
 import { useState } from "react";
 import api from "../../Services/api"
 
-function PopUpEditGoals({setPopup, goal}) {
+function PopUpEditGoals({item, idGoal, setPopup}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Titulo obrigatorio"),
-        how_much_achieved: yup.string().required("Progresso, obrigatório")
+        difficulty: yup.string().required("Dificuldade obrigatória")
     })
     const dispatch = useDispatch();
     
@@ -29,9 +29,10 @@ function PopUpEditGoals({setPopup, goal}) {
     
         
     const onSubmitFunction = data => {
-        console.log(data)
-        dispatch(editActivityThunk(data, goal.id))
+        setPopup(false)
+        dispatch(editGoalThunk(data, idGoal))
     }
+
     return(
         <DivA>
             <DivContainer> 
@@ -39,8 +40,12 @@ function PopUpEditGoals({setPopup, goal}) {
                     <Form onSubmit={handleSubmit(onSubmitFunction)}>
                         <IoCloseCircle onClick={() => setPopup(false)}/>
                         <h3>Editar Meta</h3>
-                        <TextField margin="normal" defaultValue={goal?.title} fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.title?.message} {...register("title")}/>
-                        <TextField type="number" defaultValue={goal?.how_much_achieved} inputProps={{ min: 0, max: 100 }} margin="normal" fullWidth id="login-basic" label="Progresso" variant="outlined" error={!!errors.title?.message} {...register("how_much_achieved")}/>
+                        <TextField margin="normal" defaultValue={item?.title} fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.title?.message} {...register("title")}/>
+                        <NativeSelect {...register("difficulty")} defaultValue={item.difficulty} error={!!errors.category?.message} fullWidth id="select" >
+                            <option>Fácil</option>
+                            <option>Médio</option>
+                            <option>Difícil</option>
+                        </NativeSelect>
                         <Button type="submit" text={"Alterar"}></Button>
                     </Form>     
                 </Div>
