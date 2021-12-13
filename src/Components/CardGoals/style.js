@@ -82,9 +82,9 @@ export const Background = styled.div`
 
 export const Close = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
-  padding: 5px 5px 0 0;
+  padding: 5px 5px 0 5px;
   box-sizing: border-box;
   color: var(--white);
 `;

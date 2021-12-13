@@ -10,7 +10,10 @@ export const Conteiner = styled.div`
 `
 
 export const Div = styled.div`
-  padding: 20px 60px 40px 60px;
+  padding: 20px 15px 40px 15px;
+  @media(min-width: 790px){
+    padding: 20px 60px 40px 60px;
+  }
 `
 export const DivButton = styled.div`
   background: var(--light-grey);
