@@ -157,6 +157,7 @@ export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
   api
     .post(`groups/${groupId}/subscribe/`, groupId, {headers: { Authorization: `Bearer ${token}`}})
     .then((response) => {
+      toast.success(`Inscrito com sucesso`)
       dispatch(subscribeGroup(groups, groupId, userID, response.data))
     })
     .catch((err) => console.log(err))
@@ -172,7 +173,7 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
     })
     .then((response) => {
       dispatch(unsubscribeGroup(groups, groupId, userID))
-      toast.success("Requisição aceita");
+      toast.success("Você se desinscreveu do grupo");
     })
     .catch((err) => toast.error(err));
 };
