@@ -1,5 +1,5 @@
 import api from "../../../Services/api";
-import { addHabit, attHabit, delHabit, updateHabits, plusProgressHabits, subProgressHabits } from "./actions";
+import { addHabit, attHabit, delHabit, updateHabits, plusProgressHabits, subProgressHabits, editHabits } from "./actions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -88,4 +88,16 @@ export const subtractProgressHabitsThunk = (idHabit, progress) => (dispatch) => 
     })
     .catch((err) => console.log(err))
   }
+};
+
+export const editHabitsThunk = (idHabit, data) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    api
+    .patch(`habits/${idHabit}/`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      dispatch(editHabits(response.data))
+    })
+    .catch((err) => console.log(err))
 };

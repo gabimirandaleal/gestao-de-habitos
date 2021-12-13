@@ -8,8 +8,11 @@ export const Container = styled.div`
   height: 100vh;
 `;
 export const Div = styled.div`
-  padding: 20px 60px 40px 60px;
-  /* margin-bottom: 30px; */
+  padding: 20px 15px 40px 15px;
+  
+  @media(min-width:790px){
+    padding: 20px 60px 40px 60px;
+  }
 `;
 
 export const DivName = styled.div`
@@ -129,9 +132,12 @@ export const Background = styled.div`
 
 export const Close = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
-  padding: 5px 5px 0 0;
+  padding: 5px 5px 0 5px;
   box-sizing: border-box;
   color: var(--white);
+  svg{
+    cursor: pointer;
+  }
 `;
