@@ -9,3 +9,5 @@ export const SUBSCRIBE_GROUP = "SUBSCRIBEgroup@/List";
 export const UNSUBSCRIBE_GROUP = "UNSUBSCRIBEgroup@/List"
 export const SHOW_MORE = "SHOWMOREgroup@/List"
 export const LIST_MY_GROUP = "LISTMYgroup@/List"
+export const DELETE_ACTIVITY = "DELETEACTIVITY@/List"
+export const DELETE_GOAL = "DELETEGOAL@/List"

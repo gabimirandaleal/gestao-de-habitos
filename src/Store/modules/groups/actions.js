@@ -9,7 +9,9 @@ import {
   SUBSCRIBE_GROUP,
   UNSUBSCRIBE_GROUP,
   SHOW_MORE,
-  LIST_MY_GROUP
+  LIST_MY_GROUP,
+  DELETE_ACTIVITY,
+  DELETE_GOAL
 } from "./actionType";
 
 export const GroupsList = (group) => ({
@@ -71,4 +73,14 @@ export const showMore = (group, groups) => ({
 export const listGroup = (group, groups) => ({
   type: LIST_MY_GROUP,
   group,
+}); 
+
+export const deleteActivityList = (data) => ({
+  type: DELETE_ACTIVITY,
+  data
+});
+
+export const deleteGoalList = (data) => ({
+  type: DELETE_GOAL,
+  data
 });
