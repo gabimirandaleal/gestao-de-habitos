@@ -24,7 +24,6 @@ export const searchGroupSubscriptionsThunk = () => (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
-      console.log(response.data)
       dispatch(listGroup(response.data))
     })
     .catch((err) => console.log(err))
@@ -122,8 +121,11 @@ export const editGroupThunk = (data, idGroup) => (dispatch) => {
         Authorization: `Bearer ${token}`
       },
       })
-      .then((response) => dispatch(editGroupsList(response.data)))
-      .catch((err) => console.log(err))
+      .then((response) => {
+        toast.success(`Grupo alterado com sucesso`)
+        dispatch(editGroupsList(response.data))
+      })
+      .catch((err) => toast.success("Você não pode editar esse grupo"))
 };
 
 export const editGoalThunk = (data, idGoal) => (dispatch) => {
@@ -162,7 +164,6 @@ export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
 
 export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  console.log(userID)
   api
     .delete(`groups/${groupId}/unsubscribe/`, {
       headers: {
