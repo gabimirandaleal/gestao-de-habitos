@@ -6,18 +6,20 @@ import { useState, useEffect } from "react";
 import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
+import { BsPencil } from "react-icons/bs";
 import groupReducer from "../../Store/modules/groups/reducer";
+import PopUpEditGroup from "../PopUpEditGroup"
 
 const CardGroups = ({item, groups}) => {
   const dispatch = useDispatch()
   
-  // const [popUp, setPopUp] = useState(false);
+  const [popup, setPopup] = useState(false);
   const [token] = useState(
       JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
   );
 
   const userID = jwt_decode(token).user_id
-  const [text, setText] = useState("oi");
+  // const [text, setText] = useState("oi");
 
   
   const verificaInscrito = () => {
@@ -36,10 +38,13 @@ const CardGroups = ({item, groups}) => {
       dispatch(unsubscribeGroupThunk(item.id, groups, userID))
     }
   };
+  
   return (
+    
     <Conteiner text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
+       
        <span className="icone">
-            <HighlightOff />
+            <BsPencil onClick={() => setPopup(true)}/>
         </span>
       <Content>
         <CardHeader>
@@ -65,6 +70,7 @@ const CardGroups = ({item, groups}) => {
         </span>
       </Details>
       <Button onclick={onChange} color={verificaInscrito() ? "true" : ""} text={verificaInscrito() ? "Junte-se" : "Inscrito"} />
+      {popup && <PopUpEditGroup item={item} idGroup={item.id} setPopup={setPopup}></PopUpEditGroup>}
     </Conteiner>
   );
 };

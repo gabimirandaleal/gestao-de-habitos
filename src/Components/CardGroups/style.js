@@ -21,6 +21,9 @@ export const Conteiner = styled.div`
     left: 208px;
     top: 11px;
   }
+  .icone:hover{
+    cursor: pointer;
+  }
   Button {
     width: 130px;
     font: bold;

@@ -8,8 +8,8 @@ export const Container = styled.div`
   height: 100vh;
 `;
 export const Div = styled.div`
-  padding: 0px 25px;
-  margin-bottom: 30px;
+  padding: 20px 60px 40px 60px;
+  /* margin-bottom: 30px; */
 `;
 
 export const DivName = styled.div`
@@ -19,6 +19,7 @@ export const DivName = styled.div`
   align-items:center;
   box-sizing:border-box;
   margin-bottom: 10px;
+  padding-bottom: 25px;
   div{
     display: flex;
     align-items: center;

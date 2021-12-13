@@ -24,7 +24,6 @@ export const searchGroupSubscriptionsThunk = () => (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
-      console.log(response.data)
       dispatch(listGroup(response.data))
     })
     .catch((err) => console.log(err))
@@ -87,7 +86,7 @@ export const addGroupsThunk = (data) => (dispatch) => {
           toast.success("Grupo criado")
           dispatch(addGroupsList(response.data))
         })
-        .catch((err) => console.log(err))
+        .catch((err) => toast.error("Erro ao criar o grupo"))
 };
 
 export const addGoalThunk = (data) => (dispatch) => {
@@ -122,8 +121,11 @@ export const editGroupThunk = (data, idGroup) => (dispatch) => {
         Authorization: `Bearer ${token}`
       },
       })
-      .then((response) => dispatch(editGroupsList(response.data)))
-      .catch((err) => console.log(err))
+      .then((response) => {
+        toast.success(`Grupo alterado com sucesso`)
+        dispatch(editGroupsList(response.data))
+      })
+      .catch((err) => toast.error("Você não pode editar esse grupo"))
 };
 
 export const editGoalThunk = (data, idGoal) => (dispatch) => {
@@ -155,6 +157,7 @@ export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
   api
     .post(`groups/${groupId}/subscribe/`, groupId, {headers: { Authorization: `Bearer ${token}`}})
     .then((response) => {
+      toast.success(`Inscrito com sucesso`)
       dispatch(subscribeGroup(groups, groupId, userID, response.data))
     })
     .catch((err) => console.log(err))
@@ -162,7 +165,6 @@ export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
 
 export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  console.log(userID)
   api
     .delete(`groups/${groupId}/unsubscribe/`, {
       headers: {
@@ -171,7 +173,7 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
     })
     .then((response) => {
       dispatch(unsubscribeGroup(groups, groupId, userID))
-      toast.success("Requisição aceita");
+      toast.success("Você se desinscreveu do grupo");
     })
     .catch((err) => toast.error(err));
 };

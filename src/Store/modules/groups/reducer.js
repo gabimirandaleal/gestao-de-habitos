@@ -26,23 +26,25 @@ const groupReducer = (state = defaultState, action) => {
     case LIST_GROUPS:
       return [...group]
     case ADD_GROUPS:
-      return [...group, data]
+      return [data, ...state]
     case ADD_GOALS:
       return data
     case ADD_ACTIVITY:
       return data
     case EDIT_GROUPS:
-      return data
+      state[state.indexOf(state.find((item)=> item.id === data.id))] = data
+      return [...state]
     case EDIT_ACTIVITY:
         return data
     case EDIT_GOAL:
       return data
     case SUBSCRIBE_GROUP:
-      group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group = [...group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group, response.user]
-      return [...group];
+      console.log(state, action)
+      state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group = [...state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group, response.user]
+      return [...state];
     case UNSUBSCRIBE_GROUP:
-      group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group = [...group[group.indexOf(group.find((item)=> item.id === groupId))].users_on_group.filter((item) => item.id !== userID)]
-      return [...group];
+      state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group = [...state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group.filter((item) => item.id !== userID)]
+      return [...state];
     case SHOW_MORE:
         return [...groups.concat(group)]
     case LIST_MY_GROUP:

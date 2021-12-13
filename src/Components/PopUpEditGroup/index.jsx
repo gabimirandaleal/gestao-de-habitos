@@ -10,9 +10,10 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editGroupThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpEditGroup({setPopup, idGroup}) {
+function PopUpEditGroup({setPopup, idGroup, item}) {
     const formSchema = yup.object().shape({
         name: yup.string().required("Nome obrigatório"),
+        description: yup.string().required("Descrição obrigatória"),
     })
     const dispatch = useDispatch();
 
@@ -35,7 +36,14 @@ function PopUpEditGroup({setPopup, idGroup}) {
                     <Form onSubmit={handleSubmit(onSubmitFunction)}>
                         <IoCloseCircle onClick={() => setPopup(false)}/>
                         <h3>Editar Grupo</h3>
-                        <TextField margin="normal" fullWidth id="login-basic" label="Nome" variant="outlined" error={!!errors.name?.message} {...register("name")}/>
+                        <TextField margin="normal" defaultValue={item.name} fullWidth id="login-basic" label="Nome" variant="outlined" error={!!errors.name?.message} {...register("name")}/>
+                        <TextField margin="normal" defaultValue={item.description} fullWidth id="login-basic" label="Descrição" variant="outlined" error={!!errors.description?.message} {...register("description")}/>
+                        <NativeSelect defaultValue={item.category} {...register("category")} error={!!errors.category?.message} fullWidth id="select" >
+                            <option>Alimentação</option>
+                            <option>Saúde</option>
+                            <option>Esporte</option>
+                            <option>Lazer</option>
+                        </NativeSelect>
                         <Button type="submit" text={"Alterar"}></Button>
                     </Form>     
                 </Div>
