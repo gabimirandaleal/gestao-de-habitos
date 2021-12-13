@@ -10,7 +10,7 @@ import HabitsImg from '../../assets/img/habits.png'
 import CardUsuario from "../../Components/CardUsuario";
 import Habits from "../../Components/Habits";
 
-import Groups from "../Groups";
+import Groups from "../../Components/Groups";
 
 const Dashboard = () => {
   

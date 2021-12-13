@@ -1,6 +1,6 @@
-import SearchBar from "../../Components/SearchBar";
+import SearchBar from "../SearchBar";
 import { Conteiner, NotCards, CardsBox, ContentBox, DivName, DivButton, Div} from "./style";
-import CardGroups from "../../Components/CardGroups";
+import CardGroups from "../CardGroups";
 import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { searchGroupThunk, searchGroupSubscriptionsThunk } from "../../Store/modules/groups/thunk";
 import { BsPlusCircleFill } from "react-icons/bs";
 import habitsImg from "../../assets/img/habits.png";
-import Button from "../../Components/Button";
-import PopUpCreateGroup from "../../Components/PopUpCreateGroup"
+import Button from "../Button";
+import PopUpCreateGroup from "../PopUpCreateGroup"
 import {NativeSelect} from "@mui/material"
 
 function Groups() {
