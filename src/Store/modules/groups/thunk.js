@@ -86,7 +86,7 @@ export const addGroupsThunk = (data) => (dispatch) => {
           toast.success("Grupo criado")
           dispatch(addGroupsList(response.data))
         })
-        .catch((err) => console.log(err))
+        .catch((err) => toast.error("Erro ao criar o grupo"))
 };
 
 export const addGoalThunk = (data) => (dispatch) => {
