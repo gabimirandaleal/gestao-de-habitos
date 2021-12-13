@@ -25,7 +25,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"; 
-import { BsPlusCircleFill } from "react-icons/bs";
+import { BsPlusCircleFill, BsPencil } from "react-icons/bs";
 import {
   updateHabitsThunk,
   plusProgressHabitsThunk,
@@ -33,18 +33,20 @@ import {
 } from "../../Store/modules/habits/thunk";
 import PopUpRemove from "../PopUpRemove"
 
-import { set } from "react-hook-form/dist/index.cjs";
+import PopUpEditHabit from "../PopUpEditHabit";
 
 
 const Habits = () => {
   const [popUp, setPopUp] = useState(false);
   const [popUpRemove, setPopUpRemove] = useState(false);
+  const [popUpEditHabit, setPopUpEditHabit] = useState(false);
   const dispatch = useDispatch();
   const habits = useSelector((state) => state.habits);
   const [atualizar, setAtualizar] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(habits)
   const [searchBar, setSearchBar] = useState("")
   const [id, setId] = useState(0);
+  const [item, setItem] = useState({})
   
   const addProgress = (id, progress) =>{
     dispatch(plusProgressHabitsThunk(id, progress))
@@ -75,6 +77,11 @@ const Habits = () => {
     setSearchBar("")
   }
 
+  const popup = (habit) =>{
+    setItem(habit)
+    setPopUpEditHabit(true)
+  }
+
   useEffect(() => {
     setFilteredProducts(habits)
   }, [habits]);
@@ -88,6 +95,7 @@ const Habits = () => {
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
       {popUpRemove && <PopUpRemove text={"hábito"} deleteHabitPop={deleteHabitPop} setPopup={setPopUpRemove} />}
+      {popUpEditHabit && <PopUpEditHabit setPopup={setPopUpEditHabit} idHabit={item.id} item={item}></PopUpEditHabit>}
         <Div>
         <DivName>
           <div>
@@ -103,8 +111,9 @@ const Habits = () => {
           filteredProducts.map((habit, index) => (
             <Card color={habit.achieved ? "true" : ""} key={index}>
               <Title color={habit.achieved ? "true" : ""}>
-                <Close onClick={() => deleteHabit(habit.id)}>
-                    <IoCloseCircle size="20px" />
+                <Close>
+                    <BsPencil onClick={() => popup(habit)}/>
+                    <IoCloseCircle size="20px" onClick={() => deleteHabit(habit.id)} />
                 </Close>
                 <Upside>
                   <h3>

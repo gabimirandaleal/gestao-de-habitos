@@ -6,6 +6,7 @@ import {deleteActivityThunk} from "../../Store/modules/groups/thunk"
 function PopUpRemove ({text, id, item, deleteHabitPop, setPopup}) {
   const dispatch = useDispatch();
   function removerCard(){
+    setPopup(false)
     if(text === "hábito"){
       deleteHabitPop()
     }else if(text === "meta"){

@@ -4,7 +4,8 @@ import {
   DEL_HABITS,
   UPDATE_HABITS,
   PLUS_PROGRESS_HABITS,
-  SUB_PROGRESS_HABITS
+  SUB_PROGRESS_HABITS,
+  EDIT_HABITS
 } from "./actionType";
 
 const defaultState = [];
@@ -14,7 +15,6 @@ const habitsReducer = (state = defaultState, action) => {
   const { data } = action;
   switch (action.type) {
     case ADD_HABITS:
-      const { data } = action;
       return [...state, data];
     case ATT_HABITS:
       return [...state];
@@ -29,6 +29,10 @@ const habitsReducer = (state = defaultState, action) => {
     case SUB_PROGRESS_HABITS:
       state[state.indexOf(state.find((item) => item.id === progress.id))] = progress
       return [...state];
+    case EDIT_HABITS:
+        console.log(state, action)
+        state[state.indexOf(state.find((item) => item.id === data.id))] = {...data}
+        return [...state];
     default:
       return [...state];
   }
