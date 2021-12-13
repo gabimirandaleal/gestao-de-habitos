@@ -28,18 +28,21 @@ const groupReducer = (state = defaultState, action) => {
     case ADD_GROUPS:
       return [data, ...state]
     case ADD_GOALS:
-      return data
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [...state[state.indexOf(state.find((item)=> item.id === data.group))].goals, data]
+      return [...state]
     case ADD_ACTIVITY:
-      return data
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [...state[state.indexOf(state.find((item)=> item.id === data.group))].activities, data]
+      return [...state]
     case EDIT_GROUPS:
       state[state.indexOf(state.find((item)=> item.id === data.id))] = data
       return [...state]
     case EDIT_ACTIVITY:
-        return data
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [data, ...state[state.indexOf(state.find((item)=> item.id === data.group))].activities.filter((item)=> item.id !== data.id)];
+      return [...state]
     case EDIT_GOAL:
-      return data
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [data, ...state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item)=> item.id !== data.id)];
+      return [...state]
     case SUBSCRIBE_GROUP:
-      console.log(state, action)
       state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group = [...state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group, response.user]
       return [...state];
     case UNSUBSCRIBE_GROUP:

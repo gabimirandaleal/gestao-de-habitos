@@ -24,9 +24,8 @@ function PopUpEditActivity({setPopup, idActivity}) {
     })
 
     const onSubmitFunction = data => {
-        console.log(data)
         dispatch(editActivityThunk(data, idActivity))
-       setPopup(false)
+        setPopup(false)
     }
     return(
         <DivA>

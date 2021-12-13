@@ -1,78 +1,88 @@
 import styled from "styled-components";
 
-export const Conteiner = styled.div`
-  width: 255px;
-  height: 345px;
+export const Cards = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  color: var(--black);
-  border-radius: 30px;
-  text-align: center;
-  font-family: "Sansita";
+  box-sizing:border-box;
+  flex-wrap: wrap;
+  background-color: var(--light-grey);
+  margin-top: 10px;
+  
 `;
 
-export const ContentHeader = styled.div`
-  position: relative;
-  background: var(--dark-orange);
-  padding-top: 20px;
-  height: 30%;
-  width: 100%;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  text-align: center;
-  color: var(--white);
-  font-size: 23px;
-  font-weight: bold;
-  .prancheta,
-  .removed {
-    position: absolute;
-  }
-  .prancheta,
-  .removed:hover {
-    cursor: pointer;
-  }
-  .prancheta {
-    bottom: 15px;
-    left: 20px;
-  }
-  .removed {
-    bottom: 15px;
-    right: 20px;
-  }
-  figure {
-    position: relative;
-    width: 45px;
-    background-color: black;
-    text-align: center;
-    left: 77px;
-    padding: 10p;
-    border-radius: 45px;
-    background: white;
-    top: 45px;
-    padding: 24px;
-  }
-`;
-
-export const ContentDescription = styled.div`
+export const Card = styled.div`
+  width: 210px;
+  height: 265px;
+  margin-bottom: 2rem;
+  border-radius: 10px 10px 0 0;
   background: var(--light-light-orange);
-  height: 70%;
-  width: 100%;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  color: #5b5b5b;
+  margin-right: 1.4rem;
+`;
+
+export const Specs = styled.div`
+  margin: 50px 10px 0px 10px;
+  font-size: 18px;
+  color:  var(--dark-grey);
+  box-sizing:border-box;
+`;
+
+export const Title = styled.div`
+  height: 90px;
+  border-radius: 10px 10px 0 0;
+  background: var(--dark-orange);
+  img {
+    width: 45px;
+    height: 45px;
+    margin-left: 17%;
+    margin-top: 10%;
+  }
+ 
+`;
+
+export const Upside = styled.div`
   display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  align-items: baseline;
-  padding-top: 75px;
-  .dateOfActividie {
-    width: 9rem;
-    text-align: initial;
-    padding-bottom: 10px;
+  justify-content: center;
+  color: var(--white);
+ 
+  h3 {
+    margin-top: 20px;
+    font-size: 18px;
   }
-  span {
-    padding-left: 10px;
+  
+`;
+
+export const Downside = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  svg{
+    cursor:pointer;
+    color:black
   }
+`;
+
+export const Background = styled.div`
+  background: white;
+  min-width: 70px;
+  border-radius: 50%;
+  max-width: 70px;
+  height: 70px;
+  img{
+    width: 45px;
+    height: 45px;
+    margin-left: 17%;
+    margin-top: 15px;
+  }
+`;
+
+export const Close = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 5px 5px 0 0;
+  box-sizing: border-box;
+  color: var(--white);
 `;

@@ -10,7 +10,7 @@ import { BsPencil } from "react-icons/bs";
 import groupReducer from "../../Store/modules/groups/reducer";
 import PopUpEditGroup from "../PopUpEditGroup"
 
-const CardGroups = ({item, groups}) => {
+const CardGroups = ({item, groups, onclick}) => {
   const dispatch = useDispatch()
   
   const [popup, setPopup] = useState(false);
@@ -41,7 +41,7 @@ const CardGroups = ({item, groups}) => {
   
   return (
     
-    <Conteiner text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
+    <Conteiner onClick={() => onclick(item)} text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        
        <span className="icone">
             <BsPencil onClick={() => setPopup(true)}/>
