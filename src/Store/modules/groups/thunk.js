@@ -125,7 +125,7 @@ export const editGroupThunk = (data, idGroup) => (dispatch) => {
         toast.success(`Grupo alterado com sucesso`)
         dispatch(editGroupsList(response.data))
       })
-      .catch((err) => toast.success("Você não pode editar esse grupo"))
+      .catch((err) => toast.error("Você não pode editar esse grupo"))
 };
 
 export const editGoalThunk = (data, idGoal) => (dispatch) => {
