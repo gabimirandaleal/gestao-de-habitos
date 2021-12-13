@@ -37,10 +37,14 @@ const groupReducer = (state = defaultState, action) => {
       state[state.indexOf(state.find((item)=> item.id === data.id))] = data
       return [...state]
     case EDIT_ACTIVITY:
-      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [data, ...state[state.indexOf(state.find((item)=> item.id === data.group))].activities.filter((item)=> item.id !== data.id)];
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities.filter((item) => item.id === data.id)[0].title = data.title
+      const activities = state[state.indexOf(state.find((item)=> item.id === data.group))].activities
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [...activities]
       return [...state]
     case EDIT_GOAL:
-      state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [data, ...state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item)=> item.id !== data.id)];
+      state[state.indexOf(state.find((item)=> item.id === data.group))].goals.filter((item) => item.id === data.id)[0].title = data.title
+      const goals = state[state.indexOf(state.find((item)=> item.id === data.group))].goals
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [...goals]
       return [...state]
     case SUBSCRIBE_GROUP:
       state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group = [...state[state.indexOf(state.find((item)=> item.id === groupId))].users_on_group, response.user]
