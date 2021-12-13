@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
+import { BsPencil } from "react-icons/bs";
 import groupReducer from "../../Store/modules/groups/reducer";
 
 const CardGroups = ({item, groups}) => {
@@ -17,7 +18,7 @@ const CardGroups = ({item, groups}) => {
   );
 
   const userID = jwt_decode(token).user_id
-  const [text, setText] = useState("oi");
+  // const [text, setText] = useState("oi");
 
   
   const verificaInscrito = () => {
@@ -39,7 +40,7 @@ const CardGroups = ({item, groups}) => {
   return (
     <Conteiner text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        <span className="icone">
-            <HighlightOff />
+            <BsPencil/>
         </span>
       <Content>
         <CardHeader>
