@@ -55,6 +55,7 @@ export const DivA = styled.div`
     align-items: center;
     top:0px;  
     left:0px;  
+    z-index:2;
     button{
       margin-top:15px;
     }
