@@ -7,12 +7,14 @@ import { Container, Title, Description, Div } from "./style";
 import imgactivities from "../../assets/img/addActitivities.png";
 import { useEffect, useState } from "react";
 import PopUpCreateActivity from "../PopUpCreateActivity";
+import PopUpCreateGoal from "../PopUpCreateGoal"
 import PopUpEditActivity from "../PopUpEditActivity";
 import { useSelector } from "react-redux";
 import groupGoalsImg from "../../assets/img/groupGoals.png";
 
 const GroupViewer = ({ group }) => {
   const [popupCreateActivities, setPopupCreateActivities] = useState(false);
+  const [popupCreateGoal, setPopupCreateGoal] = useState(false);
   const activiesGroup = useSelector(
     (state) => state.group.find((item) => item.id === group.id).activities
   );
@@ -29,6 +31,12 @@ const GroupViewer = ({ group }) => {
           setPopup={setPopupCreateActivities}
         />
       )}
+      {popupCreateGoal && (
+        <PopUpCreateGoal
+          idGroup={group.id}
+          setPopup={setPopupCreateGoal}
+        />
+      )}
       <Title>
         <h1>
           <HiUserGroup />
@@ -42,7 +50,7 @@ const GroupViewer = ({ group }) => {
       </Description>
       <div id="goals">
         <h2>
-          Metas do grupo <img src={groupGoalsImg} alt="groupGoals" />
+          Metas do grupo <img src={groupGoalsImg} onClick={() => setPopupCreateGoal(true)} alt="groupGoals" />
         </h2>
         <Div>
           {goalsGroup &&

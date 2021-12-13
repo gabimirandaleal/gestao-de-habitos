@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
 import { searchGroupThunk, searchGroupSubscriptionsThunk } from "../../Store/modules/groups/thunk";
 import { BsPlusCircleFill } from "react-icons/bs";
-import habitsImg from "../../assets/img/habits.png";
+import groupsImg from "../../assets/img/groups.png";
 import Button from "../Button";
 import PopUpCreateGroup from "../PopUpCreateGroup"
 import {NativeSelect} from "@mui/material"
@@ -67,7 +67,7 @@ function Groups({groupViewer, setGroup}) {
         <Div>
         <DivName>
           <div>
-            <img src={habitsImg} alt="habits" />
+            <img src={groupsImg} alt="habits" />
             <NativeSelect onChange={showSubs} fullWidth id="select" >
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos</option>
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>

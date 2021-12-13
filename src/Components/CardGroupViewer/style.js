@@ -28,6 +28,7 @@ export const Container = styled.div`
       img {
         width: 25px;
         margin-left: 20px;
+        cursor: pointer;
       }
     }
   }
@@ -40,6 +41,7 @@ export const Container = styled.div`
       img {
         width: 25px;
         margin-left: 20px;
+        cursor: pointer;
       }
     }
   }
