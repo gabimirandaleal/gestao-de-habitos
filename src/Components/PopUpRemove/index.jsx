@@ -1,18 +1,20 @@
 import ButtonYesOrNo from "../ButtonYesOrNo"
 import {DivA, DivContainer, Div} from "./style"
+import { useDispatch } from "react-redux"; 
+import {deleteActivityThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpRemove ({text, deleteHabitPop, setPopup}) {
-
+function PopUpRemove ({text, id, item, deleteHabitPop, setPopup}) {
+  const dispatch = useDispatch();
   function removerCard(){
     if(text === "hábito"){
-      setPopup()
       deleteHabitPop()
     }else if(text === "meta"){
 
     }else if(text === "grupo"){
       
     }else if(text === "atividade"){
-      
+      setPopup(false)
+      dispatch(deleteActivityThunk(id, item))
     }
   }
 
