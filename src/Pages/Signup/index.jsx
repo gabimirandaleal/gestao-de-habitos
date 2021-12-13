@@ -52,7 +52,7 @@ function Signup() {
       .post("users/", data)
       .then((response) => {
         console.log(response.data);
-        toast.success("Usuário cadastrado com sucesso!")
+        toast.success("Usuário cadastrado com sucesso!");
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +85,7 @@ function Signup() {
             {...register("password")}
             margin="normal"
             fullWidth
-            label="Password"
+            label="Senha"
             type="password"
             variant="outlined"
             error={errors.password?.message}
@@ -100,7 +100,7 @@ function Signup() {
             {...register("confirmPassword")}
             margin="normal"
             fullWidth
-            label="Confirm Password"
+            label="Confirmar senha"
             type="password"
             variant="outlined"
             error={errors.confirmPassword?.message}

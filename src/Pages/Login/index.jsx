@@ -50,7 +50,7 @@ function Login() {
             fullWidth
             type="password"
             id="password-basic"
-            label="Password"
+            label="Senha"
             error={!!errors.password?.message}
             variant="outlined"
             {...register("password")}
