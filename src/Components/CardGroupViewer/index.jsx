@@ -11,14 +11,11 @@ import { useSelector } from "react-redux";
 const GroupViewer = ({group}) => {
   const [popupCreateActivities, setPopupCreateActivities] = useState(false);
   const activiesGroup = useSelector((state) => state.group.find((item) => item.id === group.id).activities)
-  const [popupEditActivities, setPopupEditActivities] = useState(false);
-  const [idActivity, setIdActivity] = useState(0);
 
  
   return (
     <Container>
       {popupCreateActivities && <PopUpCreateActivity idGroup={group.id} setPopup={setPopupCreateActivities}/>}
-      {popupEditActivities && <PopUpEditActivity idActivity={idActivity} idGroup={group.id} setPopup={setPopupEditActivities}/>}
       <Title>
         <h1>
           <HiUserGroup />
@@ -44,7 +41,7 @@ const GroupViewer = ({group}) => {
           <Div>
           {
               activiesGroup && activiesGroup.map((item) => (
-                <CardActivity key={item.id} setIdActivity={setIdActivity} setPopup={setPopupEditActivities} item={item} name={group.name}></CardActivity>
+                <CardActivity key={item.id} item={item} name={group.name}></CardActivity>
               ))
           }
           </Div>

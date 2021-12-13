@@ -148,8 +148,11 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
         Authorization: `Bearer ${token}`
       },
       })
-      .then((response) => dispatch(editActivityList(response.data)))
-      .catch((err) => console.log(err))
+      .then((response) => {
+        toast.success("Você atualizou sua atividade");
+        dispatch(editActivityList(response.data))
+      })
+      .catch((err) => toast.error("Não toque no que não é seu"))
 };
 
 export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {

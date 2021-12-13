@@ -14,15 +14,19 @@ export const Conteiner = styled.div`
   color: var(--white);
   border-radius: 30px;
   margin-left:10px;
+  &:hover{
+    background: #47D3F1;
+  }
   .icone {
     position: absolute;
     margin: 0px;
     padding: 0px;
     left: 208px;
     top: 11px;
+    cursor: pointer;
   }
   .icone:hover{
-    cursor: pointer;
+    color: black;
   }
   Button {
     width: 130px;
@@ -43,6 +47,7 @@ export const Content = styled.div`
   border-bottom: 1px solid white;
   margin-bottom: 10px;
   font-family: "Sansita", sans-serif;
+  cursor: pointer;
   figure {
     margin: 15px 0px;
     cursor: pointer;
@@ -66,6 +71,7 @@ export const Content = styled.div`
       text-align: center;
     }
   }
+  
 `;
 
 export const DescriptionGroup = styled.div`

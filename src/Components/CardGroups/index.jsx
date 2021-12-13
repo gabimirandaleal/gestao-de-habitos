@@ -41,12 +41,12 @@ const CardGroups = ({item, groups, onclick}) => {
   
   return (
     
-    <Conteiner onClick={() => onclick(item)} text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
+    <Conteiner  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        
        <span className="icone">
             <BsPencil onClick={() => setPopup(true)}/>
         </span>
-      <Content>
+      <Content onClick={() => onclick(item)}>
         <CardHeader>
           <figure>
             <img src={LogoCardGroup} alt="LogoCardGroup" />

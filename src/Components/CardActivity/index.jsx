@@ -15,22 +15,21 @@ import {
 import { BsPencil } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
 import medal from "../../assets/img/medal.png"
-
-  const CardActivity = ({item, name, setPopup, setIdActivity}) => {
-
+import PopUpEditActivity from "../PopUpEditActivity"
+import { useState } from "react";
+const CardActivity = ({item, name}) => {
+  const [popupEditActivities, setPopupEditActivities] = useState(false);
   const data = () => {
     const split = item.realization_time.split("T");
     const date = split[0].split("-");
     return ` ${date[2]}/${date[1]}/${date[0]}`
   }
 
-  const edit = (id) =>{
-    setPopup(true)
-    setIdActivity(id)
-  }
+  
 
   return (
     <Cards>
+      {popupEditActivities && <PopUpEditActivity item={item} idActivity={item.id} setPopup={setPopupEditActivities}/>}
       <Card>
         <Title >
           <Upside>
@@ -40,7 +39,7 @@ import medal from "../../assets/img/medal.png"
           </Upside>
 
           <Downside>
-            <BsPencil size="19px" onClick={() => edit(item.id)}/>
+            <BsPencil size="19px" onClick={() => setPopupEditActivities(true)}/>
             <Background>
               <img src={medal} alt="habits" />
             </Background>
