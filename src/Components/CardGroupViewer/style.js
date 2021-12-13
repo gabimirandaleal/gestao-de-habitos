@@ -22,15 +22,22 @@ export const Container = styled.div`
   #goals {
     margin: 20px;
     color: var(--dark-medium-red);
-    
+    h2 {
+      display: flex;
+      align-items: center;
+      img {
+        width: 25px;
+        margin-left: 20px;
+      }
+    }
   }
   #activities {
     margin: 20px;
     color: var(--dark-orange);
-    h2{
+    h2 {
       display: flex;
-      align-items:center;
-      img{
+      align-items: center;
+      img {
         width: 25px;
         margin-left: 20px;
       }
@@ -72,7 +79,7 @@ export const Title = styled.div`
 export const Div = styled.div`
   display: flex;
   overflow-y: scroll;
-  align-items:flex-start;
+  align-items: flex-start;
 `;
 
 export const Description = styled.div`

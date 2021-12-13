@@ -1,27 +1,40 @@
 import { FaMedal } from "react-icons/fa";
 import { HiOutlineClipboardList } from "react-icons/hi";
 import { HiUserGroup } from "react-icons/hi";
+import CardGoals from "../CardGoals";
 import CardActivity from "../CardActivity";
 import { Container, Title, Description, Div } from "./style";
-import imgactivities from "../../assets/img/addActitivities.png"
+import imgactivities from "../../assets/img/addActitivities.png";
 import { useEffect, useState } from "react";
-import PopUpCreateActivity from "../PopUpCreateActivity"
-import PopUpEditActivity from "../PopUpEditActivity"
+import PopUpCreateActivity from "../PopUpCreateActivity";
+import PopUpEditActivity from "../PopUpEditActivity";
 import { useSelector } from "react-redux";
-const GroupViewer = ({group}) => {
-  const [popupCreateActivities, setPopupCreateActivities] = useState(false);
-  const activiesGroup = useSelector((state) => state.group.find((item) => item.id === group.id).activities)
+import groupGoalsImg from "../../assets/img/groupGoals.png";
 
- 
+const GroupViewer = ({ group }) => {
+  const [popupCreateActivities, setPopupCreateActivities] = useState(false);
+  const activiesGroup = useSelector(
+    (state) => state.group.find((item) => item.id === group.id).activities
+  );
+
+  const goalsGroup = useSelector(
+    (state) => state.group.find((item) => item.id === group.id).goals
+  );
+
   return (
     <Container>
-      {popupCreateActivities && <PopUpCreateActivity idGroup={group.id} setPopup={setPopupCreateActivities}/>}
+      {popupCreateActivities && (
+        <PopUpCreateActivity
+          idGroup={group.id}
+          setPopup={setPopupCreateActivities}
+        />
+      )}
       <Title>
         <h1>
           <HiUserGroup />
           {group.name}
         </h1>
-        <span>{(group.users_on_group).length} membros</span>
+        <span>{group.users_on_group.length} membros</span>
       </Title>
       <Description>
         <h3>Categoria:{group.category}</h3>
@@ -29,23 +42,40 @@ const GroupViewer = ({group}) => {
       </Description>
       <div id="goals">
         <h2>
-          Metas do grupo <FaMedal />
-          
+          Metas do grupo <img src={groupGoalsImg} alt="groupGoals" />
         </h2>
+        <Div>
+          {goalsGroup &&
+            goalsGroup.map((item) => (
+              <CardGoals
+                key={item.id}
+                item={item}
+                name={group.name}
+              ></CardGoals>
+            ))}
+        </Div>
         <div className="cardHolder"></div>
       </div>
       <div id="activities">
         <h2>
-          Atividades do grupo <img onClick={() => setPopupCreateActivities(true)} src={imgactivities} alt="" />
-        </h2> 
-          <Div>
-          {
-              activiesGroup && activiesGroup.map((item) => (
-                <CardActivity key={item.id} item={item} name={group.name}></CardActivity>
-              ))
-          }
-          </Div>
-        
+          Atividades do grupo{" "}
+          <img
+            onClick={() => setPopupCreateActivities(true)}
+            src={imgactivities}
+            alt=""
+          />
+        </h2>
+        <Div>
+          {activiesGroup &&
+            activiesGroup.map((item) => (
+              <CardActivity
+                key={item.id}
+                item={item}
+                name={group.name}
+              ></CardActivity>
+            ))}
+        </Div>
+
         <div className="cardHolder"></div>
       </div>
     </Container>
