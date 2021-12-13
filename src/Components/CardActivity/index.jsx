@@ -1,24 +1,24 @@
 import {
-  Container,
   Card,
   Cards,
   Specs,
   Title,
-  Empty,
   Upside,
   Downside,
-  Close,
   Background,
-  DivName,
-  Div
 } from "./style";
 import { BsPencil } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
 import medal from "../../assets/img/medal.png"
 import PopUpEditActivity from "../PopUpEditActivity"
+import PopUpRemove from "../PopUpRemove"
 import { useState } from "react";
+
+
 const CardActivity = ({item, name}) => {
   const [popupEditActivities, setPopupEditActivities] = useState(false);
+  const [popupremove, setPopupRemove] = useState(false);
+
   const data = () => {
     const split = item.realization_time.split("T");
     const date = split[0].split("-");
@@ -30,6 +30,7 @@ const CardActivity = ({item, name}) => {
   return (
     <Cards>
       {popupEditActivities && <PopUpEditActivity item={item} idActivity={item.id} setPopup={setPopupEditActivities}/>}
+      {popupremove && <PopUpRemove id={item.id} item={item} setPopup={setPopupRemove} text={"atividade"}></PopUpRemove>}
       <Card>
         <Title >
           <Upside>
@@ -43,7 +44,7 @@ const CardActivity = ({item, name}) => {
             <Background>
               <img src={medal} alt="habits" />
             </Background>
-            <IoCloseCircle size="20px" />
+            <IoCloseCircle size="20px" onClick={() => setPopupRemove(true)}/>
           </Downside>
         </Title>
         <Specs>

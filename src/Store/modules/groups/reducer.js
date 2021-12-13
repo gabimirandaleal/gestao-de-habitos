@@ -10,7 +10,9 @@ import  {
   SUBSCRIBE_GROUP,
   UNSUBSCRIBE_GROUP,
   SHOW_MORE,
-  LIST_MY_GROUP
+  LIST_MY_GROUP,
+  DELETE_ACTIVITY,
+  DELETE_GOAL
 }  from "./actionType";
 
 const defaultState = [];
@@ -56,6 +58,14 @@ const groupReducer = (state = defaultState, action) => {
         return [...groups.concat(group)]
     case LIST_MY_GROUP:
       return [...group]
+    case DELETE_ACTIVITY:
+      const activitiesFilters = (state[state.indexOf(state.find((item)=> item.id === data.group))].activities).filter((item) => item.id !== data.id)
+      state[state.indexOf(state.find((item)=> item.id === data.group))].activities = [...activitiesFilters]
+      return [...state]
+    case DELETE_GOAL:
+        const goalsFilters = (state[state.indexOf(state.find((item)=> item.id === data.group))].goals).filter((item) => item.id !== data.id)
+        state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [...goalsFilters]
+        return [...state]
     default:
       return state;
   }

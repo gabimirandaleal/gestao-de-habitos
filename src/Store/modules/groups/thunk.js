@@ -1,5 +1,5 @@
 import api from "../../../Services/api"
-import {listGroup, GroupsList, addGroupsList, addGoalList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore} from "./actions"
+import {listGroup, GroupsList, addGroupsList, deleteGoalList, addGoalList, deleteActivityList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore} from "./actions"
 import axios from "axios"
 // import {GroupsList, GroupsAdd} from "./actions"
 import {toast} from "react-toastify"
@@ -151,6 +151,33 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
       .then((response) => {
         toast.success("Você atualizou sua atividade");
         dispatch(editActivityList(response.data))
+      })
+      .catch((err) => toast.error("Não toque no que não é seu"))
+};
+
+export const deleteGoalThunk = (idGoal, item) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    api
+      .delete(`groups/${idGoal}/`, idGoal, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      })
+      .then((response) => dispatch(deleteGoalList(item)))
+      .catch((err) => console.log(err))
+};
+
+export const deleteActivityThunk = (idActivity, item) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    api
+      .delete(`activities/${idActivity}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      })
+      .then((response) => {
+        toast.success("Você atualizou sua atividade");
+        dispatch(deleteActivityList(item))
       })
       .catch((err) => toast.error("Não toque no que não é seu"))
 };
