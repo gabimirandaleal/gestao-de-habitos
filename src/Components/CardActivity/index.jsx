@@ -1,0 +1,58 @@
+import {
+  Container,
+  Card,
+  Cards,
+  Specs,
+  Title,
+  Empty,
+  Upside,
+  Downside,
+  Close,
+  Background,
+  DivName,
+  Div
+} from "./style";
+import { BsPencil } from "react-icons/bs";
+import { IoCloseCircle } from "react-icons/io5";
+import medal from "../../assets/img/medal.png"
+import PopUpEditActivity from "../PopUpEditActivity"
+import { useState } from "react";
+const CardActivity = ({item, name}) => {
+  const [popupEditActivities, setPopupEditActivities] = useState(false);
+  const data = () => {
+    const split = item.realization_time.split("T");
+    const date = split[0].split("-");
+    return ` ${date[2]}/${date[1]}/${date[0]}`
+  }
+
+  
+
+  return (
+    <Cards>
+      {popupEditActivities && <PopUpEditActivity item={item} idActivity={item.id} setPopup={setPopupEditActivities}/>}
+      <Card>
+        <Title >
+          <Upside>
+            <h3>
+              {(item.title).length > 15 ? `${item.title.substring(0,15)}...`:item.title}
+            </h3>
+          </Upside>
+
+          <Downside>
+            <BsPencil size="19px" onClick={() => setPopupEditActivities(true)}/>
+            <Background>
+              <img src={medal} alt="habits" />
+            </Background>
+            <IoCloseCircle size="20px" />
+          </Downside>
+        </Title>
+        <Specs>
+          <div>Realização: {data()}</div>
+          <div>Grupo: {name}</div>
+        </Specs>
+      </Card>
+    </Cards>
+  );
+};
+
+export default CardActivity;

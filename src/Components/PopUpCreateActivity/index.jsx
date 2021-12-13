@@ -28,7 +28,6 @@ function PopUpCreateActivity({setPopup, idGroup}) {
     const onSubmitFunction = data => {
         const {realization_time} = data
         data = {...data, realization_time: `${realization_time}:00Z`, "group":idGroup}
-        console.log(data)
         dispatch(addActivityThunk(data))
         setPopup(false)
     }

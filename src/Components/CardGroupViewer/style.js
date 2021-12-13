@@ -4,14 +4,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: var(--medium-grey);
   font-family: "Sansita One";
   .cardHolder {
     max-width: 95vw;
     overflow-x: scroll;
     display: flex;
   }
-
+  width: 100%;
+  height: 100vh;
   h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -22,10 +22,19 @@ export const Container = styled.div`
   #goals {
     margin: 20px;
     color: var(--dark-medium-red);
+    
   }
   #activities {
     margin: 20px;
     color: var(--dark-orange);
+    h2{
+      display: flex;
+      align-items:center;
+      img{
+        width: 25px;
+        margin-left: 20px;
+      }
+    }
   }
   .cardHolder::-webkit-scrollbar {
     width: 12px;
@@ -58,6 +67,12 @@ export const Title = styled.div`
     font-size: 32px;
   }
   margin: 20px 20px 10px 20px;
+`;
+
+export const Div = styled.div`
+  display: flex;
+  overflow-y: scroll;
+  align-items:flex-start;
 `;
 
 export const Description = styled.div`

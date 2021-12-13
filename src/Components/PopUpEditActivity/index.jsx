@@ -10,7 +10,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editActivityThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpEditActivity({setPopup, idActivity}) {
+function PopUpEditActivity({setPopup, idActivity, item}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Nome obrigatório"),
     })
@@ -24,9 +24,8 @@ function PopUpEditActivity({setPopup, idActivity}) {
     })
 
     const onSubmitFunction = data => {
-        console.log(data)
         dispatch(editActivityThunk(data, idActivity))
-       setPopup(false)
+        setPopup(false)
     }
     return(
         <DivA>
@@ -35,7 +34,7 @@ function PopUpEditActivity({setPopup, idActivity}) {
                     <Form onSubmit={handleSubmit(onSubmitFunction)}>
                         <IoCloseCircle onClick={() => setPopup(false)}/>
                         <h3>Editar Atividade</h3>
-                        <TextField margin="normal" fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.name?.message} {...register("title")}/>
+                        <TextField margin="normal" defaultValue={item.title} fullWidth id="login-basic" label="Título" variant="outlined" error={!!errors.name?.message} {...register("title")}/>
                         <Button type="submit" text={"Alterar"}></Button>
                     </Form>     
                 </Div>

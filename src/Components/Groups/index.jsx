@@ -12,7 +12,7 @@ import Button from "../Button";
 import PopUpCreateGroup from "../PopUpCreateGroup"
 import {NativeSelect} from "@mui/material"
 
-function Groups() {
+function Groups({groupViewer, setGroup}) {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
   const [popup, setPopup] = useState(false)
@@ -47,6 +47,10 @@ function Groups() {
     setSearchBar("")
   }
 
+  const abrirCardGroup = (itemGroup) =>{
+    groupViewer()
+    setGroup(itemGroup)
+  }
 
   useEffect(() => {
     if(atualizar){
@@ -76,11 +80,13 @@ function Groups() {
         <CardsBox>
           {filteredProducts &&
             filteredProducts.map((item, index) => (
-                <CardGroups
-                  key={index}
-                  item={item}
-                  filteredProducts={filteredProducts}
-                />
+                  <CardGroups
+                    key={index}
+                    item={item}
+                    filteredProducts={filteredProducts}
+                    onclick={abrirCardGroup}
+                    width="100%"
+                  />
             ))}
         </CardsBox>
         
