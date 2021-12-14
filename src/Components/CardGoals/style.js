@@ -94,3 +94,17 @@ export const Close = styled.div`
   box-sizing: border-box;
   color: var(--white);
 `;
+
+export const GrSubtractCirButton = styled.button`
+  border: none;
+  background: transparent;
+  height: 5px;
+
+`
+
+export const AiOutlinePlusCircleButton = styled.button`
+  border: none;
+  background: transparent;
+  height: 5px;
+  
+`

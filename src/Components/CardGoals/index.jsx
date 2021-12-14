@@ -7,6 +7,8 @@ import {
   Downside,
   Background,
   Close,
+  GrSubtractCirButton,
+  AiOutlinePlusCircleButton
 } from "./style";
 
 import { GrSubtractCircle } from "react-icons/gr";
@@ -65,11 +67,17 @@ const CardGoals = ({ item, name }) => {
           </Upside>
 
           <Downside>
+          <GrSubtractCirButton>
+
             <GrSubtractCircle size="19px" onClick={subProgress}/>
+          </GrSubtractCirButton>
             <Background>
               <img src={medal} alt="habits" />
             </Background>
+            <AiOutlinePlusCircleButton>
+
             <AiOutlinePlusCircle size="19px" onClick={addProgress}/>
+            </AiOutlinePlusCircleButton>
           </Downside>
         </Title>
         <Specs>
