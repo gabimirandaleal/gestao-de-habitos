@@ -12,6 +12,7 @@ to{opacity:1;
 export const Container = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
+  background: var(--light-grey);
 `;
 
 export const Div = styled.div`
@@ -22,6 +23,11 @@ export const Div = styled.div`
   height: 100vh;
   background-color: var(--light-grey);
   animation: ${Appear} 1s;
+  a {
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -34,7 +40,12 @@ export const Form = styled.form`
 
   button {
     margin-top: 15px;
+    transition: 0.5s;
+    :hover {
+      background: var(--dark-medium-green);
+    }
   }
+
   input {
     background-color: var(--white);
   }

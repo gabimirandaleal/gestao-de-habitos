@@ -38,10 +38,17 @@ export const Div = styled.div`
   button {
     margin-top: 10px;
     margin-bottom: 20px;
+    transition: 0.5s;
+    :hover {
+      background: var(--dark-medium-green);
+    }
   }
   a {
     display: flex;
     justify-content: center;
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 

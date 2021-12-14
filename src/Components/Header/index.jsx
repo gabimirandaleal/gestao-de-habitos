@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 const Header = () => {
   const history = useHistory();
   return (
-    <Div onClick={() => history.push("/")}>
+    <Div className="header" onClick={() => history.push("/")}>
       <H1>Re</H1>
-      <Leaf className="teste" src={LeafLogo} alt="Leaf" />
+      <Leaf src={LeafLogo} alt="Leaf" />
       <SpanLogo>leaf</SpanLogo>
     </Div>
   );
