@@ -1,4 +1,4 @@
-import { CardHeader, Conteiner, Content, DescriptionGroup, Details } from "./style";
+import { CardHeader, Container, Content, DescriptionGroup, Details } from "./style";
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
 import { useState } from "react";
@@ -43,7 +43,7 @@ const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProduct
 
   return (
     
-    <Conteiner  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
+    <Container  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
        
        <span className="icone">
             <BsPencil onClick={() => setPopup(true)}/>
@@ -73,7 +73,7 @@ const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProduct
       </Details>
       <Button onclick={onChange} color={verificaInscrito() ? "true" : ""} text={verificaInscrito() ? "Junte-se" : "Inscrito"} />
       {popup && <PopUpEditGroup item={item} idGroup={item.id} setPopup={setPopup}></PopUpEditGroup>}
-    </Conteiner>
+    </Container>
   );
 };
 
