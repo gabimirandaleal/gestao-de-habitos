@@ -1,5 +1,16 @@
-import styled from "styled-components";
+import { HideImage } from "@mui/icons-material";
+import styled, { keyframes } from "styled-components";
 
+const gradient = keyframes`
+0%{background-position:0% 5%}
+    100%{background-position:100% 96%}
+    
+`;
+const hidden = keyframes`
+from{opacity:0;}
+
+to{opacity:1;}
+`;
 export const HeaderDashboard = styled.div`
   padding-right: 20px;
   padding-top: 20px;
@@ -116,12 +127,25 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+
   /* @media (min-width:1190px){
       height: 90vh;
       } */
 `;
 
 export const Div = styled.div`
-  background-color: var(--light-grey);
+  background: var(--light-grey);
   height: 100vh;
+  animation: ${hidden} 4s;
+`;
+
+export const Test = styled.div`
+  background: linear-gradient(
+    307deg,
+    var(--white),
+    var(--dark-medium-green),
+    var(--light-green)
+  );
+  background-size: 600% 600%;
+  animation: ${gradient} 3s;
 `;
