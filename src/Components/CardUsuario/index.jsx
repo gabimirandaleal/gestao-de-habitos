@@ -25,7 +25,7 @@ const CardUsuario = () => {
       
       <img src={UserImg} alt=''/>
           <ul>
-            <li><span>{user && user.username}</span> <BsPencil onClick={() => setPopup(true)}/></li>
+            <li><span>{user && user.username}</span> <BsPencil className="cursor" onClick={() => setPopup(true)}/></li>
             <li>{user && user.email}</li>
           </ul>
           {popup && <PopUpEditUser user={user} setPopup={setPopup}></PopUpEditUser>}

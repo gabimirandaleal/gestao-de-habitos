@@ -73,7 +73,7 @@ function Groups({groupViewer, setGroup}) {
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill className="cursor" onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
         <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}/>
         </Div>

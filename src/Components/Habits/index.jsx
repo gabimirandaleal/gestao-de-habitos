@@ -124,7 +124,7 @@ const Habits = () => {
             <img src={habitsImg} alt="habits" />
             <h3>Seus Hábitos</h3>
           </div>
-          <BsPlusCircleFill onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill className="cursor" onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
         <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}></SearchBar>
         </Div>

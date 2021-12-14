@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Cards = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -10,7 +9,6 @@ export const Cards = styled.div`
   flex-wrap: wrap;
   background-color: var(--light-grey);
   margin-top: 10px;
-  
 `;
 
 export const Card = styled.div`
