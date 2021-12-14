@@ -104,7 +104,7 @@ function Groups({groupViewer, setGroup}) {
             filteredProducts.map((item, index) => (
                   <CardGroups
                     key={index}
-                    item={item}
+                    item={item} 
                     filteredProducts={filteredProducts}
                     onclick={abrirCardGroup}
                     width="100%"
