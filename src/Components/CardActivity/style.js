@@ -25,6 +25,12 @@ export const Specs = styled.div`
   font-size: 18px;
   color: var(--dark-grey);
   box-sizing: border-box;
+  font-family: "Sansita", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  div {
+    margin: 20px 0;
+  }
 `;
 
 export const Title = styled.div`
@@ -67,10 +73,10 @@ export const Background = styled.div`
   max-width: 70px;
   height: 70px;
   img {
-    width: 45px;
-    height: 45px;
-    margin-left: 17%;
-    margin-top: 15px;
+    width: 37px;
+    height: 47px;
+    margin-left: 15px;
+    margin-top: 12px;
   }
 `;
 

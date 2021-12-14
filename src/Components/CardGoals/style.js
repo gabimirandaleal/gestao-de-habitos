@@ -25,12 +25,13 @@ export const Specs = styled.div`
   font-size: 18px;
   color: var(--dark-grey);
   box-sizing: border-box;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
   font-family: "Sansita", sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  div {
+    margin: 20px 0;
+  }
 `;
 
 export const Title = styled.div`
