@@ -1,53 +1,70 @@
-import { CardHeader, Container, Content, DescriptionGroup, Details } from "./style";
+import {
+  CardHeader,
+  Container,
+  Content,
+  DescriptionGroup,
+  Details,
+} from "./style";
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
 import { useState } from "react";
-import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
+import {
+  subscribeGroupThunk,
+  unsubscribeGroupThunk,
+} from "../../Store/modules/groups/thunk";
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
-import PopUpEditGroup from "../PopUpEditGroup"
-import api from "../../Services/api"
+import PopUpEditGroup from "../PopUpEditGroup";
+import api from "../../Services/api";
 
-const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProducts}) => {
-  const dispatch = useDispatch()
-  
+const CardGroups = ({
+  item,
+  groups,
+  onclick,
+  filteredProducts,
+  setFilteredProducts,
+}) => {
+  const dispatch = useDispatch();
+
   const [popup, setPopup] = useState(false);
   const [token] = useState(
-      JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
+    JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
   );
 
-  const userID = jwt_decode(token).user_id
+  const userID = jwt_decode(token).user_id;
   // const [text, setText] = useState("oi");
 
-  
   const verificaInscrito = () => {
-    if(item.users_on_group[0] === userID ){
-      return false
-    }else if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
-      return true
+    if (item.users_on_group[0] === userID) {
+      return false;
+    } else if (
+      item.users_on_group.filter((itens) => itens.id === userID).length === 0
+    ) {
+      return true;
     }
-    return false
-  }
-  
+    return false;
+  };
+
   const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
     if (change) {
       setChange(!change);
-      dispatch(subscribeGroupThunk(item.id, groups, userID))
+      dispatch(subscribeGroupThunk(item.id, groups, userID));
     } else {
       setChange(!change);
-      dispatch(unsubscribeGroupThunk(item.id, groups, userID))
+      dispatch(unsubscribeGroupThunk(item.id, groups, userID));
     }
   };
 
   return (
-    
-    <Container  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
-       
-       <span className="icone">
-            <BsPencil onClick={() => setPopup(true)}/>
-        </span>
+    <Container
+      text={verificaInscrito() ? "Junte-se" : "Inscrito"}
+      color={verificaInscrito() ? "true" : ""}
+    >
+      <span className="icone">
+        <BsPencil onClick={() => setPopup(true)} />
+      </span>
       <Content onClick={() => onclick(item)}>
         <CardHeader>
           <figure>
@@ -71,8 +88,18 @@ const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProduct
           <p>Atividades</p> <p>{item.activities.length}</p>
         </span>
       </Details>
-      <Button onclick={onChange} color={verificaInscrito() ? "true" : ""} text={verificaInscrito() ? "Junte-se" : "Inscrito"} />
-      {popup && <PopUpEditGroup item={item} idGroup={item.id} setPopup={setPopup}></PopUpEditGroup>}
+      <Button
+        onclick={onChange}
+        color={verificaInscrito() ? "true" : ""}
+        text={verificaInscrito() ? "Junte-se" : "Inscrito"}
+      />
+      {popup && (
+        <PopUpEditGroup
+          item={item}
+          idGroup={item.id}
+          setPopup={setPopup}
+        ></PopUpEditGroup>
+      )}
     </Container>
   );
 };
