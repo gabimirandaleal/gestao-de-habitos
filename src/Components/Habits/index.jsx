@@ -117,7 +117,7 @@ const Habits = () => {
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
       {popUpRemove && <PopUpRemove text={"hábito"} deleteHabitPop={deleteHabitPop} setPopup={setPopUpRemove} />}
-      {popUpEditHabit && <PopUpEditHabit setPopup={setPopUpEditHabit} idHabit={item.id} item={item}></PopUpEditHabit>}
+      {popUpEditHabit && <PopUpEditHabit filteredProducts={filteredProducts} setPopup={setPopUpEditHabit} setFilteredProducts={setFilteredProducts} idHabit={item.id} item={item}></PopUpEditHabit>}
         <Div>
         <DivName>
           <div>
