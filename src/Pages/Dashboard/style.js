@@ -25,6 +25,10 @@ export const HeaderDashboard = styled.div`
     height: 30px;
     width: 30px;
     color: red;
+    transition: 0.5s;
+    :hover {
+      transform: scale(1.1);
+    }
   }
   @media (min-width: 790px) {
     padding-top: 0;
@@ -56,6 +60,10 @@ export const ButtonsDashboard = styled.div`
       display: flex;
       align-items: center;
       cursor: pointer;
+      transition: 0.5s;
+      :hover {
+        transform: scale(1.1);
+      }
     }
   }
   img {
