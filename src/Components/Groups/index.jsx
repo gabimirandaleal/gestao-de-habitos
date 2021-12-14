@@ -22,22 +22,7 @@ function Groups({groupViewer, setGroup}) {
   const [setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
-  const [totalGroupsArr, setTotalGroupsArr] = useState([])
-  const [link, setLink] = useState("https://kenzie-habits.herokuapp.com/groups/?page=1")
-
-  const totalGroups = () => {
-    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-    if(link!=null){
-      axios
-      .get(`${link}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setTotalGroupsArr([...(response.data.results).concat(totalGroupsArr)])
-        setLink(response.data.next)
-      })
-    }
-  }
+ 
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -49,24 +34,17 @@ function Groups({groupViewer, setGroup}) {
 
   const filtrarItens = (text) =>{
     setSearchBar(text)
-    setFilteredProducts(totalGroupsArr.filter((item) => {
-      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+    setFilteredProducts(groups.filter((item) => {
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.creator.username).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
     }));
   }
 
-  useEffect(() =>{
-    totalGroups()
-  }, [totalGroupsArr])
-
   useEffect(() => {
-    totalGroups()
     setFilteredProducts(groups)
   }, [groups]);
 
   const submit = () => {
     setSearchBar("")
-    setTotalGroupsArr([])
-    setLink("https://kenzie-habits.herokuapp.com/groups/?page=1")
   }
 
   const abrirCardGroup = (itemGroup) =>{
@@ -95,7 +73,7 @@ function Groups({groupViewer, setGroup}) {
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill className="cursor" onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
         <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}/>
         </Div>
@@ -104,7 +82,7 @@ function Groups({groupViewer, setGroup}) {
             filteredProducts.map((item, index) => (
                   <CardGroups
                     key={index}
-                    item={item}
+                    item={item} 
                     filteredProducts={filteredProducts}
                     onclick={abrirCardGroup}
                     width="100%"

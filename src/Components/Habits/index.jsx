@@ -47,27 +47,43 @@ const Habits = () => {
   const [searchBar, setSearchBar] = useState("")
   const [id, setId] = useState(0);
   const [item, setItem] = useState({})
+  const [isRenderIn, setIsrenderIn] = useState(false)
   
   const addProgress = (id, progress) =>{
     dispatch(plusProgressHabitsThunk(id, progress))
+    if(filteredProducts.find((item) => item.id === id).how_much_achieved < 100 && filteredProducts.find((item) => item.id === id).how_much_achieved === 90){
+      filteredProducts.find((item) => item.id === id).how_much_achieved = filteredProducts.find((item) => item.id === id).how_much_achieved + 10
+      filteredProducts.find((item) => item.id === id).achieved = true
+      setFilteredProducts([...filteredProducts]) 
+    }else if(filteredProducts.find((item) => item.id === id).how_much_achieved < 100){
+      filteredProducts.find((item) => item.id === id).how_much_achieved = filteredProducts.find((item) => item.id === id).how_much_achieved + 10
+      setFilteredProducts([...filteredProducts]) 
+    }
   }
 
   const subProgress = (id, progress) =>{
     dispatch(subtractProgressHabitsThunk(id, progress))
+    if(filteredProducts.find((item) => item.id === id).how_much_achieved > 0){
+      filteredProducts.find((item) => item.id === id).how_much_achieved = filteredProducts.find((item) => item.id === id).how_much_achieved - 10
+      filteredProducts.find((item) => item.id === id).achieved = false;
+      setFilteredProducts([...filteredProducts]) 
+    }
+    
   }
   
   const deleteHabit = (ID) => {
     setId(ID)
     setPopUpRemove(!popUpRemove)
-    
   } 
+
   const deleteHabitPop = () =>{
     dispatch(delHabitThunk(id))
     setAtualizar(!atualizar)
   }
-
+  // gabi , help......
   const filtrarItens = (text) =>{
     setSearchBar(text)
+    setIsrenderIn(true)
     setFilteredProducts(habits.filter((item) => {
       return ((item.title).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.title
     }));
@@ -82,9 +98,15 @@ const Habits = () => {
     setPopUpEditHabit(true)
   }
 
+  console.log(filteredProducts)
+
   useEffect(() => {
+    if (isRenderIn === true){
+      setFilteredProducts(filteredProducts)
+    } else {
     setFilteredProducts(habits)
-  }, [habits]);
+    }
+  }, [habits, filteredProducts]);
 
   useEffect(() => {
     dispatch(updateHabitsThunk());
@@ -95,14 +117,14 @@ const Habits = () => {
     <Container>
       {popUp && <PopUpCreateHabits setPopup={setPopUp} />}
       {popUpRemove && <PopUpRemove text={"hábito"} deleteHabitPop={deleteHabitPop} setPopup={setPopUpRemove} />}
-      {popUpEditHabit && <PopUpEditHabit setPopup={setPopUpEditHabit} idHabit={item.id} item={item}></PopUpEditHabit>}
+      {popUpEditHabit && <PopUpEditHabit filteredProducts={filteredProducts} setPopup={setPopUpEditHabit} setFilteredProducts={setFilteredProducts} idHabit={item.id} item={item}></PopUpEditHabit>}
         <Div>
         <DivName>
           <div>
             <img src={habitsImg} alt="habits" />
             <h3>Seus Hábitos</h3>
           </div>
-          <BsPlusCircleFill onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill className="cursor" onClick={() => setPopUp(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
         <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}></SearchBar>
         </Div>

@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
 import PopUpEditGroup from "../PopUpEditGroup"
+import api from "../../Services/api"
 
-const CardGroups = ({item, groups, onclick}) => {
+const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProducts}) => {
   const dispatch = useDispatch()
   
   const [popup, setPopup] = useState(false);
@@ -21,11 +22,14 @@ const CardGroups = ({item, groups, onclick}) => {
 
   
   const verificaInscrito = () => {
-    if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
+    if(item.users_on_group[0] === userID ){
+      return false
+    }else if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
       return true
     }
     return false
   }
+  
   const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
     if (change) {
@@ -36,7 +40,7 @@ const CardGroups = ({item, groups, onclick}) => {
       dispatch(unsubscribeGroupThunk(item.id, groups, userID))
     }
   };
-  
+
   return (
     
     <Conteiner  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
