@@ -22,7 +22,7 @@ export const Container = styled.div`
   margin-left: 10px;
   transition: 0.5s;
   :hover {
-    box-shadow: 0px 0px 30px 5px var(--light-blue);
+    transform: TranslateY(-10px);
   }
   .icone {
     position: absolute;

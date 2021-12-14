@@ -20,6 +20,9 @@ export const Div = styled.div`
 export const H1 = styled.h1`
   margin: 10px 0 10px 10px;
   color: var(--dark-green);
+  :hover {
+    margin-right: 20px;
+  }
 `;
 export const Leaf = styled.img`
   width: 30px;
