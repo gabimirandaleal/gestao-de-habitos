@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Ul = styled.ul`
-  margin: 0px 5px 0 20px;
+  margin: 0px 5px 0 10px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -9,7 +9,7 @@ export const Ul = styled.ul`
         font-size: 12px;
         font-style: normal;
           img {
-            margin-left: 20px;
+            margin-left:10px;
             width: 15px
           }
           li {
