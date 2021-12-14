@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import {Div, Form, DivA, DivContainer} from "./style";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
 import { useState } from 'react';
@@ -20,7 +19,6 @@ function PopUpCreateHabits({setPopup}) {
         frequency: yup.string().required("Frequência obrigatória")
     })
 
-    const [user, setUser] = useState([]);
     const dispatch = useDispatch();
     const [token] = useState(
         JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""

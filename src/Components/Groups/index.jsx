@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
-import { searchGroupThunk, searchGroupSubscriptionsThunk } from "../../Store/modules/groups/thunk";
+import { searchGroupThunk, searchGroupSubscriptionsThunk} from "../../Store/modules/groups/thunk";
 import { BsPlusCircleFill } from "react-icons/bs";
 import groupsImg from "../../assets/img/groups.png";
 import Button from "../Button";
 import PopUpCreateGroup from "../PopUpCreateGroup"
 import {NativeSelect} from "@mui/material"
-
+import axios from "axios"
 function Groups({groupViewer, setGroup}) {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
@@ -19,10 +19,25 @@ function Groups({groupViewer, setGroup}) {
   const [ispage] = useState(true);
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
-  const [input, setInput] = useState("Grupos")
+  const [setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
+  const [totalGroupsArr, setTotalGroupsArr] = useState([])
+  const [link, setLink] = useState("https://kenzie-habits.herokuapp.com/groups/?page=1")
 
+  const totalGroups = () => {
+    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    if(link!=null){
+      axios
+      .get(`${link}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setTotalGroupsArr([...(response.data.results).concat(totalGroupsArr)])
+        setLink(response.data.next)
+      })
+    }
+  }
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -34,17 +49,24 @@ function Groups({groupViewer, setGroup}) {
 
   const filtrarItens = (text) =>{
     setSearchBar(text)
-    setFilteredProducts(groups.filter((item) => {
+    setFilteredProducts(totalGroupsArr.filter((item) => {
       return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
     }));
   }
 
+  useEffect(() =>{
+    totalGroups()
+  }, [totalGroupsArr])
+
   useEffect(() => {
+    totalGroups()
     setFilteredProducts(groups)
   }, [groups]);
 
   const submit = () => {
     setSearchBar("")
+    setTotalGroupsArr([])
+    setLink("https://kenzie-habits.herokuapp.com/groups/?page=1")
   }
 
   const abrirCardGroup = (itemGroup) =>{

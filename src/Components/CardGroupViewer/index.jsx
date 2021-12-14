@@ -1,14 +1,11 @@
-import { FaMedal } from "react-icons/fa";
-import { HiOutlineClipboardList } from "react-icons/hi";
 import { HiUserGroup } from "react-icons/hi";
 import CardGoals from "../CardGoals";
 import CardActivity from "../CardActivity";
 import { Container, Title, Description, Div } from "./style";
 import imgactivities from "../../assets/img/addActitivities.png";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import PopUpCreateActivity from "../PopUpCreateActivity";
 import PopUpCreateGoal from "../PopUpCreateGoal"
-import PopUpEditActivity from "../PopUpEditActivity";
 import { useSelector } from "react-redux";
 import groupGoalsImg from "../../assets/img/groupGoals.png";
 

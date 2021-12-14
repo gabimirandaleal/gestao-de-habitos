@@ -1,4 +1,3 @@
-import { red } from "@mui/material/colors";
 import styled from "styled-components";
 
 export const Container = styled.div`
