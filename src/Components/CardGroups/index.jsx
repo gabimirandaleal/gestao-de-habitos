@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
 import PopUpEditGroup from "../PopUpEditGroup"
 
-const CardGroups = ({item, groups, onclick}) => {
+const CardGroups = ({item, groups, onclick, filteredProducts}) => {
   const dispatch = useDispatch()
   
   const [popup, setPopup] = useState(false);
@@ -21,7 +21,9 @@ const CardGroups = ({item, groups, onclick}) => {
 
   
   const verificaInscrito = () => {
-    if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
+    if(item.users_on_group[0] === userID ){
+      return false
+    }else if(item.users_on_group.filter((itens) => itens.id === userID).length === 0){
       return true
     }
     return false

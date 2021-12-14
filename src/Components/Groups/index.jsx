@@ -24,7 +24,6 @@ function Groups({groupViewer, setGroup}) {
   const [filteredProducts, setFilteredProducts] = useState(groups)
   const [totalGroupsArr, setTotalGroupsArr] = useState([])
   const [link, setLink] = useState("https://kenzie-habits.herokuapp.com/groups/?page=1")
-
   const totalGroups = () => {
     const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
     if(link!=null){
