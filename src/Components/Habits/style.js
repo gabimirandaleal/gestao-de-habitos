@@ -46,6 +46,10 @@ export const DivName = styled.div`
   }
   svg {
     margin-left: 20px;
+    transition: 0.5s;
+    :hover {
+      transform: scale(1.4);
+    }
   }
   .cursor {
     width: 25px;

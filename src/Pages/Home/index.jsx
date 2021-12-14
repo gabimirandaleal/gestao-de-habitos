@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <Container>
-      <Header />
+      <Header className="teste" />
       <ContainerAcess>
         <DivImage>
           <img src={image} alt="" />
