@@ -1,13 +1,11 @@
 import { CardHeader, Conteiner, Content, DescriptionGroup, Details } from "./style";
-import {HighlightOff} from "@mui/icons-material"
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {subscribeGroupThunk, unsubscribeGroupThunk} from "../../Store/modules/groups/thunk"
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
-import groupReducer from "../../Store/modules/groups/reducer";
 import PopUpEditGroup from "../PopUpEditGroup"
 
 const CardGroups = ({item, groups, onclick}) => {
