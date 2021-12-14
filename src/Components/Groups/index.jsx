@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import noGroupsHabits from "../../assets/img/noGroupHabits.png";
 import { useSelector, useDispatch } from "react-redux";
  import {addSubPageThunk} from "../../Store/modules/groups/thunk"
-import { searchGroupThunk, searchGroupSubscriptionsThunk } from "../../Store/modules/groups/thunk";
+import { searchGroupThunk, searchGroupSubscriptionsThunk} from "../../Store/modules/groups/thunk";
 import { BsPlusCircleFill } from "react-icons/bs";
 import groupsImg from "../../assets/img/groups.png";
 import Button from "../Button";
 import PopUpCreateGroup from "../PopUpCreateGroup"
 import {NativeSelect} from "@mui/material"
-
+import axios from "axios"
 function Groups({groupViewer, setGroup}) {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
@@ -19,10 +19,10 @@ function Groups({groupViewer, setGroup}) {
   const [ispage] = useState(true);
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
-  const [input, setInput] = useState("Grupos")
+  const [setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
-
+ 
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -35,7 +35,7 @@ function Groups({groupViewer, setGroup}) {
   const filtrarItens = (text) =>{
     setSearchBar(text)
     setFilteredProducts(groups.filter((item) => {
-      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.creator.username).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
     }));
   }
 
@@ -73,7 +73,7 @@ function Groups({groupViewer, setGroup}) {
               <option defaultValue={(event) => setInput(event.target.value)}>Grupos inscritos</option>
             </NativeSelect>
           </div>
-          <BsPlusCircleFill onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
+          <BsPlusCircleFill className="cursor" onClick={() => setPopup(true)} size={"20px"} color="#2ECC71"/>
         </DivName>
         <SearchBar onclick={submit} searchBar={searchBar} filtrarItens={filtrarItens}/>
         </Div>
@@ -82,7 +82,7 @@ function Groups({groupViewer, setGroup}) {
             filteredProducts.map((item, index) => (
                   <CardGroups
                     key={index}
-                    item={item}
+                    item={item} 
                     filteredProducts={filteredProducts}
                     onclick={abrirCardGroup}
                     width="100%"

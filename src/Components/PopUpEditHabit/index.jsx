@@ -4,13 +4,12 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import {Div, Form, DivA, DivContainer} from "./style"
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editHabitsThunk} from "../../Store/modules/habits/thunk"
 
-function PopUpEditHabit({setPopup, idHabit, item}) {
+function PopUpEditHabit({setPopup, idHabit, item, filteredProducts, setFilteredProducts}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Título obrigatório"),
         category: yup.string().required("Categoria obrigatória"),
@@ -29,6 +28,12 @@ function PopUpEditHabit({setPopup, idHabit, item}) {
     const onSubmitFunction = data => {
         dispatch(editHabitsThunk(idHabit, data))
         setPopup(false)
+        console.log(filteredProducts.filter((item) => item.id === idHabit)[0])
+        filteredProducts.find((item) => item.id === idHabit).category = data.category
+        filteredProducts.find((item) => item.id === idHabit).frequency = data.frequency
+        filteredProducts.find((item) => item.id === idHabit).difficulty = data.difficulty
+        filteredProducts.find((item) => item.id === idHabit).title = data.title
+        setFilteredProducts([...filteredProducts])
     }
     return(
         <DivA>

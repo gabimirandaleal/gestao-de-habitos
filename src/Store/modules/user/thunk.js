@@ -35,8 +35,6 @@ export const editUserThunk = (data) => (dispatch) => {
 };
 
 export const searchUserThunk = (data) => (dispatch) => {
-  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-
   api
     .get(`/users/${data}/`)
     .then((response) => {

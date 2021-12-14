@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
-import api from '../../Services/api'
 import UserImg from '../../assets/img/userAvatar.png'
 import { BsPencil } from "react-icons/bs";
 import PopUpEditUser from "../PopUpEditUser"
@@ -26,7 +25,7 @@ const CardUsuario = () => {
       
       <img src={UserImg} alt=''/>
           <ul>
-            <li><span>{user && user.username}</span> <BsPencil onClick={() => setPopup(true)}/></li>
+            <li><span>{user && user.username}</span> <BsPencil className="cursor" onClick={() => setPopup(true)}/></li>
             <li>{user && user.email}</li>
           </ul>
           {popup && <PopUpEditUser user={user} setPopup={setPopup}></PopUpEditUser>}

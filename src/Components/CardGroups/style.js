@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Conteiner = styled.div`
+export const Container = styled.div`
   width: 255px;
-  height: 345px;
+  height: 300px;
   position: relative;
   margin-bottom: 25px;
   background-color: var(--light-medium-blue);
@@ -13,9 +13,9 @@ export const Conteiner = styled.div`
   font: unset;
   color: var(--white);
   border-radius: 30px;
-  margin-left:10px;
-  &:hover{
-    background: #47D3F1;
+  margin-left: 10px;
+  &:hover {
+    background: #47d3f1;
   }
   .icone {
     position: absolute;
@@ -25,7 +25,7 @@ export const Conteiner = styled.div`
     top: 11px;
     cursor: pointer;
   }
-  .icone:hover{
+  .icone:hover {
     color: black;
   }
   Button {
@@ -36,6 +36,9 @@ export const Conteiner = styled.div`
     font-size: 19px;
     background-color: ${(props) =>
       props.color ? "var(--dark-orange)" : "#9E9E9E"};
+  }
+  @media (min-width: 768px) {
+    height: 345px;
   }
 `;
 
@@ -71,13 +74,12 @@ export const Content = styled.div`
       text-align: center;
     }
   }
-  
 `;
 
 export const DescriptionGroup = styled.div`
-    @media (min-width: 768px){
-        text-align: center;
-    }
+  @media (min-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const CardHeader = styled.div`
@@ -88,6 +90,10 @@ export const CardHeader = styled.div`
   @media (min-width: 768px) {
     flex-direction: column;
     margin-bottom: 10px;
+  }
+
+  figure img {
+    width: 60px;
   }
 `;
 

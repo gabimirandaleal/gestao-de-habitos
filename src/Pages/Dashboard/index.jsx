@@ -62,7 +62,7 @@ const Dashboard = () => {
           
         </UserBox>
 
-        <FiLogOut onClick={logout}/>
+        <FiLogOut className="cursor" onClick={logout}/>
         
       </HeaderDashboard>
       <Container>
