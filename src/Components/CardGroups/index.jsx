@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
 import PopUpEditGroup from "../PopUpEditGroup"
+import api from "../../Services/api"
 
-const CardGroups = ({item, groups, onclick, filteredProducts}) => {
+const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProducts}) => {
   const dispatch = useDispatch()
   
   const [popup, setPopup] = useState(false);
@@ -32,12 +33,28 @@ const CardGroups = ({item, groups, onclick, filteredProducts}) => {
   const onChange = () => {
     if (change) {
       setChange(!change);
-      dispatch(subscribeGroupThunk(item.id, groups, userID))
+      dispatch(subscribeGroupThunk(item.id, groups, userID, item, setFilteredProducts, filteredProducts))
+      mudar()
     } else {
       setChange(!change);
-      dispatch(unsubscribeGroupThunk(item.id, groups, userID))
+      dispatch(unsubscribeGroupThunk(item.id, groups, userID, item, setFilteredProducts, filteredProducts))
+      mudar()
     }
   };
+
+  const mudar = () =>{
+    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    api
+    .get(`groups/${item.id}/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      console.log(filteredProducts.find((itens) => item.id ===itens.id).users_on_group)
+      filteredProducts.find((itens) => item.id ===itens.id).users_on_group = [...(response.data.users_on_group)]
+      setFilteredProducts([...filteredProducts])
+    })
+    .catch((err) => console.log(err))
+  }
   
   return (
     

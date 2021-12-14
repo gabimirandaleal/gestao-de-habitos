@@ -22,21 +22,7 @@ function Groups({groupViewer, setGroup}) {
   const [setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
-  const [totalGroupsArr, setTotalGroupsArr] = useState([])
-  const [link, setLink] = useState("https://kenzie-habits.herokuapp.com/groups/?page=1")
-  const totalGroups = () => {
-    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-    if(link!=null){
-      axios
-      .get(`${link}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setTotalGroupsArr([...(response.data.results).concat(totalGroupsArr)])
-        setLink(response.data.next)
-      })
-    }
-  }
+ 
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -48,24 +34,16 @@ function Groups({groupViewer, setGroup}) {
 
   const filtrarItens = (text) =>{
     setSearchBar(text)
-    setFilteredProducts(totalGroupsArr.filter((item) => {
+    setFilteredProducts(filteredProducts.filter((item) => {
       return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
     }));
   }
-
-  useEffect(() =>{
-    totalGroups()
-  }, [totalGroupsArr])
-
   useEffect(() => {
-    totalGroups()
     setFilteredProducts(groups)
   }, [groups]);
 
   const submit = () => {
     setSearchBar("")
-    setTotalGroupsArr([])
-    setLink("https://kenzie-habits.herokuapp.com/groups/?page=1")
   }
 
   const abrirCardGroup = (itemGroup) =>{
@@ -107,6 +85,7 @@ function Groups({groupViewer, setGroup}) {
                     filteredProducts={filteredProducts}
                     onclick={abrirCardGroup}
                     width="100%"
+                    setFilteredProducts={setFilteredProducts}
                   />
             ))}
         </CardsBox>
