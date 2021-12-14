@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Ul = styled.ul`
-  margin: 0px 5px 0 10px;
+    margin: 0px 5px 0 10px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -17,6 +17,9 @@ export const Ul = styled.ul`
             span {
               font-size: 17px;
             }
+          }
+          svg{
+            cursor: pointer;
           }
 
 `
