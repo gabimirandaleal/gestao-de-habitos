@@ -31,17 +31,20 @@ export const Form = styled.form`
   }
 `;
 
-export const Error = styled.ul`
-  margin: 0px;
-  text-align: start;
-  margin-bottom: 15px;
-  margin-top: ${(props) => (props.margin ? `${props.margin}px` : "-5px")};
-  font-size: 10px;
-  color: rgb(240, 42, 42);
-  padding: 0px 0px 0px 5px;
 
+export const Error = styled.ul`
+  text-align: start;
+  color: rgb(240, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 5px;
   li {
-    list-style: inside;
+    font-size: 10px;
+    list-style: none;
+    font-family: "Times New Roman";
+    padding-left: 5px;
   }
 `;
 

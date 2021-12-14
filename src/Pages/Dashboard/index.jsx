@@ -54,7 +54,7 @@ const Dashboard = () => {
           <Header />
 
           <ButtonsDashboard>
-            <ul>
+            <ul classeName='listHeader'>
               <li onClick={() => habits()}>
                 <img src={HabitsImg} alt="" />
                 <span>Seus Hábitos</span>
