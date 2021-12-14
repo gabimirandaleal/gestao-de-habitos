@@ -72,11 +72,10 @@ export const Card = styled.div`
     props.color ? "var(--light-green)" : "var(--light-yellow)"};
   margin-right: 1.4rem;
   margin-left: 1.4rem;
-  transition: 1s;
-  animation: ${Anim} 1s;
+  transition: 0.5s;
+  animation: ${Anim} 0.5s;
   :hover {
-    box-shadow: 0px 0px 30px
-      ${(props) => (props.color ? "var(--light-green)" : "var(--dark-yellow)")};
+    transform: TranslateY(-10px);
   }
 `;
 

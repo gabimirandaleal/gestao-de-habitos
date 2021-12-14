@@ -4,6 +4,7 @@ import {
   Content,
   DescriptionGroup,
   Details,
+  Div,
 } from "./style";
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
@@ -58,41 +59,7 @@ const CardGroups = ({
   };
 
   return (
-    <Container
-      text={verificaInscrito() ? "Junte-se" : "Inscrito"}
-      color={verificaInscrito() ? "true" : ""}
-    >
-      <span className="icone">
-        <BsPencil onClick={() => setPopup(true)} />
-      </span>
-      <Content onClick={() => onclick(item)}>
-        <CardHeader>
-          <figure>
-            <img src={LogoCardGroup} alt="LogoCardGroup" />
-          </figure>
-          <DescriptionGroup>
-            <h2>{item.name}</h2>
-            <span> {item.category} </span>
-          </DescriptionGroup>
-        </CardHeader>
-        <p> {item.creator.username} </p>
-      </Content>
-      <Details>
-        <span>
-          <p>Incritos</p> <p>{item.users_on_group.length}</p>
-        </span>
-        <span>
-          <p>Metas</p> <p>{item.goals.length}</p>
-        </span>
-        <span>
-          <p>Atividades</p> <p>{item.activities.length}</p>
-        </span>
-      </Details>
-      <Button
-        onclick={onChange}
-        color={verificaInscrito() ? "true" : ""}
-        text={verificaInscrito() ? "Junte-se" : "Inscrito"}
-      />
+    <div>
       {popup && (
         <PopUpEditGroup
           item={item}
@@ -100,7 +67,43 @@ const CardGroups = ({
           setPopup={setPopup}
         ></PopUpEditGroup>
       )}
-    </Container>
+      <Container
+        text={verificaInscrito() ? "Junte-se" : "Inscrito"}
+        color={verificaInscrito() ? "true" : ""}
+      >
+        <span className="icone">
+          <BsPencil onClick={() => setPopup(true)} />
+        </span>
+        <Content onClick={() => onclick(item)}>
+          <CardHeader>
+            <figure>
+              <img src={LogoCardGroup} alt="LogoCardGroup" />
+            </figure>
+            <DescriptionGroup>
+              <h2>{item.name}</h2>
+              <span> {item.category} </span>
+            </DescriptionGroup>
+          </CardHeader>
+          <p> {item.creator.username} </p>
+        </Content>
+        <Details>
+          <span>
+            <p>Incritos</p> <p>{item.users_on_group.length}</p>
+          </span>
+          <span>
+            <p>Metas</p> <p>{item.goals.length}</p>
+          </span>
+          <span>
+            <p>Atividades</p> <p>{item.activities.length}</p>
+          </span>
+        </Details>
+        <Button
+          onclick={onChange}
+          color={verificaInscrito() ? "true" : ""}
+          text={verificaInscrito() ? "Junte-se" : "Inscrito"}
+        />
+      </Container>
+    </div>
   );
 };
 
