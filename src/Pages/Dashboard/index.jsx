@@ -51,7 +51,7 @@ const Dashboard = () => {
 
         
         <ButtonsDashboard>
-          <ul>
+          <ul classeName='listHeader'>
             <li onClick={() => habits()}><img src={HabitsImg} alt=''/><span>Seus Hábitos</span></li>
             <li onClick={() => groups()}><img src={GroupsImg} alt=''/><span>Seus Grupos</span></li>
           </ul>

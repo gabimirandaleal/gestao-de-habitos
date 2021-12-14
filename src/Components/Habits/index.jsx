@@ -11,7 +11,9 @@ import {
   Close,
   Background,
   DivName,
-  Div
+  Div,
+  GrSubtractCirButton,
+  AiOutlinePlusCircleButton
 } from "./style";
 import SearchBar from "../SearchBar"
 import PopUpCreateHabits from "../../Components/PopUpCreateHabits";
@@ -124,11 +126,16 @@ const Habits = () => {
                 </Upside>
 
                 <Downside>
+                  <GrSubtractCirButton> 
                   <GrSubtractCircle size="19px" onClick={() => subProgress(habit.id, habit.how_much_achieved)}/>
+                  </GrSubtractCirButton>
                   <Background>
                     <img src={habitsImg} alt="habits" />
                   </Background>
-                  <AiOutlinePlusCircle size="20px" onClick={() => addProgress(habit.id, habit.how_much_achieved)}/>
+                  <AiOutlinePlusCircleButton>
+                    <AiOutlinePlusCircle 
+                      size="20px" onClick={() => addProgress(habit.id, habit.how_much_achieved)}/>
+                  </AiOutlinePlusCircleButton>
                 </Downside>
               </Title>
 

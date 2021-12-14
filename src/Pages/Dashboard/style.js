@@ -37,7 +37,7 @@ export const ButtonsDashboard = styled.div`
     color: var(--dark-grey);
 
     font-weight: lighter;
-      ul {
+      .listHeader {
         display: flex;
         flex-direction: row;
         li {
@@ -85,7 +85,7 @@ export const UserBox = styled.div`
         width: 50px
       }
     
-      ul {
+      /* ul {
         margin: 0px 5px 0 20px;
         display: flex;
         flex-direction: column;
@@ -104,7 +104,7 @@ export const UserBox = styled.div`
             }
           }
       
-        }
+        } */
     
   @media (min-width:790px){
       padding-left: 2vw;
