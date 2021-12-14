@@ -22,7 +22,7 @@ function Groups({groupViewer, setGroup}) {
   const [input, setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
-
+  const [isRenderOn, setIsrenderOn] = useState(false)
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -34,14 +34,19 @@ function Groups({groupViewer, setGroup}) {
 
   const filtrarItens = (text) =>{
     setSearchBar(text)
+    setIsrenderOn(true)
     setFilteredProducts(groups.filter((item) => {
-      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.creator.username).toUpperCase().indexOf(text.toUpperCase()) > -1  ) && item.name
     }));
   }
 
   useEffect(() => {
-    setFilteredProducts(groups)
-  }, [groups]);
+    if (isRenderOn === true){
+    setFilteredProducts(filteredProducts)
+    } else {
+      setFilteredProducts(groups)
+    }
+  }, [filteredProducts, groups]);
 
   const submit = () => {
     setSearchBar("")
