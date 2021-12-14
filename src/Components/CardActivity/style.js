@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const Cards = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  box-sizing:border-box;
+  box-sizing: border-box;
   flex-wrap: wrap;
   background-color: var(--light-grey);
   margin-top: 10px;
-  
 `;
 
 export const Card = styled.div`
@@ -25,8 +23,8 @@ export const Card = styled.div`
 export const Specs = styled.div`
   margin: 50px 10px 0px 10px;
   font-size: 18px;
-  color:  var(--dark-grey);
-  box-sizing:border-box;
+  color: var(--dark-grey);
+  box-sizing: border-box;
 `;
 
 export const Title = styled.div`
@@ -39,28 +37,26 @@ export const Title = styled.div`
     margin-left: 17%;
     margin-top: 10%;
   }
- 
 `;
 
 export const Upside = styled.div`
   display: flex;
   justify-content: center;
   color: var(--white);
- 
+
   h3 {
     margin-top: 20px;
     font-size: 18px;
   }
-  
 `;
 
 export const Downside = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
-  svg{
-    cursor:pointer;
-    color:black
+  svg {
+    cursor: pointer;
+    color: black;
   }
 `;
 
@@ -70,7 +66,7 @@ export const Background = styled.div`
   border-radius: 50%;
   max-width: 70px;
   height: 70px;
-  img{
+  img {
     width: 45px;
     height: 45px;
     margin-left: 17%;

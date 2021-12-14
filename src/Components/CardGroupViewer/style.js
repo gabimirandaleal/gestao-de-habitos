@@ -11,7 +11,7 @@ export const Container = styled.div`
     display: flex;
   }
   width: 100%;
-  height: 100vh;
+
   h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -81,7 +81,6 @@ export const Title = styled.div`
 export const Div = styled.div`
   display: flex;
   overflow-y: scroll;
-  align-items: flex-start;
 `;
 
 export const Description = styled.div`

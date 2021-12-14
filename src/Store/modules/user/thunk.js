@@ -1,7 +1,7 @@
 import api from "../../../Services/api";
-import { signIn, logOut, editUser } from "./actions"
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import { signIn, logOut, editUser } from "./actions";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const signInThunk = (data) => (dispatch) => {
   api
@@ -18,14 +18,12 @@ export const signInThunk = (data) => (dispatch) => {
     });
 };
 
-
-
 export const editUserThunk = (data) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
 
   api
     .patch(`users/${data.id}/`, data, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
       dispatch(editUser(response.data));
@@ -40,13 +38,13 @@ export const searchUserThunk = (data) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
 
   api
-      .get(`/users/${data}/`)
-      .then((response) => {
-        dispatch(editUser(response.data))
-      })
-      .catch((err) => {
-        console.error("Ops! ocorreu um erro" + err);
-      })
+    .get(`/users/${data}/`)
+    .then((response) => {
+      dispatch(editUser(response.data));
+    })
+    .catch((err) => {
+      console.error("Ops! ocorreu um erro" + err);
+    });
 };
 
 export const logOutThunk = () => (dispatch) => {
