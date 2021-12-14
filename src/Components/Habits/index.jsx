@@ -47,6 +47,7 @@ const Habits = () => {
   const [searchBar, setSearchBar] = useState("")
   const [id, setId] = useState(0);
   const [item, setItem] = useState({})
+  const [isRenderIn, setIsrenderIn] = useState(false)
   
   const addProgress = (id, progress) =>{
     dispatch(plusProgressHabitsThunk(id, progress))
@@ -59,15 +60,16 @@ const Habits = () => {
   const deleteHabit = (ID) => {
     setId(ID)
     setPopUpRemove(!popUpRemove)
-    
   } 
+
   const deleteHabitPop = () =>{
     dispatch(delHabitThunk(id))
     setAtualizar(!atualizar)
   }
-
+  // gabi , help......
   const filtrarItens = (text) =>{
     setSearchBar(text)
+    setIsrenderIn(true)
     setFilteredProducts(habits.filter((item) => {
       return ((item.title).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.title
     }));
@@ -82,9 +84,15 @@ const Habits = () => {
     setPopUpEditHabit(true)
   }
 
+  console.log(filteredProducts)
+
   useEffect(() => {
+    if (isRenderIn === true){
+      setFilteredProducts(filteredProducts)
+    } else {
     setFilteredProducts(habits)
-  }, [habits]);
+    }
+  }, [habits, filteredProducts]);
 
   useEffect(() => {
     dispatch(updateHabitsThunk());
