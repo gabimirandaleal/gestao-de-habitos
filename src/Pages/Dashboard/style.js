@@ -8,7 +8,6 @@ const gradient = keyframes`
 `;
 const hidden = keyframes`
 from{opacity:0;}
-
 to{opacity:1;}
 `;
 export const HeaderDashboard = styled.div`
@@ -50,7 +49,6 @@ export const ButtonsDashboard = styled.div`
   font-weight: 400;
   font-style: normal;
   color: var(--dark-grey);
-
   font-weight: lighter;
   ul {
     display: flex;
@@ -102,27 +100,8 @@ export const UserBox = styled.div`
     margin-left: 20px;
     width: 50px;
   }
-
-  ul {
-    margin: 0px 5px 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: var(--dark-grey);
-    font-size: 12px;
-    font-style: normal;
-    img {
-      margin-left: 20px;
-      width: 15px;
-    }
-    li {
-      font-size: 12px;
-      span {
-        font-size: 17px;
-      }
-    }
+  
   }
-
   @media (min-width: 790px) {
     padding-left: 2vw;
     box-sizing: border-box;
@@ -135,7 +114,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-
   /* @media (min-width:1190px){
       height: 90vh;
       } */

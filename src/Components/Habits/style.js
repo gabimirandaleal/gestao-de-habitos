@@ -163,3 +163,17 @@ export const Close = styled.div`
     cursor: pointer;
   }
 `;
+
+export const GrSubtractCirButton = styled.button`
+  border: none;
+  background: transparent;
+  height: 5px;
+
+`
+
+export const AiOutlinePlusCircleButton = styled.button`
+  border: none;
+  background: transparent;
+  height: 5px;
+  
+`

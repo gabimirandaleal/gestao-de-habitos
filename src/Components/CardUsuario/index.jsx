@@ -1,3 +1,4 @@
+import { Ul } from './style'
 import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import UserImg from '../../assets/img/userAvatar.png'
@@ -24,10 +25,10 @@ const CardUsuario = () => {
     <>
       
       <img src={UserImg} alt=''/>
-          <ul>
-            <li><span>{user && user.username}</span> <BsPencil className="cursor" onClick={() => setPopup(true)}/></li>
+          <Ul  >
+            <li><span>{user && user.username}</span> <BsPencil onClick={() => setPopup(true)}/></li>
             <li>{user && user.email}</li>
-          </ul>
+          </Ul>
           {popup && <PopUpEditUser user={user} setPopup={setPopup}></PopUpEditUser>}
     </>
   )
