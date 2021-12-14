@@ -1,10 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const Pop = keyframes`
-0%{transform:scale(0)}
-50%{transform:scale(1.5)}
-100%{transform:scale(1)}
-`;
 export const Div = styled.div`
   display: flex;
   align-items: center;
@@ -86,7 +81,6 @@ export const DivContainer = styled.div`
   border-radius: 30px;
   width: 400px;
   min-width: 200px;
-  animation: ${Pop} 0.5s;
   span {
     text-align: right;
     font-size: 20px;
