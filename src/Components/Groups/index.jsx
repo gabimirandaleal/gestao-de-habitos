@@ -34,10 +34,11 @@ function Groups({groupViewer, setGroup}) {
 
   const filtrarItens = (text) =>{
     setSearchBar(text)
-    setFilteredProducts(filteredProducts.filter((item) => {
-      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
+    setFilteredProducts(groups.filter((item) => {
+      return ((item.name).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.category).toUpperCase().indexOf(text.toUpperCase()) > -1 || (item.creator.username).toUpperCase().indexOf(text.toUpperCase()) > -1) && item.name
     }));
   }
+
   useEffect(() => {
     setFilteredProducts(groups)
   }, [groups]);
@@ -85,7 +86,6 @@ function Groups({groupViewer, setGroup}) {
                     filteredProducts={filteredProducts}
                     onclick={abrirCardGroup}
                     width="100%"
-                    setFilteredProducts={setFilteredProducts}
                   />
             ))}
         </CardsBox>

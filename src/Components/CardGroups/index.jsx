@@ -29,33 +29,18 @@ const CardGroups = ({item, groups, onclick, filteredProducts, setFilteredProduct
     }
     return false
   }
+  
   const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
     if (change) {
       setChange(!change);
-      dispatch(subscribeGroupThunk(item.id, groups, userID, item, setFilteredProducts, filteredProducts))
-      mudar()
+      dispatch(subscribeGroupThunk(item.id, groups, userID))
     } else {
       setChange(!change);
-      dispatch(unsubscribeGroupThunk(item.id, groups, userID, item, setFilteredProducts, filteredProducts))
-      mudar()
+      dispatch(unsubscribeGroupThunk(item.id, groups, userID))
     }
   };
 
-  const mudar = () =>{
-    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-    api
-    .get(`groups/${item.id}/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      console.log(filteredProducts.find((itens) => item.id ===itens.id).users_on_group)
-      filteredProducts.find((itens) => item.id ===itens.id).users_on_group = [...(response.data.users_on_group)]
-      setFilteredProducts([...filteredProducts])
-    })
-    .catch((err) => console.log(err))
-  }
-  
   return (
     
     <Conteiner  text={verificaInscrito() ? "Junte-se" : "Inscrito"} color={verificaInscrito() ? "true" : ""}>
