@@ -1,5 +1,10 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const Pop = keyframes`
+0%{transform:scale(0)}
+50%{transform:scale(1.5)}
+100%{transform:scale(1)}
+`;
 export const Div = styled.div`
   display: flex;
   align-items: center;
@@ -14,15 +19,27 @@ export const Div = styled.div`
 
 export const Form = styled.form`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   width: 100%;
   h3 {
     color: var(--dark-grey);
     font-family: "Sansita", sans-serif;
-    /* font-weight: 700; */
+    font-weight: 700;
     margin-bottom: 20px;
-    /* font-size: 30px; */
+    font-size: 30px;
+  }
+`;
+
+
+export const Error = styled.ul`
+  text-align: start;
+  color: rgb(240, 42, 42);
+  li {
+    font-size: 10px;
+    list-style: none;
+    font-family: "Times New Roman";
+    padding-left: 5px;
   }
 `;
 
@@ -63,19 +80,9 @@ export const DivContainer = styled.div`
   border-radius: 30px;
   width: 400px;
   min-width: 200px;
+  animation: ${Pop} 0.5s;
   span {
     text-align: right;
+    font-size: 20px;
   }
 `;
-
-export const Error = styled.ul`
-  text-align: start;
-  color: rgb(240, 42, 42);
-  li {
-    font-size: 10px;
-    list-style: none;
-    font-family: "Times New Roman";
-    padding-left: 5px;
-  }
-`;
-

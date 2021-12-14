@@ -1,8 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const Conteiner = styled.div`
+const Anim = keyframes`
+from{transform:scale(0)}
+to{transform:scale(1)}
+
+`;
+
+export const Container = styled.div`
   width: 255px;
-  height: 345px;
+  height: 300px;
   position: relative;
   margin-bottom: 25px;
   background-color: var(--light-medium-blue);
@@ -13,9 +19,10 @@ export const Conteiner = styled.div`
   font: unset;
   color: var(--white);
   border-radius: 30px;
-  margin-left:10px;
-  &:hover{
-    background: #47D3F1;
+  margin-left: 10px;
+  transition: 0.5s;
+  :hover {
+    transform: TranslateY(-10px);
   }
   .icone {
     position: absolute;
@@ -24,9 +31,10 @@ export const Conteiner = styled.div`
     left: 208px;
     top: 11px;
     cursor: pointer;
+    transition: 0.5s;
   }
-  .icone:hover{
-    color: black;
+  .icone:hover {
+    transform: scale(1.5);
   }
   Button {
     width: 130px;
@@ -36,6 +44,10 @@ export const Conteiner = styled.div`
     font-size: 19px;
     background-color: ${(props) =>
       props.color ? "var(--dark-orange)" : "#9E9E9E"};
+  }
+  animation: ${Anim} 1s;
+  @media (min-width: 768px) {
+    height: 345px;
   }
 `;
 
@@ -71,13 +83,12 @@ export const Content = styled.div`
       text-align: center;
     }
   }
-  
 `;
 
 export const DescriptionGroup = styled.div`
-    @media (min-width: 768px){
-        text-align: center;
-    }
+  @media (min-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const CardHeader = styled.div`
@@ -88,6 +99,10 @@ export const CardHeader = styled.div`
   @media (min-width: 768px) {
     flex-direction: column;
     margin-bottom: 10px;
+  }
+
+  figure img {
+    width: 60px;
   }
 `;
 

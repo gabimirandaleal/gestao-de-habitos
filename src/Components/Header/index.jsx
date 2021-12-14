@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Div onClick={() => history.push("/")}>
       <H1>Re</H1>
-      <Leaf src={LeafLogo} alt="Leaf" />
+      <Leaf className="teste" src={LeafLogo} alt="Leaf" />
       <SpanLogo>leaf</SpanLogo>
     </Div>
   );

@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+	.cursor{
+		cursor:pointer;
+	}
+	
 	:root{
 		--dark-purple: #6C63FF;
 		--light-purple: rgba(108, 99, 255, 0.8);
@@ -71,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+
 `;
 
 export default GlobalStyle;

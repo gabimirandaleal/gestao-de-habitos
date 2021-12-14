@@ -1,17 +1,11 @@
-import { red } from "@mui/material/colors";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "Sansita One";
-  .cardHolder {
-    max-width: 95vw;
-    overflow-x: scroll;
-    display: flex;
-  }
   width: 100%;
-  height: 100vh;
+
   h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -45,25 +39,6 @@ export const Container = styled.div`
       }
     }
   }
-  .cardHolder::-webkit-scrollbar {
-    width: 12px;
-    height: 9px;
-  }
-
-  .cardHolder::-webkit-scrollbar-track {
-    background: var(--light-yellow);
-  }
-
-  .cardHolder::-webkit-scrollbar-thumb {
-    background-color: var(--dark-medium-red);
-    border-radius: 20px;
-  }
-  header {
-    //PODE APAGAR DEIXEI APENAS PARA IR TESTANDO
-    width: 100vw;
-    background-color: black;
-    height: 10vh;
-  }
 `;
 
 export const Title = styled.div`
@@ -80,8 +55,19 @@ export const Title = styled.div`
 
 export const Div = styled.div`
   display: flex;
-  overflow-y: scroll;
+  overflow-x: scroll;
   align-items: flex-start;
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 9px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--light-grey);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--dark-medium-red);
+    border-radius: 20px;
+  }
 `;
 
 export const Description = styled.div`

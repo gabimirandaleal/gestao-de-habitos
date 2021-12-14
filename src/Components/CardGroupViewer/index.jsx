@@ -1,14 +1,11 @@
-import { FaMedal } from "react-icons/fa";
-import { HiOutlineClipboardList } from "react-icons/hi";
 import { HiUserGroup } from "react-icons/hi";
 import CardGoals from "../CardGoals";
 import CardActivity from "../CardActivity";
 import { Container, Title, Description, Div } from "./style";
 import imgactivities from "../../assets/img/addActitivities.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PopUpCreateActivity from "../PopUpCreateActivity";
-import PopUpCreateGoal from "../PopUpCreateGoal"
-import PopUpEditActivity from "../PopUpEditActivity";
+import PopUpCreateGoal from "../PopUpCreateGoal";
 import { useSelector } from "react-redux";
 import groupGoalsImg from "../../assets/img/groupGoals.png";
 
@@ -32,10 +29,7 @@ const GroupViewer = ({ group }) => {
         />
       )}
       {popupCreateGoal && (
-        <PopUpCreateGoal
-          idGroup={group.id}
-          setPopup={setPopupCreateGoal}
-        />
+        <PopUpCreateGoal idGroup={group.id} setPopup={setPopupCreateGoal} />
       )}
       <Title>
         <h1>
@@ -46,11 +40,18 @@ const GroupViewer = ({ group }) => {
       </Title>
       <Description>
         <h3>Categoria:{group.category}</h3>
+        <span>{group.description}</span>
+        <br />
         <span>grupo criado por:{group.creator.username}</span>
       </Description>
       <div id="goals">
         <h2>
-          Metas do grupo <img src={groupGoalsImg} onClick={() => setPopupCreateGoal(true)} alt="groupGoals" />
+          Metas do grupo{" "}
+          <img
+            src={groupGoalsImg}
+            onClick={() => setPopupCreateGoal(true)}
+            alt="groupGoals"
+          />
         </h2>
         <Div>
           {goalsGroup &&
@@ -66,7 +67,7 @@ const GroupViewer = ({ group }) => {
       </div>
       <div id="activities">
         <h2>
-          Atividades do grupo{" "}
+          Atividades do grupo
           <img
             onClick={() => setPopupCreateActivities(true)}
             src={imgactivities}

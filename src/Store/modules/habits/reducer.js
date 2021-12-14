@@ -19,7 +19,7 @@ const habitsReducer = (state = defaultState, action) => {
     case ATT_HABITS:
       return [...state];
     case DEL_HABITS:
-      return state.filter((item) => item.id != action.data);
+      return state.filter((item) => item.id !== action.data);
     case UPDATE_HABITS:
       const { newData } = action;
       return newData;

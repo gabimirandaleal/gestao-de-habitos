@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const Anim = keyframes`
+from{transform:TranslateX(1500px)}
+to{transform:TranslateX(0px)}
+`;
 
 export const Cards = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -19,6 +23,7 @@ export const Card = styled.div`
   border-radius: 10px 10px 0 0;
   background: var(--light-light-red);
   margin-right: 1.4rem;
+  animation: ${Anim} 1s;
 `;
 
 export const Specs = styled.div`
@@ -26,12 +31,13 @@ export const Specs = styled.div`
   font-size: 18px;
   color: var(--dark-grey);
   box-sizing: border-box;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
   font-family: "Sansita", sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  div {
+    margin: 20px 0;
+  }
 `;
 
 export const Title = styled.div`
