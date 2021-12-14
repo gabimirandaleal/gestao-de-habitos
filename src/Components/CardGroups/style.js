@@ -21,8 +21,8 @@ export const Container = styled.div`
   border-radius: 30px;
   margin-left: 10px;
   transition: 0.5s;
-  &:hover {
-    transform: scale(1.05);
+  :hover {
+    box-shadow: 0px 0px 30px 5px var(--light-blue);
   }
   .icone {
     position: absolute;
@@ -31,9 +31,10 @@ export const Container = styled.div`
     left: 208px;
     top: 11px;
     cursor: pointer;
+    transition: 0.5s;
   }
   .icone:hover {
-    color: black;
+    transform: scale(1.5);
   }
   Button {
     width: 130px;
