@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   font-family: "Sansita One";
   width: 100%;
-  height: 100vh;
+
   h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -39,13 +39,6 @@ export const Container = styled.div`
       }
     }
   }
-  
-  header {
-    //PODE APAGAR DEIXEI APENAS PARA IR TESTANDO
-    width: 100vw;
-    background-color: black;
-    height: 10vh;
-  }
 `;
 
 export const Title = styled.div`
@@ -62,7 +55,7 @@ export const Title = styled.div`
 
 export const Div = styled.div`
   display: flex;
-  overflow-x:scroll;
+  overflow-x: scroll;
   align-items: flex-start;
   &::-webkit-scrollbar {
     width: 12px;
