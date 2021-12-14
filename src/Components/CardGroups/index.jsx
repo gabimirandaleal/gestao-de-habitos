@@ -16,7 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
-import PopUpEditGroup from "../PopUpEditGroup";
+
 import api from "../../Services/api";
 
 const CardGroups = ({
@@ -25,6 +25,8 @@ const CardGroups = ({
   onclick,
   filteredProducts,
   setFilteredProducts,
+  setPopupEdit,
+  setItemGroup
 }) => {
   const dispatch = useDispatch();
 
@@ -47,6 +49,11 @@ const CardGroups = ({
     return false;
   };
 
+  const openPopEdit = () =>{
+    setPopupEdit(true)
+    setItemGroup(item)
+  }
+
   const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
     if (change) {
@@ -59,20 +66,13 @@ const CardGroups = ({
   };
 
   return (
-    <div>
-      {popup && (
-        <PopUpEditGroup
-          item={item}
-          idGroup={item.id}
-          setPopup={setPopup}
-        ></PopUpEditGroup>
-      )}
+    
       <Container
         text={verificaInscrito() ? "Junte-se" : "Inscrito"}
         color={verificaInscrito() ? "true" : ""}
       >
         <span className="icone">
-          <BsPencil onClick={() => setPopup(true)} />
+          <BsPencil onClick={openPopEdit} />
         </span>
         <Content onClick={() => onclick(item)}>
           <CardHeader>
@@ -103,7 +103,6 @@ const CardGroups = ({
           text={verificaInscrito() ? "Junte-se" : "Inscrito"}
         />
       </Container>
-    </div>
   );
 };
 
