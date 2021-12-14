@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const Anim = keyframes`
+from{transform:TranslateX(1500px)}
+to{transform:TranslateX(0px)}
+`;
 
 export const Cards = styled.div`
   display: flex;
@@ -18,6 +23,7 @@ export const Card = styled.div`
   border-radius: 10px 10px 0 0;
   background: var(--light-light-red);
   margin-right: 1.4rem;
+  animation: ${Anim} 1s;
 `;
 
 export const Specs = styled.div`

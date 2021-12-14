@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const Anim = keyframes`
+from{transform:scale(0)}
+to{transform:scale(1)}
+
+`;
 
 export const Container = styled.div`
   width: 255px;
@@ -14,8 +20,9 @@ export const Container = styled.div`
   color: var(--white);
   border-radius: 30px;
   margin-left: 10px;
+  transition: 0.5s;
   &:hover {
-    background: #47d3f1;
+    transform: scale(1.05);
   }
   .icone {
     position: absolute;
@@ -37,6 +44,7 @@ export const Container = styled.div`
     background-color: ${(props) =>
       props.color ? "var(--dark-orange)" : "#9E9E9E"};
   }
+  animation: ${Anim} 1s;
   @media (min-width: 768px) {
     height: 345px;
   }

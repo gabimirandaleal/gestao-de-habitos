@@ -1,5 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const Anim = keyframes`
+from{transform:scale(0)}
+to{transform:scale(1)}
+`;
+const Appear = keyframes`
+from{opacity:0;
+transform:TranslateY(100px);}
+to{opacity:1;}
+`;
 export const Container = styled.div`
   background-color: var(--light-grey);
   width: 100%;
@@ -17,7 +26,7 @@ export const Div = styled.div`
 export const DivName = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
   margin-bottom: 10px;
@@ -34,6 +43,13 @@ export const DivName = styled.div`
     font-size: 25px;
     margin-left: 15px;
     padding-bottom: 8px;
+  }
+  svg {
+    margin-left: 20px;
+  }
+  .cursor {
+    width: 25px;
+    height: 25px;
   }
 `;
 export const Cards = styled.div`
@@ -56,6 +72,8 @@ export const Card = styled.div`
     props.color ? "var(--light-green)" : "var(--light-yellow)"};
   margin-right: 1.4rem;
   margin-left: 1.4rem;
+  transition: 1s;
+  animation: ${Anim} 1s;
 `;
 
 export const Specs = styled.div`
@@ -71,6 +89,7 @@ export const Specs = styled.div`
 export const Empty = styled.div`
   color: var(--dark-grey);
   margin-top: 2rem;
+  animation: ${Appear} 2s;
   img {
     width: 200px;
     height: 190px;
@@ -94,6 +113,8 @@ export const Title = styled.div`
   border-radius: 10px 10px 0 0;
   background: ${(props) =>
     props.color ? "var(--dark-medium-green)" : "var(--dark-yellow)"};
+  transition: 1s;
+
   img {
     width: 45px;
     height: 45px;
