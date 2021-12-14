@@ -57,7 +57,7 @@ export const updateHabitsThunk = () => (dispatch) => {
 
 export const plusProgressHabitsThunk = (idHabit, progress) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress < 100 && progress == 90){
+  if(progress < 100 && progress === 90){
     const data = {"achieved": true, "how_much_achieved": 100}
     api
     .patch(`habits/${idHabit}/`, data, {

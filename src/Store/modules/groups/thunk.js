@@ -17,6 +17,8 @@ export const searchGroupThunk = (setNextPage) => (dispatch) => {
     .catch((err) => console.log(err))
 };
 
+  
+
 export const searchGroupSubscriptionsThunk = () => (dispatch) => { 
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
   api
@@ -213,7 +215,7 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
 
 export const plusProgressGoalThunk = (idGoal, progress) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress < 100 && progress == 90){
+  if(progress < 100 && progress === 90){
     const data = {"achieved": true, "how_much_achieved": 100}
     api
     .patch(`goals/${idGoal}/`, data, {

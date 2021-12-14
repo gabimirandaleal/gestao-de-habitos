@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
-import api from '../../Services/api'
 import UserImg from '../../assets/img/userAvatar.png'
 import { BsPencil } from "react-icons/bs";
 import PopUpEditUser from "../PopUpEditUser"
