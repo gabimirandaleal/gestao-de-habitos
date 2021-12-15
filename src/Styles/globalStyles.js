@@ -1,9 +1,14 @@
-import { createGlobalStyle } from 'styled-components';
- 
+import { createGlobalStyle } from "styled-components";
+
 const GlobalStyle = createGlobalStyle`
+	.cursor{
+		cursor:pointer;
+	}
+	
 	:root{
 		--dark-purple: #6C63FF;
 		--light-purple: rgba(108, 99, 255, 0.8);
+		--light-medium-blue: #50A8DA;
 		--medium-green: #6FC070;
 		--light-green: #A2EEA3;
 		--dark-green:  #3E6A3F;
@@ -13,7 +18,19 @@ const GlobalStyle = createGlobalStyle`
 		--light-grey: #F8F8F8;
 		--medium-grey: #EBEBEB;
 		--dark-grey: #5b5b5b;
+		--light-orange: #ff7e21;
+		--dark-medium-green: #55A362;
+		--light-medium-green: #A2EEA3;
+		--dark-medium-red:  #FF4747;
+		--light-light-red: #FFE1E1;
+		--dark-orange: #FF9365;
+		--light-light-orange: #FFE6D4;
+		--light-blue: #A1CCFA;
+		--dark-blue: #017AFE;
+		--light-medium-blue: #50A8DA;
+		--dark-yellow: #FDEA65;
 	}
+
 
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -58,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+
 `;
- 
+
 export default GlobalStyle;
