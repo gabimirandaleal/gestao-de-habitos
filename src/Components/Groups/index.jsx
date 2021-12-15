@@ -13,18 +13,20 @@ import PopUpCreateGroup from "../PopUpCreateGroup"
 import PopUpEditGroup from "../PopUpEditGroup";
 import {NativeSelect} from "@mui/material"
 import axios from "axios"
+import PopUpRemove from "../PopUpRemove";
 function Groups({groupViewer, setGroup}) {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.group);
   const [popup, setPopup] = useState(false)
   const [popupEdit, setPopupEdit] = useState(false)
+  const [popupRemove, setPopupRemove] = useState(false)
   const [ispage] = useState(true);
   const [nextPage, setNextPage] = useState("");
   const [atualizar, setAtualizar] = useState(true)
   const [setInput] = useState("Grupos")
   const [searchBar, setSearchBar] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(groups)
- const [itemGroup, setItemGroup] = useState({})
+  const [itemGroup, setItemGroup] = useState({})
 
   const show_more = () =>{
     dispatch(addSubPageThunk(nextPage, groups, setNextPage))
@@ -90,6 +92,7 @@ function Groups({groupViewer, setGroup}) {
                     width="100%"
                     setPopupEdit={setPopupEdit}
                     setItemGroup={setItemGroup}
+                    setPopupRemove={setPopupRemove}
                   />
             ))}
         </CardsBox>
@@ -99,6 +102,7 @@ function Groups({groupViewer, setGroup}) {
       </ContentBox>
       {popup && <PopUpCreateGroup setPopup={setPopup}></PopUpCreateGroup>}
       {popupEdit && <PopUpEditGroup item={itemGroup} idGroup={itemGroup.id} setPopup={setPopupEdit} ></PopUpEditGroup>}
+      {popupRemove && <PopUpRemove text={"grupo"} item={itemGroup} id={itemGroup.id} setPopup={setPopupRemove}></PopUpRemove>}
       {/* </section> */}
     </Conteiner>
   ) : (

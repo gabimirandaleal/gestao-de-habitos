@@ -7,6 +7,8 @@ import {
   Downside,
   Background,
   Close,
+  GrSubtractCirButton,
+  AiOutlinePlusCircleButton
 } from "./style";
 
 import { GrSubtractCircle } from "react-icons/gr";
@@ -19,17 +21,17 @@ import PopUpRemove from "../PopUpRemove"
 import { useState } from "react";
 import {plusProgressGoalThunk, subtractProgressGoalThunk} from "../../Store/modules/groups/thunk"
 import { useDispatch } from "react-redux"; 
-const CardGoals = ({ item, name }) => {
+const CardGoals = ({ item, group }) => {
   const [popupEditGoals, setPopupEditGoals] = useState(false);
   const [popupRemoveGoals, setPopupRemovetGoals] = useState(false);
   const dispatch = useDispatch();
 
   const subProgress = () =>{
-    dispatch(subtractProgressGoalThunk(item.id, item.how_much_achieved))
+    dispatch(subtractProgressGoalThunk(item.id, item.how_much_achieved, group))
   }
 
   const addProgress = () =>{
-    dispatch(plusProgressGoalThunk(item.id, item.how_much_achieved))
+    dispatch(plusProgressGoalThunk(item.id, item.how_much_achieved, group))
   }
 
 
@@ -40,6 +42,7 @@ const CardGoals = ({ item, name }) => {
           item={item}
           idGoal={item.id}
           setPopup={setPopupEditGoals}
+          group={group}
         />
       )}
       {popupRemoveGoals && (
@@ -48,6 +51,7 @@ const CardGoals = ({ item, name }) => {
           id = {item.id}
           item ={item}
           setPopup ={setPopupRemovetGoals}
+          group={group}
         />
       )}
       <Card>
@@ -65,11 +69,17 @@ const CardGoals = ({ item, name }) => {
           </Upside>
 
           <Downside>
+          <GrSubtractCirButton>
+
             <GrSubtractCircle size="19px" onClick={subProgress}/>
+          </GrSubtractCirButton>
             <Background>
               <img src={medal} alt="habits" />
             </Background>
+            <AiOutlinePlusCircleButton>
+
             <AiOutlinePlusCircle size="19px" onClick={addProgress}/>
+            </AiOutlinePlusCircleButton>
           </Downside>
         </Title>
         <Specs>

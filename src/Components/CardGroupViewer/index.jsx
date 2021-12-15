@@ -59,6 +59,7 @@ const GroupViewer = ({ group }) => {
               <CardGoals
                 key={item.id}
                 item={item}
+                group={group}
                 name={group.name}
               ></CardGoals>
             ))}
@@ -80,6 +81,7 @@ const GroupViewer = ({ group }) => {
               <CardActivity
                 key={item.id}
                 item={item}
+                group={group}
                 name={group.name}
               ></CardActivity>
             ))}

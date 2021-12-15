@@ -29,6 +29,12 @@ export const Container = styled.div`
     overflow-y: hidden;
     height: 100vh;
   }
+  .header {
+    width: 100px;
+    :hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 export const DivInfos = styled.div`
   max-width: 300px;
