@@ -1,8 +1,9 @@
 import api from "../../../Services/api"
-import {listGroup, GroupsList, addGroupsList, deleteGoalList, addGoalList, deleteActivityList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore} from "./actions"
+import {listGroup, GroupsList, addGroupsList, deleteGoalList, addGoalList, deleteActivityList, addActivityList, editGoalList,editGroupsList, editActivityList, unsubscribeGroup, subscribeGroup, showMore, deleteGroup} from "./actions"
 import axios from "axios"
 // import {GroupsList, GroupsAdd} from "./actions"
 import {toast} from "react-toastify"
+import jwt_decode from "jwt-decode";
 
 export const searchGroupThunk = (setNextPage) => (dispatch) => { 
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
@@ -115,8 +116,10 @@ export const addActivityThunk = (data) => (dispatch) => {
       .catch((err) => console.log(err))
 };
 
-export const editGroupThunk = (data, idGroup) => (dispatch) => {
+export const editGroupThunk = (data, idGroup, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
     api
       .patch(`groups/${idGroup}/`, data, {
       headers: {
@@ -128,10 +131,15 @@ export const editGroupThunk = (data, idGroup) => (dispatch) => {
         dispatch(editGroupsList(response.data))
       })
       .catch((err) => toast.error("Você não pode editar esse grupo"))
+  }else{
+    toast.error("Não mexa no que não é seu")
+  }
 };
 
-export const editGoalThunk = (data, idGoal) => (dispatch) => {
+export const editGoalThunk = (data, idGoal, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
     api
       .patch(`goals/${idGoal}/`, data, {
       headers: {
@@ -140,10 +148,15 @@ export const editGoalThunk = (data, idGoal) => (dispatch) => {
       })
       .then((response) => dispatch(editGoalList(response.data)))
       .catch((err) => console.log(err))
+  }else{
+    toast.error("Não mexa no que não é seu")
+  }
 };
 
-export const editActivityThunk = (data, idActivity) => (dispatch) => {
+export const editActivityThunk = (data, idActivity, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
     api
       .patch(`/activities/${idActivity}/`, data, {
       headers: {
@@ -155,10 +168,15 @@ export const editActivityThunk = (data, idActivity) => (dispatch) => {
         dispatch(editActivityList(response.data))
       })
       .catch((err) => toast.error("Não toque no que não é seu"))
+  }else{
+    toast.error("Não mexa no que não é seu")
+  }
 };
 
-export const deleteGoalThunk = (idGoal, item) => (dispatch) => {
+export const deleteGoalThunk = (idGoal, item, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
     api
       .delete(`goals/${idGoal}/`, {
       headers: {
@@ -170,10 +188,15 @@ export const deleteGoalThunk = (idGoal, item) => (dispatch) => {
         dispatch(deleteGoalList(item))
       })
       .catch((err) => toast.error("Erro ao remover meta"))
+  }else{
+    toast.error("Não mexa no que não é seu")
+  }
 };
 
-export const deleteActivityThunk = (idActivity, item) => (dispatch) => {
+export const deleteActivityThunk = (idActivity, item, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
     api
       .delete(`activities/${idActivity}/`, {
       headers: {
@@ -185,6 +208,9 @@ export const deleteActivityThunk = (idActivity, item) => (dispatch) => {
         dispatch(deleteActivityList(item))
       })
       .catch((err) =>  toast.error("Erro ao remover atividade"))
+    }else{
+      toast.error("Não mexa no que não é seu")
+    }
 };
 
 export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
@@ -196,6 +222,28 @@ export const subscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
       dispatch(subscribeGroup(groups, groupId, userID, response.data))
     })
     .catch((err) => console.log(err))
+};
+
+export const deleteGroupThunk = (id, item) => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(item.creator === userID || item.creator.id === userID){
+  api
+    .delete(`groups/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((_) => {
+      dispatch(deleteGroup(item))
+      toast.success("Você removeu esse grupo");
+    })
+    .catch((_) => {
+      toast.error("Erro ao remover esse grupo")
+    });
+  }else{
+    toast.error("Não mexa no que não é seu")
+  }
 };
 
 export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => {
@@ -210,40 +258,53 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
       dispatch(unsubscribeGroup(groups, groupId, userID))
       toast.success("Você se desinscreveu do grupo");
     })
-    .catch((err) => toast.error(err));
+    .catch((err) => {toast.error("Erro ao desinscrever-se do grupo")});
 };
 
-export const plusProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+
+
+
+export const plusProgressGoalThunk = (idGoal, progress, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
   if(progress < 100 && progress === 90){
-    const data = {"achieved": true, "how_much_achieved": 100}
-    api
-    .patch(`goals/${idGoal}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(editGoalList(response.data)));
-  }else if(progress < 100){
-    const data = {"how_much_achieved": (Number(progress)+10)}
-    api
-    .patch(`goals/${idGoal}/`, data,{
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(editGoalList(response.data)))
-    .catch((err) => console.log("oi"))
+      const data = {"achieved": true, "how_much_achieved": 100}
+      api
+      .patch(`goals/${idGoal}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(editGoalList(response.data)));
+    }else if(progress < 100){
+      const data = {"how_much_achieved": (Number(progress)+10)}
+      api
+      .patch(`goals/${idGoal}/`, data,{
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(editGoalList(response.data)))
+      .catch((err) => console.log("oi"))
+    }
+  }else{
+    toast.error("Não mexa no que não é seu")
   }
 };
 
-export const subtractProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+export const subtractProgressGoalThunk = (idGoal, progress, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress > 0 ){
-    const data = {"achieved": false, "how_much_achieved": (progress-10)}
-    api
-    .patch(`goals/${idGoal}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      dispatch(editGoalList(response.data))
-    })
-    .catch((err) => console.log(err))
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
+    if(progress > 0 ){
+      const data = {"achieved": false, "how_much_achieved": (progress-10)}
+      api
+      .patch(`goals/${idGoal}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        dispatch(editGoalList(response.data))
+      })
+      .catch((err) => console.log(err))
+    }
+  }else{
+    toast.error("Não mexa no que não é seu")
   }
 };

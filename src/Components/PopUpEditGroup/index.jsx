@@ -25,7 +25,7 @@ function PopUpEditGroup({setPopup, idGroup, item}) {
 
     const onSubmitFunction = data => {
         console.log(data)
-        dispatch(editGroupThunk(data, idGroup))
+        dispatch(editGroupThunk(data, idGroup, item))
         setPopup(false)
     }
     return(

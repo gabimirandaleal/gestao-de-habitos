@@ -16,9 +16,9 @@ import {
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
-
+import { IoCloseCircle } from "react-icons/io5";
 import api from "../../Services/api";
-
+import PopUpRemove from "../PopUpRemove"
 const CardGroups = ({
   item,
   groups,
@@ -26,11 +26,11 @@ const CardGroups = ({
   filteredProducts,
   setFilteredProducts,
   setPopupEdit,
-  setItemGroup
+  setItemGroup,
+  setPopupRemove
 }) => {
   const dispatch = useDispatch();
 
-  const [popup, setPopup] = useState(false);
   const [token] = useState(
     JSON.parse(localStorage.getItem("@GestaoHabitos:token")) || ""
   );
@@ -54,6 +54,11 @@ const CardGroups = ({
     setItemGroup(item)
   }
 
+  const openPopDelete = () =>{
+    setPopupRemove(true)
+    setItemGroup(item)
+  }
+
   const [change, setChange] = useState(verificaInscrito());
   const onChange = () => {
     if (change) {
@@ -66,13 +71,14 @@ const CardGroups = ({
   };
 
   return (
-    
+      
       <Container
         text={verificaInscrito() ? "Junte-se" : "Inscrito"}
         color={verificaInscrito() ? "true" : ""}
       >
         <span className="icone">
-          <BsPencil onClick={openPopEdit} />
+          <IoCloseCircle className="animation" onClick={openPopDelete}/>
+          <BsPencil className="animation" onClick={openPopEdit} />
         </span>
         <Content onClick={() => onclick(item)}>
           <CardHeader>

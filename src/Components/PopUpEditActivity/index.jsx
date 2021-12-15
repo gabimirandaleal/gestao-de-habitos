@@ -9,7 +9,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editActivityThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpEditActivity({setPopup, idActivity, item}) {
+function PopUpEditActivity({setPopup, idActivity, item, group}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Nome obrigatório"),
     })
@@ -23,7 +23,7 @@ function PopUpEditActivity({setPopup, idActivity, item}) {
     })
 
     const onSubmitFunction = data => {
-        dispatch(editActivityThunk(data, idActivity))
+        dispatch(editActivityThunk(data, idActivity, group))
         setPopup(false)
     }
     return(
