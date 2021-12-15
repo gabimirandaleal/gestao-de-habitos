@@ -4,7 +4,6 @@ import {
   Content,
   DescriptionGroup,
   Details,
-  Div,
 } from "./style";
 import Button from "../Button";
 import LogoCardGroup from "../../assets/Icons/LogoCardGroup.png";
@@ -17,17 +16,14 @@ import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsPencil } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
-import api from "../../Services/api";
-import PopUpRemove from "../PopUpRemove"
+
 const CardGroups = ({
   item,
   groups,
   onclick,
-  filteredProducts,
-  setFilteredProducts,
   setPopupEdit,
   setItemGroup,
-  setPopupRemove
+  setPopupRemove,
 }) => {
   const dispatch = useDispatch();
 
@@ -36,9 +32,8 @@ const CardGroups = ({
   );
 
   const userID = jwt_decode(token).user_id;
-  // const [text, setText] = useState("oi");
 
-  const verificaInscrito = () => {
+  const verifySubcribed = () => {
     if (item.users_on_group[0] === userID) {
       return false;
     } else if (
@@ -49,17 +44,17 @@ const CardGroups = ({
     return false;
   };
 
-  const openPopEdit = () =>{
-    setPopupEdit(true)
-    setItemGroup(item)
-  }
+  const openPopEdit = () => {
+    setPopupEdit(true);
+    setItemGroup(item);
+  };
 
-  const openPopDelete = () =>{
-    setPopupRemove(true)
-    setItemGroup(item)
-  }
+  const openPopDelete = () => {
+    setPopupRemove(true);
+    setItemGroup(item);
+  };
 
-  const [change, setChange] = useState(verificaInscrito());
+  const [change, setChange] = useState(verifySubcribed());
   const onChange = () => {
     if (change) {
       setChange(!change);
@@ -71,44 +66,43 @@ const CardGroups = ({
   };
 
   return (
-      
-      <Container
-        text={verificaInscrito() ? "Junte-se" : "Inscrito"}
-        color={verificaInscrito() ? "true" : ""}
-      >
-        <span className="icone">
-          <IoCloseCircle className="animation" onClick={openPopDelete}/>
-          <BsPencil className="animation" onClick={openPopEdit} />
+    <Container
+      text={verifySubcribed() ? "Junte-se" : "Inscrito"}
+      color={verifySubcribed() ? "true" : ""}
+    >
+      <span className="icone">
+        <IoCloseCircle className="animation" onClick={openPopDelete} />
+        <BsPencil className="animation" onClick={openPopEdit} />
+      </span>
+      <Content onClick={() => onclick(item)}>
+        <CardHeader>
+          <figure>
+            <img src={LogoCardGroup} alt="LogoCardGroup" />
+          </figure>
+          <DescriptionGroup>
+            <h2>{item.name}</h2>
+            <span> {item.category} </span>
+          </DescriptionGroup>
+        </CardHeader>
+        <p> {item.creator.username} </p>
+      </Content>
+      <Details>
+        <span>
+          <p>Incritos</p> <p>{item.users_on_group.length}</p>
         </span>
-        <Content onClick={() => onclick(item)}>
-          <CardHeader>
-            <figure>
-              <img src={LogoCardGroup} alt="LogoCardGroup" />
-            </figure>
-            <DescriptionGroup>
-              <h2>{item.name}</h2>
-              <span> {item.category} </span>
-            </DescriptionGroup>
-          </CardHeader>
-          <p> {item.creator.username} </p>
-        </Content>
-        <Details>
-          <span>
-            <p>Incritos</p> <p>{item.users_on_group.length}</p>
-          </span>
-          <span>
-            <p>Metas</p> <p>{item.goals.length}</p>
-          </span>
-          <span>
-            <p>Atividades</p> <p>{item.activities.length}</p>
-          </span>
-        </Details>
-        <Button
-          onclick={onChange}
-          color={verificaInscrito() ? "true" : ""}
-          text={verificaInscrito() ? "Junte-se" : "Inscrito"}
-        />
-      </Container>
+        <span>
+          <p>Metas</p> <p>{item.goals.length}</p>
+        </span>
+        <span>
+          <p>Atividades</p> <p>{item.activities.length}</p>
+        </span>
+      </Details>
+      <Button
+        onclick={onChange}
+        color={verifySubcribed() ? "true" : ""}
+        text={verifySubcribed() ? "Junte-se" : "Inscrito"}
+      />
+    </Container>
   );
 };
 
