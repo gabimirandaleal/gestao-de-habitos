@@ -264,37 +264,47 @@ export const unsubscribeGroupThunk = (groupId, groups, userID) => (dispatch) => 
 
 
 
-export const plusProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+export const plusProgressGoalThunk = (idGoal, progress, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
   if(progress < 100 && progress === 90){
-    const data = {"achieved": true, "how_much_achieved": 100}
-    api
-    .patch(`goals/${idGoal}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(editGoalList(response.data)));
-  }else if(progress < 100){
-    const data = {"how_much_achieved": (Number(progress)+10)}
-    api
-    .patch(`goals/${idGoal}/`, data,{
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(editGoalList(response.data)))
-    .catch((err) => console.log("oi"))
+      const data = {"achieved": true, "how_much_achieved": 100}
+      api
+      .patch(`goals/${idGoal}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(editGoalList(response.data)));
+    }else if(progress < 100){
+      const data = {"how_much_achieved": (Number(progress)+10)}
+      api
+      .patch(`goals/${idGoal}/`, data,{
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(editGoalList(response.data)))
+      .catch((err) => console.log("oi"))
+    }
+  }else{
+    toast.error("Não mexa no que não é seu")
   }
 };
 
-export const subtractProgressGoalThunk = (idGoal, progress) => (dispatch) => {
+export const subtractProgressGoalThunk = (idGoal, progress, group) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress > 0 ){
-    const data = {"achieved": false, "how_much_achieved": (progress-10)}
-    api
-    .patch(`goals/${idGoal}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      dispatch(editGoalList(response.data))
-    })
-    .catch((err) => console.log(err))
+  const userID = jwt_decode(token).user_id
+  if(group.creator === userID || group.creator.id === userID){
+    if(progress > 0 ){
+      const data = {"achieved": false, "how_much_achieved": (progress-10)}
+      api
+      .patch(`goals/${idGoal}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        dispatch(editGoalList(response.data))
+      })
+      .catch((err) => console.log(err))
+    }
+  }else{
+    toast.error("Não mexa no que não é seu")
   }
 };

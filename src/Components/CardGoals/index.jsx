@@ -25,11 +25,11 @@ const CardGoals = ({ item, group }) => {
   const dispatch = useDispatch();
 
   const subProgress = () =>{
-    dispatch(subtractProgressGoalThunk(item.id, item.how_much_achieved))
+    dispatch(subtractProgressGoalThunk(item.id, item.how_much_achieved, group))
   }
 
   const addProgress = () =>{
-    dispatch(plusProgressGoalThunk(item.id, item.how_much_achieved))
+    dispatch(plusProgressGoalThunk(item.id, item.how_much_achieved, group))
   }
 
 
