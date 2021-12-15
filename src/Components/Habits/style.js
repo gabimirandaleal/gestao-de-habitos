@@ -11,6 +11,7 @@ to{opacity:1;}
 `;
 export const Container = styled.div`
   background-color: var(--light-grey);
+
   width: 100%;
   font-family: "Sansita";
   box-sizing: border-box;
@@ -172,12 +173,10 @@ export const GrSubtractCirButton = styled.button`
   border: none;
   background: transparent;
   height: 5px;
-
-`
+`;
 
 export const AiOutlinePlusCircleButton = styled.button`
   border: none;
   background: transparent;
   height: 5px;
-  
-`
+`;
