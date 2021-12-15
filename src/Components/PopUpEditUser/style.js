@@ -31,7 +31,6 @@ export const Form = styled.form`
   }
 `;
 
-
 export const Error = styled.ul`
   text-align: start;
   color: rgb(240, 42, 42);
@@ -85,7 +84,7 @@ export const DivContainer = styled.div`
   border-radius: 30px;
   width: 400px;
   min-width: 200px;
-  animation: ${Pop} 0.5s;
+  animation: ${Pop} 1s;
   span {
     text-align: right;
     font-size: 20px;

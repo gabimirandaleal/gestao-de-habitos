@@ -24,6 +24,10 @@ export const Card = styled.div`
   background: var(--light-light-red);
   margin-right: 1.4rem;
   animation: ${Anim} 1s;
+  transition: 0.5s;
+  :hover {
+    transform: scale(1.04);
+  }
 `;
 
 export const Specs = styled.div`
@@ -69,6 +73,10 @@ export const Downside = styled.div`
   svg {
     cursor: pointer;
     color: black;
+    transition: 0.5s;
+    :hover {
+      transform: scale(1.04);
+    }
   }
 `;
 
@@ -99,12 +107,10 @@ export const GrSubtractCirButton = styled.button`
   border: none;
   background: transparent;
   height: 5px;
-
-`
+`;
 
 export const AiOutlinePlusCircleButton = styled.button`
   border: none;
   background: transparent;
   height: 5px;
-  
-`
+`;
