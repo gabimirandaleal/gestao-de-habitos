@@ -24,6 +24,10 @@ export const Card = styled.div`
   background: var(--light-light-orange);
   margin-right: 1.4rem;
   animation: ${Anim} 1s;
+  transition: 0.5s;
+  :hover {
+    transform: scale(1.04);
+  }
 `;
 
 export const Specs = styled.div`
@@ -69,6 +73,10 @@ export const Downside = styled.div`
   svg {
     cursor: pointer;
     color: black;
+    transition: 0.5s;
+    :hover {
+      transform: scale(1.04);
+    }
   }
 `;
 
@@ -79,17 +87,10 @@ export const Background = styled.div`
   max-width: 70px;
   height: 70px;
   img {
-<<<<<<< HEAD
-    width: 45px;
-    height: 45px;
-    margin-left: 17%;
-    margin-top: 15px;
-=======
     width: 37px;
     height: 47px;
     margin-left: 15px;
     margin-top: 12px;
->>>>>>> 2c1dd57a9dac7d2ca1d74f9d5bedf4d13083a192
   }
 `;
 

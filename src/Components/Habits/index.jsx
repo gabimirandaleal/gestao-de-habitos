@@ -54,31 +54,10 @@ const Habits = () => {
 
   const addProgress = (id, progress) => {
     dispatch(plusProgressHabitsThunk(id, progress));
-    if (
-      filteredProducts.find((item) => item.id === id).how_much_achieved < 100 &&
-      filteredProducts.find((item) => item.id === id).how_much_achieved === 90
-    ) {
-      filteredProducts.find((item) => item.id === id).how_much_achieved =
-        filteredProducts.find((item) => item.id === id).how_much_achieved + 10;
-      filteredProducts.find((item) => item.id === id).achieved = true;
-      setFilteredProducts([...filteredProducts]);
-    } else if (
-      filteredProducts.find((item) => item.id === id).how_much_achieved < 100
-    ) {
-      filteredProducts.find((item) => item.id === id).how_much_achieved =
-        filteredProducts.find((item) => item.id === id).how_much_achieved + 10;
-      setFilteredProducts([...filteredProducts]);
-    }
   };
 
   const subProgress = (id, progress) => {
     dispatch(subtractProgressHabitsThunk(id, progress));
-    if (filteredProducts.find((item) => item.id === id).how_much_achieved > 0) {
-      filteredProducts.find((item) => item.id === id).how_much_achieved =
-        filteredProducts.find((item) => item.id === id).how_much_achieved - 10;
-      filteredProducts.find((item) => item.id === id).achieved = false;
-      setFilteredProducts([...filteredProducts]);
-    }
   };
 
   const deleteHabit = (ID) => {
@@ -113,14 +92,9 @@ const Habits = () => {
     setItem(habit);
     setPopUpEditHabit(true);
   };
-
   useEffect(() => {
-    if (isRenderIn === true) {
-      setFilteredProducts(filteredProducts);
-    } else {
-      setFilteredProducts(habits);
-    }
-  }, [habits, filteredProducts]);
+    setFilteredProducts(habits);
+  }, [habits]);
 
   useEffect(() => {
     if (filterTest === false) {
@@ -160,11 +134,6 @@ const Habits = () => {
             color="#2ECC71"
           />
         </DivName>
-        <SearchBar
-          onclick={submit}
-          searchBar={searchBar}
-          filtrarItens={filtrarItens}
-        ></SearchBar>
       </Div>
       <Cards>
         {filteredProducts &&

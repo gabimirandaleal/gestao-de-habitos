@@ -12,7 +12,7 @@ function PopUpRemove({ text, id, item, deleteHabitPop, setPopup, group }) {
   function removerCard() {
     setPopup(false);
     if (text === "hábito") {
-      deleteHabitPop();
+      deleteHabitPop(id);
     } else if (text === "meta") {
       dispatch(deleteGoalThunk(id, item, group));
     } else if (text === "atividade") {

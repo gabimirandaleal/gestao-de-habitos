@@ -36,17 +36,23 @@ const GroupViewer = ({ group }) => {
           <HiUserGroup />
           {group.name}
         </h1>
-        <span>{group.users_on_group.length} membros</span>
+        <span>
+          {group.users_on_group.length > 1 ? (
+            <span>{group.users_on_group.length} membros</span>
+          ) : (
+            <span>{group.users_on_group.length} membro</span>
+          )}
+        </span>
       </Title>
       <Description>
-        <h3>Categoria:{group.category}</h3>
+        <h3>Categoria: {group.category}</h3>
         <span>{group.description}</span>
         <br />
-        <span>grupo criado por:{group.creator.username}</span>
+        <span>grupo criado por: {group.creator.username}</span>
       </Description>
       <div id="goals">
         <h2>
-          Metas do grupo{" "}
+          Metas do grupo
           <img
             src={groupGoalsImg}
             onClick={() => setPopupCreateGoal(true)}

@@ -80,7 +80,11 @@ const CardGroups = ({
             <img src={LogoCardGroup} alt="LogoCardGroup" />
           </figure>
           <DescriptionGroup>
-            <h2>{item.name}</h2>
+            <h2>
+              {item.name.length > 15
+                ? `${item.name.substring(0, 15)}...`
+                : item.name}
+            </h2>
             <span> {item.category} </span>
           </DescriptionGroup>
         </CardHeader>
