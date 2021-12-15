@@ -13,7 +13,7 @@ import {
   DivName,
   Div,
   GrSubtractCirButton,
-  AiOutlinePlusCircleButton
+  AiOutlinePlusCircleButton,
 } from "./style";
 import SearchBar from "../SearchBar";
 import PopUpCreateHabits from "../../Components/PopUpCreateHabits";
@@ -43,8 +43,8 @@ const Habits = () => {
   const [popUpEditHabit, setPopUpEditHabit] = useState(false);
   const dispatch = useDispatch();
   const habits = useSelector((state) => state.habits);
-  const [atualizar, setAtualizar] = useState(false);
-  const [filterTeste, setFilterTeste] = useState(false);
+  const [update, setUpdate] = useState(false);
+  const [filterTest, setFilterTest] = useState(false);
 
   const [filteredProducts, setFilteredProducts] = useState(habits);
   const [searchBar, setSearchBar] = useState("");
@@ -88,9 +88,9 @@ const Habits = () => {
 
   const deleteHabitPop = () => {
     dispatch(delHabitThunk(id));
-    setAtualizar(!atualizar);
+    setUpdate(!update);
   };
-  // gabi , help......
+
   const filtrarItens = (text) => {
     setSearchBar(text);
     setIsrenderIn(true);
@@ -123,10 +123,10 @@ const Habits = () => {
   }, [habits, filteredProducts]);
 
   useEffect(() => {
-    if (filterTeste === false) {
+    if (filterTest === false) {
       dispatch(updateHabitsThunk());
     }
-  }, [atualizar, dispatch]);
+  }, [update, dispatch]);
 
   return (
     <Container>
@@ -186,15 +186,24 @@ const Habits = () => {
                 </Upside>
 
                 <Downside>
-                  <GrSubtractCirButton> 
-                  <GrSubtractCircle size="19px" onClick={() => subProgress(habit.id, habit.how_much_achieved)}/>
+                  <GrSubtractCirButton>
+                    <GrSubtractCircle
+                      size="19px"
+                      onClick={() =>
+                        subProgress(habit.id, habit.how_much_achieved)
+                      }
+                    />
                   </GrSubtractCirButton>
                   <Background>
                     <img src={habitsImg} alt="habits" />
                   </Background>
                   <AiOutlinePlusCircleButton>
-                    <AiOutlinePlusCircle 
-                      size="20px" onClick={() => addProgress(habit.id, habit.how_much_achieved)}/>
+                    <AiOutlinePlusCircle
+                      size="20px"
+                      onClick={() =>
+                        addProgress(habit.id, habit.how_much_achieved)
+                      }
+                    />
                   </AiOutlinePlusCircleButton>
                 </Downside>
               </Title>

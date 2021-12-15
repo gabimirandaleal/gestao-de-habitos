@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 import { Container, Error, Div } from "./style";
 import Links from "../../Components/Links";
@@ -50,7 +49,7 @@ function Signup() {
     delete data.confirmPassword;
     api
       .post("users/", data)
-      .then((response) => {
+      .then((_) => {
         history.push("/login");
         toast.success("Usuário cadastrado com sucesso!");
       })

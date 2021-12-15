@@ -16,7 +16,7 @@ import { useState } from "react";
 
 const CardActivity = ({ item, name, group }) => {
   const [popupEditActivities, setPopupEditActivities] = useState(false);
-  const [popupremove, setPopupRemove] = useState(false);
+  const [popupRemove, setPopupRemove] = useState(false);
 
   const data = () => {
     const split = item.realization_time.split("T");
@@ -34,7 +34,7 @@ const CardActivity = ({ item, name, group }) => {
           group={group}
         />
       )}
-      {popupremove && (
+      {popupRemove && (
         <PopUpRemove
           id={item.id}
           item={item}

@@ -14,7 +14,7 @@ const userReducer = (state = defaultState, action) => {
     case LOG_OUT:
       return { ...state, token: "" };
     case EDIT_USER:
-      const {data} = action
+      const { data } = action;
       return { ...state, data };
     default:
       return state;
@@ -22,5 +22,3 @@ const userReducer = (state = defaultState, action) => {
 };
 
 export default userReducer;
-
-

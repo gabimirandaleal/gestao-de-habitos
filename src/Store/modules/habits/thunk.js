@@ -1,5 +1,13 @@
 import api from "../../../Services/api";
-import { addHabit, attHabit, delHabit, updateHabits, plusProgressHabits, subProgressHabits, editHabits } from "./actions";
+import {
+  addHabit,
+  attHabit,
+  delHabit,
+  updateHabits,
+  plusProgressHabits,
+  subProgressHabits,
+  editHabits,
+} from "./actions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,7 +41,7 @@ export const attHabitThunk = (data) => (dispatch) => {
 
 export const delHabitThunk = (idHabit) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-    api
+  api
     .delete(`habits/${idHabit}/`, {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -57,47 +65,48 @@ export const updateHabitsThunk = () => (dispatch) => {
 
 export const plusProgressHabitsThunk = (idHabit, progress) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress < 100 && progress === 90){
-    const data = {"achieved": true, "how_much_achieved": 100}
+  if (progress < 100 && progress === 90) {
+    const data = { achieved: true, how_much_achieved: 100 };
     api
-    .patch(`habits/${idHabit}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(plusProgressHabits(response.data)));
-  }else if(progress < 100){
-    const data = {"how_much_achieved": (Number(progress)+10)}
+      .patch(`habits/${idHabit}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(plusProgressHabits(response.data)));
+  } else if (progress < 100) {
+    const data = { how_much_achieved: Number(progress) + 10 };
     api
-    .patch(`habits/${idHabit}/`, data,{
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => dispatch(plusProgressHabits(response.data)))
-    .catch((err) => console.log("oi"))
+      .patch(`habits/${idHabit}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => dispatch(plusProgressHabits(response.data)))
+      .catch((err) => console.log(err));
   }
 };
 
-export const subtractProgressHabitsThunk = (idHabit, progress) => (dispatch) => {
-  const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-  if(progress > 0 ){
-    const data = {"achieved": false, "how_much_achieved": (progress-10)}
-    api
-    .patch(`habits/${idHabit}/`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      dispatch(subProgressHabits(response.data))
-    })
-    .catch((err) => console.log(err))
-  }
-};
+export const subtractProgressHabitsThunk =
+  (idHabit, progress) => (dispatch) => {
+    const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
+    if (progress > 0) {
+      const data = { achieved: false, how_much_achieved: progress - 10 };
+      api
+        .patch(`habits/${idHabit}/`, data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          dispatch(subProgressHabits(response.data));
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
 export const editHabitsThunk = (idHabit, data) => (dispatch) => {
   const token = JSON.parse(localStorage.getItem("@GestaoHabitos:token"));
-    api
+  api
     .patch(`habits/${idHabit}/`, data, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
-      dispatch(editHabits(response.data))
+      dispatch(editHabits(response.data));
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
 };

@@ -25,15 +25,18 @@ export const Container = styled.div`
     transform: TranslateY(-10px);
   }
   .icone {
-    padding-top:20px;
+    padding-top: 20px;
     cursor: pointer;
     transition: 0.5s;
     display: flex;
     width: 80%;
     justify-content: space-between;
   }
-  .animation:hover {
-    transform: scale(1.5);
+  .animation {
+    transition: 0.5s;
+    :hover {
+      transform: scale(1.5);
+    }
   }
   Button {
     width: 130px;
@@ -74,7 +77,6 @@ export const Content = styled.div`
   }
   p {
     margin-bottom: 15px;
-    
   }
   @media (min-width: 768px) {
     align-items: center;

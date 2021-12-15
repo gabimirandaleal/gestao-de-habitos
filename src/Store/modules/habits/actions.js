@@ -5,7 +5,7 @@ import {
   UPDATE_HABITS,
   PLUS_PROGRESS_HABITS,
   SUB_PROGRESS_HABITS,
-  EDIT_HABITS
+  EDIT_HABITS,
 } from "./actionType";
 
 export const addHabit = (data) => ({
@@ -35,10 +35,10 @@ export const plusProgressHabits = (progress) => ({
 
 export const subProgressHabits = (progress) => ({
   type: SUB_PROGRESS_HABITS,
-  progress
+  progress,
 });
 
 export const editHabits = (data) => ({
   type: EDIT_HABITS,
-  data
+  data,
 });

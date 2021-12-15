@@ -1,10 +1,10 @@
-import { 
-  LIST_GROUPS, 
-  ADD_GROUPS, 
-  ADD_GOALS, 
-  ADD_ACTIVITY, 
-  EDIT_GROUPS, 
-  EDIT_ACTIVITY, 
+import {
+  LIST_GROUPS,
+  ADD_GROUPS,
+  ADD_GOALS,
+  ADD_ACTIVITY,
+  EDIT_GROUPS,
+  EDIT_ACTIVITY,
   EDIT_GOAL,
   SUBSCRIBE_GROUP,
   UNSUBSCRIBE_GROUP,
@@ -12,7 +12,7 @@ import {
   LIST_MY_GROUP,
   DELETE_ACTIVITY,
   DELETE_GOAL,
-  DELETE_GROUP
+  DELETE_GROUP,
 } from "./actionType";
 
 export const GroupsList = (group) => ({
@@ -24,7 +24,6 @@ export const addGroupsList = (data) => ({
   type: ADD_GROUPS,
   data,
 });
-
 
 export const addGoalList = (data) => ({
   type: ADD_GOALS,
@@ -52,41 +51,41 @@ export const editGoalList = (data) => ({
 
 export const subscribeGroup = (group, groupId, userID, response) => ({
   type: SUBSCRIBE_GROUP,
-  group, 
+  group,
   groupId,
   userID,
-  response
+  response,
 });
 
 export const unsubscribeGroup = (group, groupId, userID) => ({
   type: UNSUBSCRIBE_GROUP,
   group,
   groupId,
-  userID
+  userID,
 });
 
 export const showMore = (group, groups) => ({
   type: SHOW_MORE,
   group,
-  groups
+  groups,
 });
 
 export const listGroup = (group, groups) => ({
   type: LIST_MY_GROUP,
   group,
-}); 
+});
 
 export const deleteActivityList = (data) => ({
   type: DELETE_ACTIVITY,
-  data
+  data,
 });
 
 export const deleteGoalList = (data) => ({
   type: DELETE_GOAL,
-  data
+  data,
 });
 
 export const deleteGroup = (data) => ({
   type: DELETE_GROUP,
-  data
+  data,
 });
