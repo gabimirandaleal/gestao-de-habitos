@@ -11,7 +11,8 @@ import  {
   SHOW_MORE,
   LIST_MY_GROUP,
   DELETE_ACTIVITY,
-  DELETE_GOAL
+  DELETE_GOAL,
+  DELETE_GROUP
 }  from "./actionType";
 
 const defaultState = [];
@@ -68,6 +69,10 @@ const groupReducer = (state = defaultState, action) => {
         const goalsFilters = (state[state.indexOf(state.find((item)=> item.id === data.group))].goals).filter((item) => item.id !== data.id)
         state[state.indexOf(state.find((item)=> item.id === data.group))].goals = [...goalsFilters]
         return [...state]
+    case DELETE_GROUP:
+      console.log(data)
+      state = [...state.filter((item) => item.id != data.id)]
+      return [...state.filter((item) => item.id != data.id)]
     default:
       return state;
   }

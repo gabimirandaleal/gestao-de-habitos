@@ -14,7 +14,7 @@ import PopUpEditActivity from "../PopUpEditActivity";
 import PopUpRemove from "../PopUpRemove";
 import { useState } from "react";
 
-const CardActivity = ({ item, name }) => {
+const CardActivity = ({ item, name, group }) => {
   const [popupEditActivities, setPopupEditActivities] = useState(false);
   const [popupremove, setPopupRemove] = useState(false);
 
@@ -31,6 +31,7 @@ const CardActivity = ({ item, name }) => {
           item={item}
           idActivity={item.id}
           setPopup={setPopupEditActivities}
+          group={group}
         />
       )}
       {popupremove && (
@@ -39,6 +40,7 @@ const CardActivity = ({ item, name }) => {
           item={item}
           setPopup={setPopupRemove}
           text={"atividade"}
+          group={group}
         ></PopUpRemove>
       )}
       <Card>

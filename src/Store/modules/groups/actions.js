@@ -11,7 +11,8 @@ import {
   SHOW_MORE,
   LIST_MY_GROUP,
   DELETE_ACTIVITY,
-  DELETE_GOAL
+  DELETE_GOAL,
+  DELETE_GROUP
 } from "./actionType";
 
 export const GroupsList = (group) => ({
@@ -82,5 +83,10 @@ export const deleteActivityList = (data) => ({
 
 export const deleteGoalList = (data) => ({
   type: DELETE_GOAL,
+  data
+});
+
+export const deleteGroup = (data) => ({
+  type: DELETE_GROUP,
   data
 });

@@ -114,8 +114,6 @@ const Habits = () => {
     setPopUpEditHabit(true);
   };
 
-  console.log(filteredProducts);
-
   useEffect(() => {
     if (isRenderIn === true) {
       setFilteredProducts(filteredProducts);

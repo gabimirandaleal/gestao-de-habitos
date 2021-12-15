@@ -9,7 +9,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import {editGoalThunk} from "../../Store/modules/groups/thunk"
 
-function PopUpEditGoals({item, idGoal, setPopup}) {
+function PopUpEditGoals({item, idGoal, setPopup, group}) {
     const formSchema = yup.object().shape({
         title: yup.string().required("Titulo obrigatorio"),
         difficulty: yup.string().required("Dificuldade obrigatória")
@@ -27,7 +27,7 @@ function PopUpEditGoals({item, idGoal, setPopup}) {
         
     const onSubmitFunction = data => {
         setPopup(false)
-        dispatch(editGoalThunk(data, idGoal))
+        dispatch(editGoalThunk(data, idGoal, group))
     }
 
     return(
