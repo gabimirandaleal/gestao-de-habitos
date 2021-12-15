@@ -74,7 +74,7 @@ export const Content = styled.div`
   }
   p {
     margin-bottom: 15px;
-    margin-left: 14px;
+    
   }
   @media (min-width: 768px) {
     align-items: center;
