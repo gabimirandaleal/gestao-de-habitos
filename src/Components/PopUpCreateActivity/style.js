@@ -71,6 +71,7 @@ export const DivA = styled.div`
     width: 35px;
     height: 35px;
   }
+  z-index:10;
 `;
 
 export const DivContainer = styled.div`
