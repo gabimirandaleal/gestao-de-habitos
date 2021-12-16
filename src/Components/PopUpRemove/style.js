@@ -34,7 +34,7 @@ export const DivA = styled.div`
   top: 0px;
   left: 0px;
   padding: 20px;
-  z-index: 20;
+  z-index: 10;
 `;
 
 export const DivContainer = styled.div`
